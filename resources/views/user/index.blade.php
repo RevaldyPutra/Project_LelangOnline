@@ -1,9 +1,5 @@
 @extends('master')
 
-@section('judul')
-<h1>Halaman index user</h1>
-@endsection
-
 @section('content')
 <section class="content">
 
@@ -26,7 +22,7 @@
     </div>
   </div>
   <div class="card-body">
-  <table class="table table-bordered table-hover">
+  <table class="table table-hover">
         <thead>
             <tbody>
                 <tr>
@@ -35,7 +31,7 @@
                     <th>Username</th>
                     <th>Level</th>
                     <th>Telepon</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </tbody>
         </thead>
@@ -49,11 +45,23 @@
             <td>{{ $value->telepon }}</td>
             <td>
               <form action="{{ route('user.destroy', [$value->id]) }}"method="POST">
-              <a href="{{ route('user.show', $value->id)}}"class="btn btn-primary">Detail</a>
-              <a href="{{ route('user.edit', $value->id)}}"class="btn btn-warning">Edit</a>
+              {{-- <a href="{{ route('user.show', $value->id)}}"class="btn btn-primary">Detail</a>
+              <a href="{{ route('user.edit', $value->id)}}"class="btn btn-warning">Edit</a> --}}
+              <a class="btn btn-primary btn-sm" href="{{ route('user.show', $value->id)}}">
+                <i class="fas fa-folder"></i>
+                View
+              </a>
+              <a class="btn btn-info btn-sm" href="{{ route('user.edit', $value->id)}}">
+                <i class="fas fa-pencil-alt"></i>
+                  Edit
+              </a>
                 @csrf
                 @method('DELETE')   
-           <input class="btn btn-danger"type="submit"value="Delete">
+                <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+                  <i class="fas fa-trash">
+                  </i>
+                  Delete
+                </button>
            </form>
             </td>
         </tr>

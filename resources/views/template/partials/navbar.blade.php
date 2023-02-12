@@ -31,6 +31,36 @@
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
+        <li class="nav-item dropdown user-menu">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            @if(auth()->user()->level == 'admin')
+            <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2" alt="User Image">
+            @else
+            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2" alt="User Image">
+            @endif
+            <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <!-- User image -->
+            <li class="user-header bg-primary">
+              @if(auth()->user()->level == 'admin')
+              <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2" alt="User Image">
+              @else
+              <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+              @endif
+              <p>
+                {{Auth::user()->name}} - {{Auth::user()->level}}
+                <small>Member since {{Auth::user()->created_at}}</small>
+              </p>
+            </li>
+            <!-- Menu Body -->
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <a href="#" class="btn btn-default btn-flat">Profile</a>
+              <a href="{{ route('logout.admin')}}" class="btn btn-default btn-flat float-right">Sign out</a>
+            </li>
+          </ul>
+        </li>
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">

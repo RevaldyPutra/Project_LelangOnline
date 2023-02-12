@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="card-body">
-  <table class="table table-bordered table-hover">
+  <table class="table table-hover">
         <thead>
             <tbody>
                 <tr>
@@ -40,7 +40,7 @@
                     <th>Tanggal</th>
                     <th>Harga awal</th>
                     <th>Deskripsi barang</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </tbody>
         </thead>
@@ -54,20 +54,35 @@
             <td>{{ $value->deskripsi_barang }}</td>
             <td>
             <form action="{{ route('barang.destroy', [$value->id]) }}"method="POST">
-            <a class="btn btn-primary"href="{{ route('barang.show', $value->id)}}">
+            {{-- <a class="btn btn-primary"href="{{ route('barang.show', $value->id)}}">
               <i class="fas fa-eye"></i>
              Detail
             </a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $value->id)}}">
               <i class="fas fa-pen"></i>
              Edit
-            </a>
-            @csrf
+            </a> --}}
+            <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $value->id)}}">
+              <i class="fas fa-folder">
+              </i>
+              View
+          </a>
+          <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $value->id)}}">
+              <i class="fas fa-pencil-alt">
+              </i>
+              Edit
+          </a>
+          @csrf
             @method('DELETE')   
-           <button class="btn btn-danger"type="submit"value="Delete">
-            <i class="fas fa-trash"></i>
-            Delete
-           </button>
+            {{-- <button class="btn btn-danger"type="submit"value="Delete">
+              <i class="fas fa-trash"></i>
+              Delete
+            </button> --}}
+            <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+                <i class="fas fa-trash">
+                </i>
+                Delete
+              </button>
            </form>
             </td>
         </tr>

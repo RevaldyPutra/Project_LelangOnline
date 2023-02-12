@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="card-body">
-  <table class="table table-bordered table-hover">
+  <table class="table table-hover">
         <thead>
             <tbody>
                 <tr>
@@ -35,8 +35,7 @@
                     <th>Harga lelang</th>
                     <th>Tanggal lelang</th>
                     <th>Status</th>
-                    
-                    <th>Actions</th>
+                    <th></th>
                     
                 </tr>
             </tbody>
@@ -55,11 +54,25 @@
             @if (auth()->user()->level == 'petugas')
             <td>
             <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
-            <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
-            <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a>
+            {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
+            <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
+            <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
+              <i class="fas fa-folder">
+              </i>
+              View
+          </a>
+          <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $item->barangs_id)}}">
+              <i class="fas fa-pencil-alt">
+              </i>
+              Edit
+          </a>
             @csrf
             @method('DELETE')   
-            <input class="btn btn-danger"type="submit"value="Delete">
+            <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+              <i class="fas fa-trash">
+              </i>
+              Delete
+            </button>
           </form>
         </td>
         @endif

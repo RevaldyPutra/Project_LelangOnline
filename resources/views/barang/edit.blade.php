@@ -36,7 +36,7 @@
                 <!-- /.card-body -->
                 <div style="float: right;">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
-                    Submit
+                    Save
                   </button>
                   <div class="modal fade" id="modal-sm">
                     <div class="modal-dialog modal-sm">
