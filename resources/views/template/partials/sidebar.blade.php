@@ -48,6 +48,7 @@
                with font-awesome or any other icon font library -->
           
           @if (auth()->user()->level == 'petugas')
+          <li class="nav-header">DATA BARANG</li>
           <li class="nav-item">
             <a href="/petugas/barang" class="nav-link">
               <i class="nav-icon fas fa-briefcase"></i>
@@ -56,6 +57,7 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">DATA LELANG</li>
           <li class="nav-item">
             <a href="/petugas/lelang" class="nav-link">
               <i class="nav-icon fas fa-tag"></i>
@@ -66,6 +68,7 @@
           </li>
 
           @elseif (auth()->user()->level == 'admin')
+          <li class="nav-header">DATA BARANG</li>
           <li class="nav-item">
             <a href="/admin/barang" class="nav-link">
               <i class="nav-icon fas fa-briefcase"></i>
@@ -74,6 +77,7 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">DATA USERS</li>
           <li class="nav-item">
             <a href="/admin/operator" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -92,6 +96,7 @@
           </li>
 
           @elseif (auth()->user()->level == 'masyarakat')
+          <li class="nav-header">LIST LELANG</li>
           <li class="nav-item">
             <a href="/listlelang" class="nav-link">
               <i class="nav-icon fas fa-tag"></i>
@@ -100,9 +105,9 @@
               </p>
             </a>
           </li>
-          
-          @endif
 
+          @endif
+          <li class="nav-header"></li>
           <li class="nav-item">
             <a href="/logout" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

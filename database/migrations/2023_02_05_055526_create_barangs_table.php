@@ -15,10 +15,10 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang', 25);
+            $table->string('nama_barang');
             $table->date('tanggal');
             $table->string('harga_awal');
-            $table->string('deskripsi_barang', 100);
+            $table->string('deskripsi_barang');
             $table->timestamps();
         });
     }

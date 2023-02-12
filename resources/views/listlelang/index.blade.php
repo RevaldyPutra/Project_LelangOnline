@@ -48,7 +48,8 @@
             </td>
             @if (auth()->user()->level == 'masyarakat')
             <td>
-            <a class="btn btn-warning"href="{{ route('barang.show', $item->id)}}">Tawar</a>
+            <a class="btn btn-primary"href="{{ route('barang.show', $item->barangs_id)}}">Detail</a>
+            <a class="btn btn-warning"href="{{ route('barang.show', $item->barangs_id)}}">Tawar</a>
             </td>
             @endif
         </tr>

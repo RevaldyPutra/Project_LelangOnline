@@ -39,7 +39,9 @@
                 <!-- /.card-body -->
                   @if(auth()->user()->level == 'admin')
                   <a href="/admin/barang" class="btn btn-outline-info">Kembali</a>
-                    @else
+                  @elseif(auth()->user()->level == 'masyarakat')
+                  <a href="/listlelang" class="btn btn-outline-info">Kembali</a>
+                    @elseif(auth()->user()->level == 'petugas')
                     <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
                   @endif
               </form>

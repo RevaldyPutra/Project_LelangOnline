@@ -65,6 +65,6 @@ Route::get('barang/create', [BarangController::class, 'create'])->name('barang.c
 // ROUTE LELANG
 Route::get('masyarakat/lelang', [LelangController::class, 'listlelang'])->name('lelang.listlelang')->middleware('auth', 'level:masyarakat');
 Route::get('listlelang', [LelangController::class, 'listlelang'])->name('lelang.listlelang')->middleware('auth', 'level:masyarakat,admin,petugas');
-Route::get('petugas/lelang', [LelangController::class, 'index'])->name('lelang')->middleware('auth', 'level:petugas');
+Route::get('petugas/lelang', [LelangController::class, 'index'])->name('lelang.index')->middleware('auth', 'level:petugas');
 Route::get('petugas/lelang/create', [LelangController::class, 'create'])->name('lelang.create')->middleware('auth', 'level:petugas');
 Route::post('petugas/lelang', [LelangController::class, 'store'])->name('lelang.store')->middleware('auth', 'level:petugas');

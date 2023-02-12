@@ -62,9 +62,30 @@
                                     </a>
                                 </div>
                               <div class="col-6 d-flex justify-content-end">
-                                  <button type="submit" class="btn btn-primary me-1 mb-1">
-                                    {{ __('Submit') }}
-                                  </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
+                                  {{ __('Submit') }}
+                                </button>
+                                <div class="modal fade" id="modal-sm">
+                                  <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h4 class="modal-title">Tambah Data</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>Apa kamu yakin menambahkan barang ini untuk di lelang?</p>
+                                      </div>
+                                      <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                      
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                                   <button type="reset" class="btn btn-secondary ml-2 me-1 mb-1">
                                     {{ __('Reset') }}
                                   </button>

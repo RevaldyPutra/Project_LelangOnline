@@ -56,15 +56,18 @@
             <form action="{{ route('barang.destroy', [$value->id]) }}"method="POST">
             <a class="btn btn-primary"href="{{ route('barang.show', $value->id)}}">
               <i class="fas fa-eye"></i>
-              Detail
+             Detail
             </a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $value->id)}}">
-              <i class="fas fa-edit"></i>
-              Edit
+              <i class="fas fa-pen"></i>
+             Edit
             </a>
             @csrf
             @method('DELETE')   
-           <input class="btn btn-danger"type="submit"value="Delete">
+           <button class="btn btn-danger"type="submit"value="Delete">
+            <i class="fas fa-trash"></i>
+            Delete
+           </button>
            </form>
             </td>
         </tr>
