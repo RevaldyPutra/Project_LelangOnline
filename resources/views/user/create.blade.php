@@ -41,6 +41,7 @@
                 <div class="form-group">
                     <label for="level">Level</label>
                     <select class="form-control" name="level">
+                      <option selected disabled>Pilih Level</option>
                         <option>admin</option>
                         <option>petugas</option>
                       </select>
@@ -51,7 +52,30 @@
                 </div>
               <!-- /.card-body -->
               <div style="float: right;">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
+                  Submit
+                </button>
+                <div class="modal fade" id="modal-sm">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Tambah Data</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Apa kamu yakin untuk create data ini?</p>
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <button type="submit" class="btn btn-secondary">Reset</button>
               </div>
                 <a href="/admin/operator" class="btn btn-outline-info">Kembali</a>
