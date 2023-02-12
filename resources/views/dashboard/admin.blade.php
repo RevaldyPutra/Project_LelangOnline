@@ -43,7 +43,7 @@
               <p>Jumlah Lelang</p>
             </div>
             <div class="icon">
-              <i class="nav-icon fa fas fa-cart-alt"></i>
+              <i class="nav-icon fa fas fa-gavel"></i>
             </div>
             <a href="/listlelang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
@@ -56,7 +56,7 @@
               <p>Jumlah Penawar</p>
             </div>
             <div class="icon">
-              <i class="nav-icon fa fas fa-cart-alt"></i>
+              <i class="nav-icon fa fas fa-users"></i>
             </div>
             <a href="/admin/user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>

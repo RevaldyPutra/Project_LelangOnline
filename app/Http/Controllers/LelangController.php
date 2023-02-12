@@ -70,7 +70,7 @@ class LelangController extends Controller
         $lelang->status = 'dibuka';
         $lelang->save();
 
-        return redirect()->route('lelang.index');
+        return redirect()->route('lelang.listlelang');
     }
 
     /**

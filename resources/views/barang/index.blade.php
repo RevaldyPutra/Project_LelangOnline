@@ -11,17 +11,16 @@
 <div class="card">
   <div class="card-header">
     @if (auth()->user()->level == 'admin')
-  <a class="btn btn-info"href="{{ route('barang.create') }}">
-    <i class="fas fa-upload"></i>
-    Export Barang
-  </a>
-  @endif
-    @if (auth()->user()->level == 'petugas')
-  <a class="btn btn-primary"href="{{ route('barang.create') }}">
-    <i class="fas fa-upload"></i>
-    Tambah Barang
-  </a>
-  @endif
+      <a class="btn btn-info"href="{{ route('barang.create') }}">
+        <i class="fas fa-upload"></i>
+        Export Barang
+      </a>
+        @elseif (auth()->user()->level == 'petugas')
+          <a class="btn btn-primary"href="{{ route('barang.create') }}">
+            <i class="fas fa-upload"></i>
+            Tambah Barang
+          </a>
+      @endif
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
         <i class="fas fa-minus"></i>

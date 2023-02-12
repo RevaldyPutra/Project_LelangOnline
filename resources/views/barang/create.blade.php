@@ -1,9 +1,5 @@
 @extends('master')
 
-@section('judul')
-<h1>Tambaha Barang</h1>
-@endsection
-
 @section('content')
 <section class="content">
       <div class="container-fluid">
@@ -17,17 +13,19 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('barang.store') }}" method="POST">
+              <form action="{{route('barang.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                  <div class="form-group">
+                  <div class="form-row">
+                  <div class="form-group col-md-7">
                     <label>Nama barang</label>
                     <input type="text" name="nama_barang"class="form-control"  placeholder="Enter nama barang">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-5">
                     <label>Tanggal</label>
                     <input type="date" name="tanggal" class="form-control"  placeholder="Enter tanggal">
                   </div>
+                </div>
                   <div class="form-group">
                     <label>Harga awal</label>
                     <input type="text" name="harga_awal"class="form-control"  placeholder="Enter harga awal">
@@ -37,10 +35,11 @@
                     <textarea type="text" name="deskripsi_barang"class="form-control"></textarea>
                   </div>
                 <!-- /.card-body -->
-
-                <div class="card-footer">
+                <div style="float:right;">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
+                    <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
               </form>
             </div>
             </div>

@@ -37,10 +37,11 @@
                     <input type="text-area" name="deskripsi_barang" value="{{ $barangs->deskripsi_barang }}"class="form-control" disabled>
                   </div>
                 <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <a href="/petugas/barang" class="btn btn-primary">Back</a>
-                </div>
+                  @if(auth()->user()->level == 'admin')
+                  <a href="/admin/barang" class="btn btn-outline-info">Kembali</a>
+                    @else
+                    <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
+                  @endif
               </form>
             </div>
             </div>

@@ -11,7 +11,10 @@
 <div class="card">
   <div class="card-header">
     @if (auth()->user()->level == 'admin')
-      <a class="btn btn-primary mb-3"href="/admin/user/create">Registrasi</a>
+      <a class="btn btn-primary mb-3"href="/admin/operator/create">
+        <li class="nav-icon fa fas fa-user-plus"></li>
+        Registrasi Operator
+      </a>
     @endif
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">

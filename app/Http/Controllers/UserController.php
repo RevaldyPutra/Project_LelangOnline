@@ -57,7 +57,7 @@ class UserController extends Controller
             'passwordshow' => ($data['passwordshow']),
             'telepon' => ($data['telepon']),
         ]);
-        return redirect ('/admin/user');
+        return redirect ('/admin/operator');
         }
 
     /**
@@ -110,7 +110,7 @@ class UserController extends Controller
         $users->level = $request->level;
         $users->telepon = $request->telepon;
         $users->update(); 
-        return redirect('/admin/user');
+        return redirect('/admin/operator');
     }
 
     /**
@@ -124,6 +124,6 @@ class UserController extends Controller
         //
         $users = User::find($user->id);
         $users->delete();
-        return redirect('admin/user');
+        return redirect('admin/operator');
     }
 }

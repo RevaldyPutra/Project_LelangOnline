@@ -65,7 +65,7 @@
                                   <button type="submit" class="btn btn-primary me-1 mb-1">
                                     {{ __('Submit') }}
                                   </button>
-                                  <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                                  <button type="reset" class="btn btn-secondary ml-2 me-1 mb-1">
                                     {{ __('Reset') }}
                                   </button>
                               </div>

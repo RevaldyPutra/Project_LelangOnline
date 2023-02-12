@@ -12,22 +12,18 @@
         <div class="image">
           @if (auth()->user()->level == 'petugas')
           <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-          @endif
-          @if (auth()->user()->level == 'masyarakat')
-          <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-          @endif
-          @if (auth()->user()->level == 'admin')
-          <img src="{{ asset('adminlte/dist/img/user-gear.png')}}"alt="User Image">
+            @elseif (auth()->user()->level == 'masyarakat')
+            <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            @elseif (auth()->user()->level == 'admin')
+            <img src="{{ asset('adminlte/dist/img/user-gear.png')}}"alt="User Image">
           @endif
         </div>
         <div class="info">
           @if (auth()->user()->level == 'petugas')
           <a href="/dashboard/petugas" class="d-block">{{ Auth::user()->name}}</a>
-          @endif
-          @if (auth()->user()->level == 'admin')
+          @elseif (auth()->user()->level == 'admin')
           <a href="/dashboard/admin" class="d-block">{{ Auth::user()->name}}</a>
-          @endif
-          @if (auth()->user()->level == 'masyarakat')
+          @elseif (auth()->user()->level == 'masyarakat')
           <a href="/dashboard/masyarakat" class="d-block">{{ Auth::user()->name}}</a>
           @endif
         </div>
@@ -68,9 +64,8 @@
               </p>
             </a>
           </li>
-          @endif
-          
-          @if (auth()->user()->level == 'admin')
+
+          @elseif (auth()->user()->level == 'admin')
           <li class="nav-item">
             <a href="/admin/barang" class="nav-link">
               <i class="nav-icon fas fa-briefcase"></i>
@@ -79,20 +74,24 @@
               </p>
             </a>
           </li>
-          @endif
-
-          @if (auth()->user()->level == 'admin')
           <li class="nav-item">
-            <a href="/admin/user" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+            <a href="/admin/operator" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                User
+                Data Operator
               </p>
             </a>
           </li>
-          @endif
+          <li class="nav-item">
+            <a href="/admin/masyarakat" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Data Masyarakat
+              </p>
+            </a>
+          </li>
 
-          @if (auth()->user()->level == 'masyarakat')
+          @elseif (auth()->user()->level == 'masyarakat')
           <li class="nav-item">
             <a href="/listlelang" class="nav-link">
               <i class="nav-icon fas fa-tag"></i>
@@ -101,6 +100,7 @@
               </p>
             </a>
           </li>
+          
           @endif
 
           <li class="nav-item">

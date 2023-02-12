@@ -45,7 +45,7 @@
               <!-- /.card-body -->
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="/admin/user" class="btn btn-secondary">Back</a>
+                <a href="/admin/operator" class="btn btn-secondary">Back</a>
               </div>
             </form>
           </div>
