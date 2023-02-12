@@ -1,10 +1,21 @@
 @extends('master')
 
 @section('judul')
-<h1>Halaman index barang</h1>
+<h1>Data Barangs</h1>
 @endsection
 
 @section('content')
+<style>
+  .card {
+     background-image: url("{{asset('')}}");
+     height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 <section class="content">
 
 <!-- Default box -->
@@ -37,9 +48,9 @@
                 <tr>
                     <th>No</th>
                     <th>Nama barang</th>
+                    <th>Foto</th>
                     <th>Tanggal</th>
                     <th>Harga awal</th>
-                    <th>Deskripsi barang</th>
                     <th></th>
                 </tr>
             </tbody>
@@ -49,9 +60,11 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $value->nama_barang }}</td>
-            <td>{{ $value->tanggal }}</td>
+            <td>@if($value->image)
+              <img src="{{ asset('storage/' . $value->image)}}" alt="{{ $value->nama_barang }}" class="img-fluid mt-3" width="75">
+            @endif</td>
+            <td>{{ \Carbon\Carbon::parse($value->tanggal)->format('j-F-Y') }}</td>
             <td>{{ $value->harga_awal }}</td>
-            <td>{{ $value->deskripsi_barang }}</td>
             <td>
             <form action="{{ route('barang.destroy', [$value->id]) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $value->id)}}">

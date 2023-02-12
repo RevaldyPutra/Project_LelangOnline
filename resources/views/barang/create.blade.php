@@ -32,7 +32,7 @@
                   </div>
                   <div class="form-group">
                     <label for="image" class="form-label">Gambar Barang</label>
-                    <img class="img-preview img-fluid" alt="">
+                    <img class="img-preview img-fluid col-sm-5 mb-3" alt="">
                     <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
                     @error('image')
                     <div class="invalid-feedback">
