@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Barang;
+use App\Models\Lelang;
+use App\Models\User;
 
 class DashboardController extends Controller
 {

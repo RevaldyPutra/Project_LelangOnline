@@ -18,8 +18,8 @@
       </button>
     </div>
   </div>
-  <div class="card-body">
-  <table class="table table-bordered table-hover">
+  <div class="card-body p-0">
+  <table class="table table-hover">
         <thead>
             <tbody>
                 <tr>
@@ -30,7 +30,7 @@
                     <th>Tanggal lelang</th>
                     <th>Status</th>
                     @if (auth()->user()->level == 'masyarakat')
-                    <th>Actions</th>
+                    <th></th>
                     @endif
                 </tr>
             </tbody>
@@ -48,8 +48,14 @@
             </td>
             @if (auth()->user()->level == 'masyarakat')
             <td>
-            <a class="btn btn-primary"href="{{ route('barang.show', $item->barangs_id)}}">Detail</a>
-            <a class="btn btn-warning"href="{{ route('barang.show', $item->barangs_id)}}">Tawar</a>
+              <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
+                <i class="fas fa-folder"></i>
+                View
+              </a>
+              <a class="btn btn-success btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
+                <i class="fas fa-folder"></i>
+                Tawar
+              </a>
             </td>
             @endif
         </tr>

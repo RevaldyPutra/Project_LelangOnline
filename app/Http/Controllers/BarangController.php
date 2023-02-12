@@ -40,20 +40,25 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
-        
-        $request->validate([
+        $validateData = $request->validate([
             'nama_barang' => 'required',
             'tanggal' => 'required',
             'harga_awal' => 'required',
+            'image' => 'image|file',
             'deskripsi_barang' => 'required'
         ]);
 
-        Barang::create([
-            'nama_barang' => $request->nama_barang,
-            'tanggal' => $request->tanggal,
-            'harga_awal' => $request->harga_awal,
-            'deskripsi_barang' => $request->deskripsi_barang
-        ]);
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('post-images');
+        }
+        // Barang::create([
+        //     'nama_barang' => $request->nama_barang,
+        //     'tanggal' => $request->tanggal,
+        //     'harga_awal' => $request->harga_awal,
+        //     'deskripsi_barang' => $request->deskripsi_barang
+        // ]);
+
+        Barang::create($validateData);
         return redirect('/barang');
     }
 
@@ -97,6 +102,7 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'tanggal' => 'required',
             'harga_awal' => 'required',
+            'image' => 'image|file',
             'deskripsi_barang' => 'required',
         ]);
 
@@ -104,6 +110,7 @@ class BarangController extends Controller
         $barangs->nama_barang = $request->nama_barang;
         $barangs->tanggal = $request->tanggal;
         $barangs->harga_awal = $request->harga_awal;
+        $barangs->image = $request->image;
         $barangs->deskripsi_barang = $request->deskripsi_barang;
         $barangs->update();
         return redirect ('/barang');

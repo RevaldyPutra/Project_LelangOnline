@@ -14,6 +14,7 @@ class Barang extends Model
         'nama_barang',
         'tanggal',
         'harga_awal',  
+        'image',  
         'deskripsi_barang',
     ];
     public function lelang()

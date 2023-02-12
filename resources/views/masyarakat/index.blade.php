@@ -21,8 +21,8 @@
           </button>
         </div>
       </div>
-      <div class="card-body">
-        <table class="table table-bordered table-hover">
+      <div class="card-body p-0">
+        <table class="table table-hover">
             <thead>
                 <tbody>
                     <tr>
@@ -30,7 +30,7 @@
                         <th>Nama</th>
                         <th>Username</th>
                         <th>Telepon</th>
-                        <th>Actions</th>
+                        <th></th>
                     </tr>
                 </tbody>
                 @foreach ($users as $value)    
@@ -42,10 +42,22 @@
                         <td>{{ $value->telepon }}</td>
                         <td>
                             <form action="">
-                                <a href="{{ route('masyarakat.show', $value->id) }}" class="btn btn-primary">Details</a>
-                                <a href="" class="btn btn-warning">Edit</a>
+                                {{-- <a href="{{ route('masyarakat.show', $value->id) }}" class="btn btn-primary">Details</a>
+                                <a href="" class="btn btn-warning">Edit</a> --}}
+                                <a class="btn btn-primary btn-sm" href="{{ route('masyarakat.show', $value->id)}}">
+                                    <i class="fas fa-folder"></i>
+                                    View
+                                  </a>
+                                  <a class="btn btn-info btn-sm" href="{{ route('masyarakat.edit', $value->id)}}">
+                                    <i class="fas fa-pencil-alt"></i>
+                                      Edit
+                                  </a>
 
-                                <input type="submit" class="btn btn-danger" value="Delete">
+                                  <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                  </button>
                             </form>
                         </td>
                     </tr>

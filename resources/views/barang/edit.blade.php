@@ -30,6 +30,15 @@
                     <input type="text" name="harga_awal" value="{{ $barangs->harga_awal }}"class="form-control"  placeholder="Enter harga awal">
                   </div>
                   <div class="form-group">
+                    <label for="image" class="form-label">Default file input example</label>
+                    <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image">
+                    @error('image')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputPassword1">Deskripsi barang</label>
                     <input type="text-area" name="deskripsi_barang" value="{{ $barangs->deskripsi_barang }}"class="form-control">
                   </div>

@@ -36,6 +36,15 @@
                     <label for="exampleInputPassword1">Deskripsi barang</label>
                     <input type="text-area" name="deskripsi_barang" value="{{ $barangs->deskripsi_barang }}"class="form-control" disabled>
                   </div>
+                  @if( $barangs->image )
+                  <div class="form-group">
+                    <label>Gambar Barang :</label>
+                    <br>
+                    <img src="{{ asset('storage/' . $barangs->image)}}" alt="{{ $barangs->nama_barang }}" class="img-fluid mt-3">
+                  </div>
+                  @else
+
+                  @endif
                 <!-- /.card-body -->
                   @if(auth()->user()->level == 'admin')
                   <a href="/admin/barang" class="btn btn-outline-info">Kembali</a>
