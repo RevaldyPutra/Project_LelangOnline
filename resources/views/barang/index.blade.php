@@ -60,9 +60,11 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $value->nama_barang }}</td>
-            <td>@if($value->image)
-              <img src="{{ asset('storage/' . $value->image)}}" alt="{{ $value->nama_barang }}" class="img-fluid mt-3" width="75">
-            @endif</td>
+            <td>
+              @if($value->image)
+                <img src="{{ asset('storage/' . $value->image)}}" alt="{{ $value->nama_barang }}" class="img-fluid mt-3" width="75">
+              @endif
+            </td>
             <td>{{ \Carbon\Carbon::parse($value->tanggal)->format('j-F-Y') }}</td>
             <td>{{ $value->harga_awal }}</td>
             <td>
@@ -112,4 +114,5 @@
 <!-- /.card -->
 
 </section>
+@stack('scripts')
 @endsection

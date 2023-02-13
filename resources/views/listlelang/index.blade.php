@@ -31,6 +31,8 @@
                     <th>Status</th>
                     @if (auth()->user()->level == 'masyarakat')
                     <th></th>
+                    @elseif (auth()->user()->level == 'admin')
+                    <th></th>
                     @endif
                 </tr>
             </tbody>
@@ -53,10 +55,17 @@
                 View
               </a>
               <a class="btn btn-success btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
-                <i class="fas fa-folder"></i>
+                <i class="fas fa-gavel"></i>
                 Tawar
               </a>
             </td>
+            @elseif (auth()->user()->level == 'admin')
+            <td>
+            <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
+              <i class="fas fa-folder"></i>
+              View
+            </a>
+          </td>
             @endif
         </tr>
         @empty

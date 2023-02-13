@@ -5,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projek Lelang Online</title>
   <link rel="icon" type="images/png" href="{{ asset('adminlte/dist/img/lelangonline.png')}}" />
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="{{ asset('adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="{{ asset('adminlte/plugins/toastr/toastr.min.css')}}">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/bootstrap.min.css')}}">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/toastr/toastr.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
+
   <style>
     .content-wrapper {
-       background-image: url("{{asset('adminlte/dist/img/bella.jpg')}}");
+       background-image: url("')}}");
        height: 100%;
   
       /* Center and scale the image nicely */
@@ -58,6 +62,8 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- Latest compiled JavaScript -->
+<script src="{{ asset('adminlte/dist/js/bootstrap.bundle.min.js')}}"></script>
 <!-- SweetAlert2 -->
 <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <!-- Toastr -->
@@ -72,6 +78,7 @@
 <script src="{{ asset('adminlte/dist/js/demo.js')}}"></script>
 
 <!-- Page specific script -->
+@push('scripts')
 <script>
   $(function() {
     var Toast = Swal.mixin({
@@ -226,5 +233,6 @@
     });
   });
 </script>
+@endpush
 </body>
 </html>

@@ -17,6 +17,13 @@ class UserController extends Controller
         //
         $users = User::all();
         return view('user.index', compact('users'));
+        
+    }
+    public function profile()
+    {
+        //
+        $profiles = User::all();
+        return view('profile.index', compact('profiles'));
     }
 
     /**
@@ -84,7 +91,6 @@ class UserController extends Controller
         //
         $users = User::find($user->id);
         return view('user.edit', compact('users'));
-
     }
 
     /**

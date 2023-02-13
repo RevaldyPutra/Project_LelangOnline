@@ -9,5 +9,14 @@ use App\Models\User;
 class Masyarakat extends Model
 {
     use HasFactory;
+    protected $table = 'users';
+    protected $fillable = [
+        'name',
+        'username',
+        'level',
+        'password',
+        'passwordshow',
+        'telepon',
+    ];
     
 }

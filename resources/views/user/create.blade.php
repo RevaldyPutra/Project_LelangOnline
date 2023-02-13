@@ -78,7 +78,7 @@
                 </div>
                 <button type="submit" class="btn btn-secondary">Reset</button>
               </div>
-                <a href="/admin/operator" class="btn btn-outline-info">Kembali</a>
+                <a href="/admin/users" class="btn btn-outline-info">Kembali</a>
             </form>
           </div>
         </div>

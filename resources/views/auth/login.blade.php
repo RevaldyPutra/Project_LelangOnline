@@ -14,7 +14,14 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
   <style>
+    button {
+      transition: width 2s;
+    }
+    button:hover {
+      opacity: 0.7;
+    }
     body {
+      
        background-image: url("{{asset('adminlte/dist/img/jungle.jpg')}}");
        height: 100%;
 

@@ -49,8 +49,8 @@ class MasyarakatController extends Controller
     public function show(User $user)
     {
         //
-        $users = User::find($user->id);
-        return view('masyarakat.show', compact('users'));
+        $masyarakats = User::find($user->id);
+        return view('masyarakat.show', compact('masyarakats'));
     }
 
     /**

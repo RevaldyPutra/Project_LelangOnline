@@ -53,7 +53,8 @@ Route::resource('masyarakat', MasyarakatController::class)->middleware('auth', '
 // ROUTE USER
 Route::post('/admin/operator/create', [UserController::class, 'store'])->name('user.store')->middleware('auth','level:admin');
 Route::get('/admin/operator/create', [UserController::class, 'create'])->name('user.create')->middleware('auth','level:admin');
-Route::get('/admin/operator', [UserController::class, 'index'])->name('index')->middleware('auth','level:admin');
+Route::get('/admin/users', [UserController::class, 'index'])->name('index')->middleware('auth','level:admin');
+Route::get('profile', [UserController::class, 'profile'])->name('profile.index')->middleware('auth','level:admin,petugas,masyarakat');
 Route::resource('user', UserController::class)->middleware('auth', 'level:admin');
 
 // ROUTE BARANG

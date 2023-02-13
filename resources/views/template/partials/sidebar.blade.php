@@ -77,24 +77,24 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">DATA LELANG</li>
+          <li class="nav-item">
+            <a href="/listlelang" class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Lelang
+              </p>
+            </a>
+          </li>
           <li class="nav-header">DATA USERS</li>
           <li class="nav-item">
-            <a href="/admin/operator" class="nav-link">
+            <a href="/admin/users" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Data Operator
+                Data Users
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/admin/masyarakat" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Data Masyarakat
-              </p>
-            </a>
-          </li>
-
           @elseif (auth()->user()->level == 'masyarakat')
           <li class="nav-header">LIST LELANG</li>
           <li class="nav-item">
@@ -108,14 +108,14 @@
 
           @endif
           <li class="nav-header"></li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/logout" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 LOGOUT
               </p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

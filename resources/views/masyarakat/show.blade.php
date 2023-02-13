@@ -22,23 +22,23 @@
               <div class="card-body">
                 <div class="form-group">
                   <label>Nama</label>
-                  <input type="text" name="name" value="{{ $users->name }}" class="form-control">
+                  <input type="text" name="name" value="{{ $masyarakats->name }}" class="form-control">
                 </div>
                 <div class="form-group">
                   <label>Username</label>
-                  <input type="text" name="username" value="{{ $users->username }}" class="form-control">
+                  <input type="text" name="username" value="{{ $masyarakats->username }}" class="form-control">
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="text" name="passwordshow" value="{{ $users->passwordshow }}" class="form-control">
+                  <input type="text" name="passwordshow" value="{{ $masyarakats->passwordshow }}" class="form-control">
                 </div>
                 <div class="form-group">
                   <label>Telepon</label>
-                  <input type="text" name="telepon" value="{{ $users->telepon }}" class="form-control">
+                  <input type="text" name="telepon" value="{{ $masyarakats->telepon }}" class="form-control">
                 </div>
                 <div class="form-group">
                   <label>Level</label>
-                  <input type="text" name="level" value="{{ $users->level }}" class="form-control">
+                  <input type="text" name="level" value="{{ $masyarakats->level }}" class="form-control">
                 </div>
               <!-- /.card-body -->
 
