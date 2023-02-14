@@ -47,12 +47,11 @@
                                 <a class="btn btn-primary btn-sm" href="{{ route('masyarakat.show', $value->id)}}">
                                     <i class="fas fa-folder"></i>
                                     View
-                                  </a>
-                                  <a class="btn btn-info btn-sm" href="{{ route('masyarakat.edit', $value->id)}}">
+                                </a>
+                                <a class="btn btn-info btn-sm" href="{{ route('masyarakat.edit', $value->id)}}">
                                     <i class="fas fa-pencil-alt"></i>
                                       Edit
-                                  </a>
-
+                                </a>
                                   <button class="btn btn-danger btn-sm" type="submit"value="Delete">
                                     <i class="fas fa-trash">
                                     </i>

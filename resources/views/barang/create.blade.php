@@ -4,8 +4,23 @@
 <section class="content">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-md-5">
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+
+                  <div class="form-group">
+                    <label> </label>
+                    <br>
+                    <img class="img-preview  img-fluid mt-3" alt="">
+                  </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
           <!-- left column -->
-          <div class="col-md-12">
+          <div class="col-md-7">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
