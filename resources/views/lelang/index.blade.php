@@ -11,10 +11,12 @@
     <div class="card-header">
     @if (auth()->user()->level == 'petugas')
     <a class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
+    <a href="/listlelang" class="btn btn-primary mr-3" style="float: left;">List lelang</a>
     @endif
     @if (auth()->user()->level == 'admin')
     <a class="btn btn-primary mb-3"href="/admin/lelang/create">Tambah lelang</a>
     @endif
+    
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
         <i class="fas fa-minus"></i>

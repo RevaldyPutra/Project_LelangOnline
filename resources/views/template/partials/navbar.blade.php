@@ -23,7 +23,6 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -31,9 +30,9 @@
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
             @if(auth()->user()->level == 'admin')
-            <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2" alt="User Image">
+            <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2">
             @else
-            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2" alt="User Image">
+            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2">
             @endif
             <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
           </a>
@@ -41,9 +40,9 @@
             <!-- User image -->
             <li class="user-header bg-primary">
               @if(auth()->user()->level == 'admin')
-              <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2" alt="User Image">
+              <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2">
               @else
-              <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+              <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2">
               @endif
               <p>
                 {{Auth::user()->name}} - {{Auth::user()->level}}

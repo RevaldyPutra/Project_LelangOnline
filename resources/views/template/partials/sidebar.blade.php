@@ -1,8 +1,15 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    @if(auth()->user()->level == 'masyarakat')
+    <a href="listlelang" class="brand-link">
+      @elseif(auth()->user()->level == 'admin')
+      <a href="/dashboard/admin" class="brand-link">
+        @else
+        <a href="/petugas/lelang" class="brand-link">
+      @endif
       <img src="{{ asset('adminlte/dist/img/lelangonline.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Lelang Online</span>
+      
     </a>
 
     <!-- Sidebar -->
@@ -20,11 +27,11 @@
         </div>
         <div class="info">
           @if (auth()->user()->level == 'petugas')
-          <a href="/dashboard/petugas" class="d-block">{{ Auth::user()->name}}</a>
+          <a href="/profile" class="d-block">{{ Auth::user()->name}}</a>
           @elseif (auth()->user()->level == 'admin')
-          <a href="/dashboard/admin" class="d-block">{{ Auth::user()->name}}</a>
+          <a href="/profile" class="d-block">{{ Auth::user()->name}}</a>
           @elseif (auth()->user()->level == 'masyarakat')
-          <a href="/dashboard/masyarakat" class="d-block">{{ Auth::user()->name}}</a>
+          <a href="/profile" class="d-block">{{ Auth::user()->name}}</a>
           @endif
         </div>
       </div>
