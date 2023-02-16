@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Lelang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -22,7 +23,8 @@ class BarangController extends Controller
     {
         //
         $barangs = Barang::all();
-        return view('home', compact('barangs'));
+        $lelangs = Lelang::all();
+        return view('home', compact('barangs','lelangs'));
     }
 
     /**

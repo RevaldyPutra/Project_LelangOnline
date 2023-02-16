@@ -53,6 +53,24 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="/" class="nav-item nav-link active">Home</a>
                 </div>
+                @auth
+                @if(auth()->user()->level == 'admin')
+                
+                <div class="navbar-nav py-0">
+                    <a href="/dashboard/admin" class="nav-item nav-link">Dashboard</a>
+                </div>
+                @elseif(auth()->user()->level == 'petugas')
+                <div class="navbar-nav py-0">
+                    <a href="/dashboard/petugas" class="nav-item nav-link">Dashboard</a>
+                </div>
+                @elseif(auth()->user()->level == 'masyarakat')
+                <div class="navbar-nav py-0">
+                    <a href="/listlelang" class="nav-item nav-link">Dashboard</a>
+                </div>
+                @else
+
+                @endif
+                @endauth
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
                 @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -209,12 +227,12 @@
                 <h1 class="mb-0">List Barang</h1>
             </div>
             <div class="row g-5">
-                @foreach($barangs as $value)
+                @foreach($lelangs as $value)
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            @if($value->image)
-                                <img src="{{ asset('storage/' . $value->image)}}" alt="{{ $value->nama_barang }}" class="img-fluid">
+                            @if($value->barang->image)
+                                <img src="{{ asset('storage/' . $value->barang->image)}}" alt="{{ $value->barang->nama_barang }}" class="img-fluid">
                             @endif
                             <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Di Lelang</a>    
                         </div>
@@ -222,9 +240,9 @@
                             <div class="d-flex mb-3">
                                 <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ \Carbon\Carbon::parse($value->created_at)->format('j F Y')}}</small>
                             </div>
-                            <h4 class="mb-3">{{ $value->nama_barang}}</h4>
-                            <h5 class="mb-3">{{ $value->harga_awal}}</h5>
-                            <p>{{ $value->deskripsi_barang }}</p>
+                            <h4 class="mb-3">{{ $value->barang->nama_barang}}</h4>
+                            <h5 class="mb-3">{{ $value->barang->harga_awal}}</h5>
+                            <p>{{ $value->barang->deskripsi_barang }}</p>
                             <a class="text-uppercase" href="/barang">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>

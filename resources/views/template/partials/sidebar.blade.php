@@ -112,6 +112,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">DATA PENAWARAN</li>
+          <li class="nav-item">
+            <a href="/listlelang" class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Data Penawaran Anda
+              </p>
+            </a>
+          </li>
 
           @endif
           <li class="nav-header"></li>

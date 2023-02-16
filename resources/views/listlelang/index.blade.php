@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<section class="content">
 <!-- Default box -->
+<section class="content">
 <div class="card">
   <div class="card-header">
     <div class="card-tools">
@@ -37,9 +37,10 @@
                 </tr>
             </tbody>
         </thead>
-        @forelse ($lelangs as $item)
+        
         <tbody>
         <tr>
+          @forelse($lelangs as $item)
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->barang->nama_barang }}</td>
             <td>{{ $item->barang->harga_awal }}</td>
@@ -77,10 +78,6 @@
     </table>
   </div>
   <!-- /.card-body -->
-  <div class="card-footer">
-    Footer
-  </div>
-  <!-- /.card-footer-->
 </div>
 <!-- /.card -->
 

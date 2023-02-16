@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Dashboard ADMIN</h1>
+<h1>Dashboard Admin</h1>
 @endsection
 
 @section('content')

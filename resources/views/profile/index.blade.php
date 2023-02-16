@@ -67,18 +67,14 @@
                             <input type="text" name="username" value="{{ Auth::user()->username }}" class="form-control" id="exampleInputEmail1"readonly>
                           </div>
                           <div class="form-group col-md-4">
-                              <label>Password</label>
-                              <input type="text" name="passwordshow" value="{{ Auth::user()->passwordshow }}"class="form-control" id="exampleInputEmail1"readonly>
-                          </div>
-                          <div class="form-group col-md-4">
                             <label>Telepon</label>
                             <input type="text" name="telepon" value="{{ Auth::user()->telepon }}"class="form-control" id="exampleInputEmail1"readonly>
                           </div>
-                        </div>
-                          <div class="form-group">
+                          <div class="form-grou col-md-4">
                             <label>Level</label>
                             <input type="text" name="level" value="{{ Auth::user()->level }}" class="form-control" id="exampleInputEmail1"readonly>
                           </div>
+                        </div>
                           <div class="form-group">
                             <label>Waktu dibuat</label>
                             <input type="text" name="created_at" value="{{ Auth::user()->created_at }}"class="form-control" id="exampleInputEmail1"readonly>

@@ -124,7 +124,8 @@ class LelangController extends Controller
     /** METHODS LIST LELANG UNTUK LEVEL MASYARAKAT */ 
     public function listlelang(Lelang $lelang)
     {
-        $lelangs = Lelang::select('id','barangs_id','tanggal_lelang','harga_akhir','status')->get();
-        return view('listlelang.index', compact('lelangs'));
+        $lelangs = Lelang::all();
+        $barangs = Barang::all();
+        return view('listlelang.indexbaru', compact('lelangs'));
     }
 }
