@@ -73,6 +73,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">DATA PENAWARAN</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Data Penawaran
+              </p>
+            </a>
+          </li>
 
           @elseif (auth()->user()->level == 'admin')
           <li class="nav-header">DATA BARANG</li>
@@ -114,7 +123,7 @@
           </li>
           <li class="nav-header">DATA PENAWARAN</li>
           <li class="nav-item">
-            <a href="/listlelang" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tag"></i>
               <p>
                 Data Penawaran Anda

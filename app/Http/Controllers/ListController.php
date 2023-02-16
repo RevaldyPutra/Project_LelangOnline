@@ -92,6 +92,8 @@ class ListController extends Controller
     public function show(Lelang $lelang)
     {
         //
+        $lelangs = Lelang::find($lelang->id);
+        return view('listlelang.show', compact('lelangs'));
     }
 
     /**

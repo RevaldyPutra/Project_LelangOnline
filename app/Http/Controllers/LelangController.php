@@ -83,7 +83,7 @@ class LelangController extends Controller
     {
         //
         $lelangs = Lelang::find($lelang->id);
-        return view('lelang.show', compact('lelangs'));
+        return view('listlelang.penawaran', compact('lelangs'));
 
     }
 
@@ -127,5 +127,19 @@ class LelangController extends Controller
         $lelangs = Lelang::all();
         $barangs = Barang::all();
         return view('listlelang.indexbaru', compact('lelangs'));
+    }
+    public function penawaran(Lelang $lelang)
+    {
+        $lelangs = Lelang::all();
+        $barangs = Barang::all();
+        return view('listlelang.penawaran', compact('lelangs','barangs'));
+    }
+    public function penawaranshow(Lelang $lelang)
+    {
+        //
+        $barangs = Barang::find($barang->id);
+        $lelangs = Lelang::find($lelang->id);
+        return view('listlelang.penawaran', compact('barangs','lelangs'));
+
     }
 }

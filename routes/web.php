@@ -47,7 +47,7 @@ Route::view('errorr/403', 'error.403')->name('error.403');
 
 // ROUTE LIST LELANG
 Route::get('/dashboard/masyarakat/listlelang', [ListController::class, 'index'])->name('listlelang.index')->middleware('auth','level:masyarakat');
-Route::get('penawaran', [ListController::class, 'penawaran'])->name('penawaran.index')->middleware('auth', 'level:masyarakat');
+Route::resource('penawaran', ListController::class)->middleware('auth','level:masyarakat');
 
 // ROUTE MASYARAKAT
 Route::get('admin/masyarakat', [MasyarakatController::class, 'index'])->name('masyarakat.index')->middleware('auth', 'level:admin');
