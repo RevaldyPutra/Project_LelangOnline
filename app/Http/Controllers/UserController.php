@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,13 +18,6 @@ class UserController extends Controller
         //
         $users = User::all();
         return view('user.index', compact('users'));
-        
-    }
-    public function profile()
-    {
-        //
-        $profiles = User::all();
-        return view('profile.index', compact('profiles'));
     }
 
     /**
@@ -92,6 +86,12 @@ class UserController extends Controller
         $users = User::find($user->id);
         return view('user.edit', compact('users'));
     }
+    public function editprofile(User $user)
+    {
+        //
+        $users = User::find($user->id);
+        return view('profile.index', compact('users'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -117,6 +117,24 @@ class UserController extends Controller
         $users->telepon = $request->telepon;
         $users->update(); 
         return redirect('/admin/users');
+    }
+    public function updateprofile(Request $request,User $user)
+    {
+        //
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'level' => 'required',
+            'telepon' => 'required'
+        ]);
+
+        $users = User::find($user->id);
+        $users->name = $request->name;
+        $users->username = $request->username;
+        $users->level = $request->level;
+        $users->telepon = $request->telepon;
+        $users->update(); 
+        return redirect('/profile');
     }
 
     /**

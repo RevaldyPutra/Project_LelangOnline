@@ -20,6 +20,12 @@ class ListController extends Controller
         $lelangs = Lelang::all();
         return view('lelang.index', compact('lelangs'));
     }
+    public function penawaran()
+    {
+        //
+        $lelangs = Lelang::all();
+        return view('listlelang.penawaran', compact('lelangs'));
+    }
 
     /**
      * Show the form for creating a new resource.

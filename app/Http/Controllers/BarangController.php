@@ -18,6 +18,12 @@ class BarangController extends Controller
         $barangs = Barang::all();
         return view('barang.index', compact('barangs'));
     }
+    public function home()
+    {
+        //
+        $barangs = Barang::all();
+        return view('home', compact('barangs'));
+    }
 
     /**
      * Show the form for creating a new resource.

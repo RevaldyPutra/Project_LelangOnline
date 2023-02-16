@@ -82,6 +82,9 @@ class LelangController extends Controller
     public function show(Lelang $lelang)
     {
         //
+        $lelangs = Lelang::find($lelang->id);
+        return view('lelang.show', compact('lelangs'));
+
     }
 
     /**

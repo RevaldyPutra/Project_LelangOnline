@@ -88,7 +88,9 @@
                 <!-- /.tab-pane -->
 
                 <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
+                    <form class="{{route('user.updateprofile')}}" method="POST">
+                      @csrf
+                      @method('PUT')
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">

@@ -35,6 +35,7 @@
                       <option selected disabled>{{ $users->level}}</option>
                         <option>admin</option>
                         <option>petugas</option>
+                        <option>masyarakat</option>
                       </select>
                 </div>
                 <div class="form-group">

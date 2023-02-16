@@ -66,7 +66,7 @@
               @endif
             </td>
             <td>{{ \Carbon\Carbon::parse($value->tanggal)->format('j-F-Y') }}</td>
-            <td>{{ $value->harga_awal }}</td>
+            <td> {{{ $value->harga_awal }}} </td>
             <td>
             <form action="{{ route('barang.destroy', [$value->id]) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $value->id)}}">
@@ -78,13 +78,11 @@
              Edit
             </a> --}}
             <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $value->id)}}">
-              <i class="fas fa-folder">
-              </i>
+              <i class="fas fa-folder"></i>
               View
           </a>
           <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $value->id)}}">
-              <i class="fas fa-pencil-alt">
-              </i>
+              <i class="fas fa-pencil-alt"></i>
               Edit
           </a>
           @csrf
@@ -94,8 +92,7 @@
               Delete
             </button> --}}
             <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-                <i class="fas fa-trash">
-                </i>
+                <i class="fas fa-trash"></i>
                 Delete
               </button>
            </form>

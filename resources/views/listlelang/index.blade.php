@@ -54,7 +54,7 @@
                 <i class="fas fa-folder"></i>
                 View
               </a>
-              <a class="btn btn-success btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
+              <a class="btn btn-success btn-sm" href="{{ route('penawaran.index')}}">
                 <i class="fas fa-gavel"></i>
                 Tawar
               </a>

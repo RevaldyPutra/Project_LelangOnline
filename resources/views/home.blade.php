@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Startup - Startup Website Template</title>
+    <title>LelangOnline - Aplikasi perlelangan online</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -11,7 +11,8 @@
     <link rel="icon" type="images/png" href="{{ asset('adminlte/dist/img/lelangonline.png')}}" />
     <!-- Favicon -->
     <link href="{{ asset('startup/img/favicon.ico')}}" rel="icon">
-
+     <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/bootstrap.min.css')}}">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,18 +51,42 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="/" class="nav-item nav-link active">Home</a>
                 </div>
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
                 @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                     @if(auth()->user()->level == 'admin')
-                        <a href="{{ url('/dashboard/admin') }}" class="btn btn-primary py-2 px-4 ms-3">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="{{ url('/dashboard/admin') }}" class="nav-link dropdown-toggle btn btn-primary py-1 px-2 ms-3 rounded-5 border border-white" data-bs-toggle="dropdown">
+                        <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="rounded-circle shadow-4-strong" style="width:50px;">
+                        {{ Auth::user()->username}} 
+                    </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="{{ route('logout.dashboard')}}" class="dropdown-item">LOGOUT</a>
+                    </div>
+                </div>
                         @elseif(auth()->user()->level == 'petugas')
-                        <a href="{{ url('/dashboard/petugas') }}" class="btn btn-primary py-2 px-4 ms-3">Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="{{ url('/dashboard/petugas') }}" class="nav-link dropdown-toggle btn btn-primary py-1 px-2 ms-3 rounded-5 border border-white" data-bs-toggle="dropdown">
+                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="rounded-circle shadow-4-strong" style="width:50px;">
+                            {{ Auth::user()->username}}
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{{ route('logout.dashboard')}}" class="dropdown-item">LOGOUT</a>
+                        </div>
+                    </div>
                         @elseif(auth()->user()->level == 'masyarakat')
-                        <a href="{{ url('/listlelang') }}" class="btn btn-primary py-2 px-4 ms-3">Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="{{ url('/listlelang') }}" class="nav-link dropdown-toggle btn btn-primary py-1 px-2 ms-3 rounded-5 border border-white" data-bs-toggle="dropdown">
+                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="rounded-circle shadow-4-strong" style="width:50px;">
+                            {{ Auth::user()->username}}
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{{ route('logout.dashboard')}}" class="dropdown-item">LOGOUT</a>
+                        </div>
+                    </div>
                         @endif
                         @else
                         <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Log in</a>
@@ -81,24 +106,15 @@
                     <img class="w-100" style="max-height:610px;" src="{{ asset('startup/img/city.jpg')}}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">LelanginAja</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
                             @if (Route::has('login'))
                             @auth
-                            @if(auth()->user()->level == 'admin')
-                            <a href="{{ url('/dashboard/admin') }}" class="btn btn-primary py-2 px-4 ms-3">Home</a>
-                            @elseif(auth()->user()->level == 'petugas')
-                            <a href="{{ url('/dashboard/petugas') }}" class="btn btn-primary py-2 px-4 ms-3">Home</a>
-                            @elseif(auth()->user()->level == 'masyarakat')
-                            <a href="{{ url('/listlelang') }}" class="btn btn-primary py-2 px-4 ms-3">Home</a>
-                            @endif
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{Auth::user()->name}}</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
                             @else
-                            <a href="{{route('login')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Mulai Lelang Sekarang</a>
-                            @endif
-                            @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Register</a>
-                            @endif
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">LelanginAja</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
                             @endauth
+                            @endif
                             <a href="#" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
                     </div>
@@ -109,15 +125,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">LelanginAja</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
-                            @if (Route::has('login'))
-                            @auth
-                            @else
-                            <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Mulai Lelang Sekarang</a>
-                            @endif
-                            @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Register</a>
-                            @endif
-                            @endauth
+                           
                             <a href="#" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
                     </div>
@@ -186,13 +194,48 @@
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{{ asset('startup/img/cityvert.jpg')}}" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{{ asset('startup/img/auction.jpg')}}" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
+     <!-- Blog Start -->
+     <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">LelangOnline</h5>
+                <h1 class="mb-0">List Barang</h1>
+            </div>
+            <div class="row g-5">
+                @foreach($barangs as $value)
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-img position-relative overflow-hidden">
+                            @if($value->image)
+                                <img src="{{ asset('storage/' . $value->image)}}" alt="{{ $value->nama_barang }}" class="img-fluid">
+                            @endif
+                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Di Lelang</a>    
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex mb-3">
+                                <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ \Carbon\Carbon::parse($value->created_at)->format('j F Y')}}</small>
+                            </div>
+                            <h4 class="mb-3">{{ $value->nama_barang}}</h4>
+                            <h5 class="mb-3">{{ $value->harga_awal}}</h5>
+                            <p>{{ $value->deskripsi_barang }}</p>
+                            <a class="text-uppercase" href="/barang">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Blog Start -->
     
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -203,13 +246,8 @@
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-white"><i class="fa fas fa-gavel me-2"></i>LelangOnline</h1>
                         </a>
-                        <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
-                        <form action="">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                <button class="btn btn-dark">Sign Up</button>
-                            </div>
-                        </form>
+                        <p class="mt-3 mb-4"></p>
+                        
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-6">
@@ -273,10 +311,10 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="">LelangOnline</a>. All Rights Reserved. 
 						
 						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+						Created By <a class="text-white border-bottom" href="https://github.com/RevaldyPutra">Revaldy Putra P.B</a></p>
                     </div>
                 </div>
             </div>
@@ -288,7 +326,12 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-
+    <!-- Bootstrap 4 -->
+<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('adminlte/dist/js/adminlte.min.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('adminlte/dist/js/demo.js')}}"></script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -297,6 +340,8 @@
     <script src="{{ asset('startup/lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{ asset('startup/lib/counterup/counterup.min.js')}}"></script>
     <script src="{{ asset('startup/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <!-- Latest compiled JavaScript -->
+<script src="{{ asset('adminlte/dist/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('startup/js/main.js')}}"></script>

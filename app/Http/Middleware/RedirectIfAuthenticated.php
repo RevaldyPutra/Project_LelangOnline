@@ -23,11 +23,11 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 if(Auth::user()->level == 'admin')
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('dashboard.admin');
                 else if (Auth::user()->level == 'petugas')
-                    return redirect()->route('petugas.dashboard');
+                    return redirect()->route('dashboard.petugas');
                 else if (Auth::user()->level == 'masyarakat')
-                    return redirect()->route('masyarakat.dashboard');
+                    return redirect()->route('dashboard.masyarakat');
                 else return redirect(RouteServiceProvider::HOME);
             }
         }

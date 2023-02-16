@@ -17,12 +17,15 @@
             </h3>
             </strong>      
           <form class="search-form">
-            <div class="input-group">
-              <input type="text" name="search" class="form-control" placeholder="Search">
+            
 
               <div class="input-group-append">
-                  <button type="submit" name="submit" class="btn btn-danger"><i class="fas fa-search"></i>
-                </button>
+                @if(auth()->user()->level == 'admin')
+                  <a href="/dashboard/admin" name="submit" class="btn btn-danger"><i class="fas fa-search"></i>
+                  </a>
+                  @elseif(auth()->user()->level == 'petugas')
+                  <a href="/dashboard/petugas" name="submit" class="btn btn-danger"><i class="fas fa-search"></i>
+                    @endif
               </div>
             </div>
             <!-- /.input-group -->

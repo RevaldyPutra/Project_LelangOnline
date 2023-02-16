@@ -21,9 +21,9 @@ use App\Http\Controllers\MasyarakatController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {return view('home');
+// });
+Route::get('/', [BarangController::class, 'home'])->name('home');
 
 // ROUTE REGISTER
 Route::get('register', [RegisterController::class, 'view'])->name('register')->middleware('guest');
@@ -36,6 +36,8 @@ Route::post('login', [LoginController::class, 'proses'])->name('login.proses')->
 
 // ROUTE LOGOUT
 Route::get('logout', [LoginController::class, 'logout'])->name('logout.admin');
+Route::get('logoutdashboard', [LoginController::class, 'logoutdashboard'])->name('logout.dashboard');
+
 
 // ROUTE DASHBOARD
 Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin')->middleware('auth','level:admin');
@@ -45,6 +47,7 @@ Route::view('errorr/403', 'error.403')->name('error.403');
 
 // ROUTE LIST LELANG
 Route::get('/dashboard/masyarakat/listlelang', [ListController::class, 'index'])->name('listlelang.index')->middleware('auth','level:masyarakat');
+Route::get('penawaran', [ListController::class, 'penawaran'])->name('penawaran.index')->middleware('auth', 'level:masyarakat');
 
 // ROUTE MASYARAKAT
 Route::get('admin/masyarakat', [MasyarakatController::class, 'index'])->name('masyarakat.index')->middleware('auth', 'level:admin');
@@ -55,7 +58,10 @@ Route::post('/admin/operator/create', [UserController::class, 'store'])->name('u
 Route::get('/admin/operator/create', [UserController::class, 'create'])->name('user.create')->middleware('auth','level:admin');
 Route::get('/admin/users', [UserController::class, 'index'])->name('index')->middleware('auth','level:admin');
 Route::get('profile', [UserController::class, 'profile'])->name('profile.index')->middleware('auth','level:admin,petugas,masyarakat');
-Route::resource('user', UserController::class)->middleware('auth', 'level:admin');
+Route::post('profile/update', [UserController::class, 'updateprofile'])->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
+Route::put('profile/update', [UserController::class, 'updateprofile'])->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
+Route::get('profile', [UserController::class, 'editprofile'])->name('user.editprofile')->middleware('auth','level:admin,petugas,masyarakat');
+Route::resource('user', UserController::class)->middleware('auth');
 
 // ROUTE BARANG
 Route::resource('barang', BarangController::class)->middleware('auth', 'level:petugas');
@@ -69,3 +75,5 @@ Route::get('listlelang', [LelangController::class, 'listlelang'])->name('lelang.
 Route::get('petugas/lelang', [LelangController::class, 'index'])->name('lelang.index')->middleware('auth', 'level:petugas');
 Route::get('petugas/lelang/create', [LelangController::class, 'create'])->name('lelang.create')->middleware('auth', 'level:petugas');
 Route::post('petugas/lelang', [LelangController::class, 'store'])->name('lelang.store')->middleware('auth', 'level:petugas');
+// Route::get('lelang/show', [LelangController::class, 'show'])->name('lelang.show')->middleware('auth', 'level:petugas');
+Route::resource('lelang', LelangController::class)->middleware('auth', 'level:petugas');

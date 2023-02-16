@@ -11,7 +11,6 @@
     <div class="card-header">
     @if (auth()->user()->level == 'petugas')
     <a class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
-    <a href="/listlelang" class="btn btn-primary mr-3" style="float: left;">List lelang</a>
     @endif
     @if (auth()->user()->level == 'admin')
     <a class="btn btn-primary mb-3"href="/admin/lelang/create">Tambah lelang</a>
@@ -58,7 +57,7 @@
             <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
-            <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $item->barangs_id)}}">
+            <a class="btn btn-primary btn-sm" href="{{ route('lelang.show', $item->barangs_id)}}">
               <i class="fas fa-folder">
               </i>
               View
