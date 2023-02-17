@@ -41,13 +41,26 @@ class UserController extends Controller
     {
         //
         $data = $request->validate([
-            'name' => 'required',
-            'username' => 'required',
+            'name' => 'required|min:3|max:50',
+            'username' => 'required|unique:users,username|max:15',
             'level' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:4',
             'passwordshow' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|max:15',
         ],  
+        [
+            'name.required' => 'Nama tidak boleh kosong',
+            'name.min' => 'Nama terlalu pendek',
+            'username.required' => 'Username tidak boleh kosong',
+            'level.required' => 'Level tidak boleh kosong',
+            'username.unique' => 'Username sudah terdaftar',
+            'username.max' => 'Username terlalu panjang',
+            'password.required' => 'Password tidak boleh kosong',
+            'passwordshow.required' => 'Password tidak boleh kosong',
+            'password.min' => 'Password terlalu pendek',
+            'telepon.max' => 'No telp terlalu panjang',
+            'telepon.required' => 'No telp tidak boleh kosong',
+        ]
     );
 
         User::create([

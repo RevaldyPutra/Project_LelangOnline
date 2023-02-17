@@ -22,33 +22,63 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="name">Nama</label>
-                  <input type="text" name="name"class="form-control" placeholder="Enter Nama">
+                  <input type="text" name="name" value="{{old('name')}}"class="form-control @error('name') is-invalid @enderror" placeholder="Enter Nama">
+                  @error('name')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="username">Username</label>
-                  <input type="text" name="username"class="form-control" placeholder="Enter Username">
+                  <input type="text" name="username" value="{{old('username')}}"class="form-control @error('username') is-invalid @enderror" placeholder="Enter Username">
+                  @error('username')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group col-md-4">
                   <label for="password">Password</label>
-                  <input type="password" name="password"class="form-control" placeholder="Enter Password">
+                  <input type="password" name="password" value="{{old('password')}}"class="form-control @error('password') is-invalid @enderror" placeholder="Enter Password">
+                  @error('password')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group col-md-4">
                   <label for="passwordshow">Retype Password</label>
-                  <input type="password" name="passwordshow" class="form-control" placeholder="Ketik ulang password">
+                  <input type="password" name="passwordshow" class="form-control @error('passwordshow') is-invalid @enderror" placeholder="Ketik ulang password">
+                  @error('passwordshow')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
               </div>
                 <div class="form-group">
                     <label for="level">Level</label>
-                    <select class="form-control" name="level">
+                    <select class="form-control @error('level') is-invalid @enderror" name="level" value="{{old('level')}}">
                       <option selected disabled>Pilih Level</option>
                         <option>admin</option>
                         <option>petugas</option>
                       </select>
+                      @error('level')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Telepon</label>
-                  <input type="text" name="telepon"class="form-control" placeholder="Enter no telepon">
+                  <input type="text" name="telepon" value="{{old('telepon')}}"class="form-control @error('telepon') is-invalid @enderror" placeholder="Enter no telepon">
+                  @error('telepon')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
               <!-- /.card-body -->
               <div style="float: right;">
