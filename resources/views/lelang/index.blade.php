@@ -11,9 +11,7 @@
     <div class="card-header">
     @if (auth()->user()->level == 'petugas')
     <a class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
-    @endif
-    @if (auth()->user()->level == 'admin')
-    <a class="btn btn-primary mb-3"href="/admin/lelang/create">Tambah lelang</a>
+    @else
     @endif
     
     <div class="card-tools">
@@ -36,7 +34,14 @@
                     <th>Harga lelang</th>
                     <th>Tanggal lelang</th>
                     <th>Status</th>
+                    @if(auth()->user()->level == 'petugas')
                     <th></th>
+                    @else
+                    @endif
+                    @if(auth()->user()->level == 'admin')
+                    <th></th>
+                    @else
+                    @endif
                     
                 </tr>
             </tbody>
@@ -52,12 +57,22 @@
             <td>
               <span class="badge {{ $item->status == 'ditutup' ? 'bg-danger' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
             </td>
+            @if (auth()->user()->level == 'admin')
+            <td>
+              <a class="btn btn-primary btn-sm" href="{{ route('lelangadmin.show', $item->id)}}">
+                <i class="fas fa-folder">
+                </i>
+                View
+              </a>
+            </td>
+            @endif
             @if (auth()->user()->level == 'petugas')
             <td>
             <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
-            <a class="btn btn-primary btn-sm" href="{{ route('lelang.show', $item->barangs_id)}}">
+
+            <a class="btn btn-primary btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
               <i class="fas fa-folder">
               </i>
               View
@@ -76,6 +91,7 @@
             </button>
           </form>
         </td>
+        @else
         @endif
         </tr>
         @empty

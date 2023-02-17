@@ -70,7 +70,7 @@
                             <label>Telepon</label>
                             <input type="text" name="telepon" value="{{ Auth::user()->telepon }}"class="form-control" id="exampleInputEmail1"readonly>
                           </div>
-                          <div class="form-grou col-md-4">
+                          <div class="form-group col-md-4">
                             <label>Level</label>
                             <input type="text" name="level" value="{{ Auth::user()->level }}" class="form-control" id="exampleInputEmail1"readonly>
                           </div>

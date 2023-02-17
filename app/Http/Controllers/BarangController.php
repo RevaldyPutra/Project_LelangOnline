@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Lelang;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
@@ -22,9 +24,12 @@ class BarangController extends Controller
     public function home()
     {
         //
+        $barangsss = DB::table('barangs')->count();
+        $lelangsss = DB::table('lelangs')->count();
+        $penawar = DB::table('users')->where('level', 'masyarakat')->count();
         $barangs = Barang::all();
         $lelangs = Lelang::all();
-        return view('home', compact('barangs','lelangs'));
+        return view('home', compact('barangs','lelangs'))->with(['totalbarang'=>$barangsss,'totallelang'=>$lelangsss,'totaluser'=>$penawar]);
     }
 
     /**
@@ -54,7 +59,15 @@ class BarangController extends Controller
             'harga_awal' => 'required',
             'image' => 'image|file',
             'deskripsi_barang' => 'required'
-        ]);
+        ],
+        [
+            'nama_barang.required' => 'Nama barang tidak boleh kosong',
+            'tanggal.required' => 'Tanggal tidak boleh kosong',
+            'harga_awal.required' => 'Harga awal tidak boleh kosong',
+            'deskripsi_barang.required' => 'Deskripsi barang tidak boleh kosong',
+            'image.image' => 'File harus berupa gambar',
+        ]
+    );
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('post-images');

@@ -48,7 +48,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama barang</th>
-                    <th>Foto</th>
+                    {{-- <th>Foto</th> --}}
                     <th>Tanggal</th>
                     <th>Harga awal</th>
                     <th></th>
@@ -60,11 +60,11 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $value->nama_barang }}</td>
-            <td>
+            {{-- <td>
               @if($value->image)
                 <img src="{{ asset('storage/' . $value->image)}}" alt="{{ $value->nama_barang }}" class="img-fluid mt-3" width="75">
               @endif
-            </td>
+            </td> --}}
             <td>{{ \Carbon\Carbon::parse($value->tanggal)->format('j-F-Y') }}</td>
             <td> {{{ $value->harga_awal }}} </td>
             <td>

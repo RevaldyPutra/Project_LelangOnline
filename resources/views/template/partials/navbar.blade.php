@@ -4,21 +4,9 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      @if(auth()->user()->level == 'admin')
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/dashboard/admin" class="nav-link">Home</a>
+        <a href="/" class="nav-link">Home</a>
       </li>
-      @endif
-      @if(auth()->user()->level == 'petugas')
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/dashboard/petugas" class="nav-link">Home</a>
-      </li>
-      @endif
-      @if(auth()->user()->level == 'masyarakat')
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/dashboard/masyarakat" class="nav-link">Home</a>
-      </li>
-      @endif
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
@@ -34,7 +22,7 @@
             @else
             <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2">
             @endif
-            <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
+            <span class="d-none d-md-inline">{{Auth::user()->username}}</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->

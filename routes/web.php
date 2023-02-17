@@ -47,7 +47,7 @@ Route::view('errorr/403', 'error.403')->name('error.403');
 
 // ROUTE LIST LELANG
 Route::get('/dashboard/masyarakat/listlelang', [ListController::class, 'index'])->name('listlelang.index')->middleware('auth','level:masyarakat');
-Route::resource('penawaran', ListController::class)->middleware('auth','level:masyarakat');
+
 
 // ROUTE MASYARAKAT
 Route::get('admin/masyarakat', [MasyarakatController::class, 'index'])->name('masyarakat.index')->middleware('auth', 'level:admin');
@@ -72,8 +72,12 @@ Route::get('barang/create', [BarangController::class, 'create'])->name('barang.c
 // ROUTE LELANG
 Route::get('masyarakat/lelang', [LelangController::class, 'listlelang'])->name('lelang.listlelang')->middleware('auth', 'level:masyarakat');
 Route::get('listlelang', [LelangController::class, 'listlelang'])->name('lelang.listlelang')->middleware('auth', 'level:masyarakat,admin,petugas');
-Route::get('petugas/lelang', [LelangController::class, 'index'])->name('lelang.index')->middleware('auth', 'level:petugas');
+Route::get('petugas/lelang', [LelangController::class, 'index'])->name('lelangpetugas.index')->middleware('auth', 'level:petugas');
 Route::get('petugas/lelang/create', [LelangController::class, 'create'])->name('lelang.create')->middleware('auth', 'level:petugas');
 Route::post('petugas/lelang', [LelangController::class, 'store'])->name('lelang.store')->middleware('auth', 'level:petugas');
 // Route::get('lelang/show', [LelangController::class, 'show'])->name('lelang.show')->middleware('auth', 'level:petugas');
 Route::resource('lelang', LelangController::class)->middleware('auth', 'level:petugas');
+Route::get('/menawar/{lelang}', [LelangController::class, 'show'])->name('lelangin.show')->middleware('auth','level:masyarakat');
+Route::get('/petugas/lelang/{lelang}', [LelangController::class, 'show'])->name('lelangpetugas.show')->middleware('auth','level:petugas');
+Route::get('/admin/lelang/{lelang}', [LelangController::class, 'show'])->name('lelangadmin.show')->middleware('auth','level:admin');
+Route::get('/admin/lelang/', [LelangController::class, 'index'])->name('lelangadmin.index')->middleware('auth','level:admin');

@@ -9,57 +9,63 @@
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>150</h3>
-              <p>Jumlah Petugas</p>
-            </div>
-            <div class="icon">
-              <i class="nav-icon fa fas fa-user"></i>
-            </div>
-            <a href="/admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user"></i></span>
+            
+            <div class="info-box-content">
+              <span class="info-box-text">Jumlah Petugas</span>
+              <span class="info-box-number">
+                {{ $totaluser }}
+              </span>
+              <a href="/admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
         </div>
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-success">
-            <div class="inner">
-              <h3>150</h3>
-              <p>Jumlah Barang</p>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+            
+            <div class="info-box-content">
+              <span class="info-box-text">Jumlah Barang</span>
+              <span class="info-box-number">
+                {{ $totalbarang }}
+              </span>
+              <a href="/admin/barang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <div class="icon">
-              <i class="nav-icon fa fas fa-shopping-cart"></i>
-            </div>
-            <a href="/admin/barang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3>150</h3>
-              <p>Jumlah Lelang</p>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-gavel"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Jumlah Lelang</span>
+              <span class="info-box-number">
+                {{ $totallelang }}
+              </span>
+              <a href="{{route('lelangadmin.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <div class="icon">
-              <i class="nav-icon fa fas fa-gavel"></i>
-            </div>
-            <a href="/listlelang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>150</h3>
-              <p>Jumlah Penawar</p>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Jumlah Penawar</span>
+              <span class="info-box-number">
+                {{ $totalpenawar }}
+              </span>
+              <a href="/admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <div class="icon">
-              <i class="nav-icon fa fas fa-users"></i>
-            </div>
-            <a href="/admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
     </div>
     </div>

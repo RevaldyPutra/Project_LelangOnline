@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Registration Page (v2)</title>
+  <title>Lelang Online - Registrasi</title>
 
   <link rel="icon" type="images/png" href="{{ asset('adminlte/dist/img/lelangonline.png')}}" />
   <!-- Google Font: Source Sans Pro -->
@@ -34,69 +34,86 @@
       <a href="/register" class="h1"><b>Lelang</b>Online</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Register Akun Lelang Online</p>
 
       <form action="{{ route('register-store') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nama">
+          <input type="text" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nama">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
+          @error('name')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username">
+          <input type="text" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
+          @error('username')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password">
+          <input type="password"  class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          @error('password')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="passwordshow" value="{{ old('passwordshow') }}" placeholder="Retype Password">
+          <input type="password" class="form-control @error('passwordshow') is-invalid @enderror" name="passwordshow" placeholder="Retype Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          @error('passwordshow')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="telepon" value="{{ old('telepon') }}" placeholder="Telepon">
+          <input type="text" value="{{ old('telepon') }}" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" placeholder="Telepon">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-phone"></span>
             </div>
           </div>
+          @error('telepon')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
         </div>
-        
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-              <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
-              </label>
-            </div>
-          </div>
+          
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block">Register</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <a href="/login" class="text-center">I already have a membership</a>
+      <a href="{{route('login')}}" class="text-center">Sudah Punya Akun?</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

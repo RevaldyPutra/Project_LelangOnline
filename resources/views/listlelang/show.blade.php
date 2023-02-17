@@ -8,23 +8,23 @@
 <section class="content">
     <div class="container-fluid">
       <div class="row">
+        @if(!empty($lelangs))
+        @foreach($lelangs as $item)
         <div class="col-md-3">
-          @foreach($lelangs as $item)
           <!-- Profile Image -->
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                @if($lelangs->barang->image)
-                <img class="img-fluid"
-                     src="{{ asset('storage/' . $lelangs->barang->image)}}"
-                     alt="User profile picture">
-                @endif
+               <p>{{ $item->harga_akhir }}</p>
+                {{-- <img class="img-fluid" src="{{ asset('storage/' . $item->barang->image)}}" alt="User profile picture"> --}}
+                
               </div>
             </div>
             <!-- /.card-body -->
           </div>
-          @endforeach
         </div>
+        @endforeach
+        @endif
         <!-- /.col -->
         <div class="col-md-9">
           <div class="card">

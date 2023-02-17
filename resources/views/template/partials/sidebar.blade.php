@@ -1,11 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     @if(auth()->user()->level == 'masyarakat')
-    <a href="listlelang" class="brand-link">
+    <a href="{{route('dashboard.masyarakat')}}" class="brand-link">
       @elseif(auth()->user()->level == 'admin')
-      <a href="/dashboard/admin" class="brand-link">
-        @else
-        <a href="/petugas/lelang" class="brand-link">
+      <a href="{{route('dashboard.admin')}}" class="brand-link">
+        @elseif(auth()->user()->level == 'petugas')
+        <a href="{{route('dashboard.petugas')}}" class="brand-link">
       @endif
       <img src="{{ asset('adminlte/dist/img/lelangonline.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Lelang Online</span>
@@ -95,7 +95,7 @@
           </li>
           <li class="nav-header">DATA LELANG</li>
           <li class="nav-item">
-            <a href="/listlelang" class="nav-link">
+            <a href="{{ route('lelangadmin.index')}}" class="nav-link">
               <i class="nav-icon fas fa-tag"></i>
               <p>
                 Lelang
@@ -112,12 +112,12 @@
             </a>
           </li>
           @elseif (auth()->user()->level == 'masyarakat')
-          <li class="nav-header">LIST LELANG</li>
+          <li class="nav-header">DASHBOARD</li>
           <li class="nav-item">
-            <a href="/listlelang" class="nav-link">
-              <i class="nav-icon fas fa-tag"></i>
+            <a href="/dashboard/masyarakat" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                List Lelang
+                Dashboard
               </p>
             </a>
           </li>

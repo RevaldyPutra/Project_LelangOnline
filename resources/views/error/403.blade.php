@@ -33,6 +33,5 @@
         </div>
       </div>
       <!-- /.error-page -->
-
-    </section>
+  </section>
 @endsection

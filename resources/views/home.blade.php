@@ -65,7 +65,7 @@
                 </div>
                 @elseif(auth()->user()->level == 'masyarakat')
                 <div class="navbar-nav py-0">
-                    <a href="/listlelang" class="nav-item nav-link">Dashboard</a>
+                    <a href="/dashboard/masyarakat" class="nav-item nav-link">Dashboard</a>
                 </div>
                 @else
 
@@ -97,7 +97,7 @@
                     </div>
                         @elseif(auth()->user()->level == 'masyarakat')
                     <div class="nav-item dropdown">
-                        <a href="{{ url('/listlelang') }}" class="nav-link dropdown-toggle btn btn-primary py-1 px-2 ms-3 rounded-5 border border-white" data-bs-toggle="dropdown">
+                        <a href="{{ url('/dashboard/masyarakat') }}" class="nav-link dropdown-toggle btn btn-primary py-1 px-2 ms-3 rounded-5 border border-white" data-bs-toggle="dropdown">
                             <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="rounded-circle shadow-4-strong" style="width:50px;">
                             {{ Auth::user()->username}}
                         </a>
@@ -133,7 +133,7 @@
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
                             @endauth
                             @endif
-                            <a href="#" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                            <a href="{{route('login')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Mulai Lelang Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -182,6 +182,54 @@
     </div>
     <!-- Full Screen Search End -->
 
+    <!-- Facts Start -->
+    @if(Route::has('login'))
+    @auth
+    
+    @else
+    <div class="container-fluid facts py-5 pt-lg-0">
+        <div class="container py-5 pt-lg-0">
+            <div class="row gx-0">
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
+                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
+                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                            <i class="fa fa-users text-primary"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white mb-0">Jumlah Barang</h5>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $totalbarang }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
+                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                            <i class="fa fa-check text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-primary mb-0">Jumlah Lelang</h5>
+                            <h1 class="mb-0" data-toggle="counter-up">{{ $totallelang }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
+                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
+                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                            <i class="fa fa-award text-primary"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white mb-0">Jumlah Penawar</h5>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $totaluser }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endauth
+    @endif
+    <!-- Facts Start -->
+
 
     <!-- Facts Start -->
     
@@ -228,6 +276,7 @@
             </div>
             <div class="row g-5">
                 @foreach($lelangs as $value)
+                @if($value->status == 'dibuka')
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
@@ -247,6 +296,27 @@
                         </div>
                     </div>
                 </div>
+                @elseif($value->status == 'ditutup')
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-img position-relative overflow-hidden">
+                            @if($value->barang->image)
+                                <img src="{{ asset('storage/' . $value->barang->image)}}" alt="{{ $value->barang->nama_barang }}" class="img-fluid">
+                            @endif
+                            <a class="position-absolute top-0 start-0 bg-warning text-white rounded-end mt-5 py-2 px-4" href="">Di Tutup</a>    
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex mb-3">
+                                <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ \Carbon\Carbon::parse($value->created_at)->format('j F Y')}}</small>
+                            </div>
+                            <h4 class="mb-3">{{ $value->barang->nama_barang}}</h4>
+                            <h5 class="mb-3">{{ $value->barang->harga_awal}}</h5>
+                            <p>{{ $value->barang->deskripsi_barang }}</p>
+                            <a class="text-uppercase" href="/barang">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 @endforeach
                 </div>
             </div>

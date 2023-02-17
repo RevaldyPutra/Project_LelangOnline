@@ -15,9 +15,16 @@ class LoginController extends Controller
     public function proses(Request $request)
     {
         $user = $request->validate([
-            'username' => 'required',
+            'username' => 'required|exists:users,username',
             'password' => 'required'
-        ]);
+        ],
+        [
+            'username.required' => 'Silahakan isi username',
+            'password.required' => 'Silahakan isi password',
+            'username.exists'   => 'Username anda salah'
+        ]
+        
+    );
 
         if (Auth::attempt($user))
         {
@@ -32,7 +39,7 @@ class LoginController extends Controller
                 return redirect()->route('dashboard.petugas');
             }else if ($user->level == 'masyarakat')
             {
-                return redirect()->route('lelang.listlelang');
+                return redirect()->route('dashboard.masyarakat');
             }else {
                 return redirect()->route('login');
             }

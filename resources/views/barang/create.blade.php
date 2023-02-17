@@ -34,16 +34,31 @@
                   <div class="form-row">
                   <div class="form-group col-md-7">
                     <label>Nama barang</label>
-                    <input type="text" name="nama_barang"class="form-control"  placeholder="Enter nama barang">
+                    <input type="text" name="nama_barang" value="{{old('nama_barang')}}"class="form-control @error('nama_barang') is-invalid @enderror"  placeholder="Enter nama barang">
+                    @error('nama_barang')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                   </div>
                   <div class="form-group col-md-5">
                     <label>Tanggal</label>
-                    <input type="date" name="tanggal" class="form-control"  placeholder="Enter tanggal">
+                    <input type="date" name="tanggal" value="{{old('tanggal')}}"class="form-control @error('tanggal') is-invalid @enderror"  placeholder="Enter tanggal">
+                    @error('tanggal')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                   </div>
                 </div>
                   <div class="form-group">
                     <label>Harga awal</label>
-                    <input type="text" name="harga_awal"class="form-control"  placeholder="Enter harga awal">
+                    <input type="text" name="harga_awal" value="{{old('harga_awal')}}"class="form-control @error('harga_awal') is-invalid @enderror"  placeholder="Enter harga awal">
+                    @error('harga_awal')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="image" class="form-label">Gambar Barang</label>
@@ -57,7 +72,12 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Deskripsi barang</label>
-                    <textarea type="text" name="deskripsi_barang"class="form-control"></textarea>
+                    <textarea type="text" name="deskripsi_barang" class="form-control @error('deskripsi_barang') is-invalid @enderror">{{old('deskripsi_barang')}}</textarea>
+                    @error('deskripsi_barang')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                   </div>
                 <!-- /.card-body -->
                 <div style="float:right;">
