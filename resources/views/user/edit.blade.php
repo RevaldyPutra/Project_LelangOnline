@@ -23,24 +23,44 @@
               <div class="card-body">
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="text" name="name" value="{{ $users->name }}"class="form-control">
+                  <input type="text" name="name" value="{{ $users->name }}"class="form-control @error('name') is-invalid @enderror">
+                  @error('name')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
                 </div>
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" name="username" value="{{ $users->username }}"class="form-control">
+                    <input type="text" name="username" value="{{ $users->username }}"class="form-control @error('username') is-invalid @enderror">
+                    @error('username')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="level">Level</label>
-                    <select class="form-control" value="{{ $users->level }}" old="{{$users->level}}"name="level">
+                    <select class="form-control @error('level') is-invalid @enderror" value="{{ $users->level }}" old="{{$users->level}}"name="level">
                       <option selected disabled>{{ $users->level}}</option>
                         <option>admin</option>
                         <option>petugas</option>
                         <option>masyarakat</option>
                       </select>
+                      @error('level')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                      @enderror
                 </div>
                 <div class="form-group">
                     <label>Telepon</label>
-                    <input type="text" name="telepon" value="{{ $users->telepon }}"class="form-control">
+                    <input type="text" name="telepon" value="{{ $users->telepon }}"class="form-control @error('telepon') is-invalid @enderror">
+                    @error('telepon')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
               </div>
               <!-- /.card-body -->
                 <div style="float: right;">
