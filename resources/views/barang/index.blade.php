@@ -66,7 +66,7 @@
               @endif
             </td> --}}
             <td>{{ \Carbon\Carbon::parse($value->tanggal)->format('j-F-Y') }}</td>
-            <td> {{{ $value->harga_awal }}} </td>
+            <td> @currency($value->harga_awal)</td>
             <td>
             <form action="{{ route('barang.destroy', [$value->id]) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $value->id)}}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Lelang;
 use App\Models\User;
+use App\Models\HistoryLelang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,10 +27,11 @@ class BarangController extends Controller
         //
         $barangsss = DB::table('barangs')->count();
         $lelangsss = DB::table('lelangs')->count();
+        $historylelangs = DB::table('history_lelangs')->count();
         $penawar = DB::table('users')->where('level', 'masyarakat')->count();
         $barangs = Barang::all();
         $lelangs = Lelang::all();
-        return view('home', compact('barangs','lelangs'))->with(['totalbarang'=>$barangsss,'totallelang'=>$lelangsss,'totaluser'=>$penawar]);
+        return view('home', compact('barangs','lelangs'))->with(['totalpenawaran'=>$historylelangs,'totalbarang'=>$barangsss,'totallelang'=>$lelangsss,'totaluser'=>$penawar]);
     }
 
     /**

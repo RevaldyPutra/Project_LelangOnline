@@ -20,9 +20,9 @@
                 </div>
                 <h3 class="profile-username text-center">{{ $item->barang->nama_barang}}</h3>
 
-              <h5 class="text-muted text-center">{{ $item->barang->harga_awal}}</h5>
+              <h5 class="text-muted text-center">@currency($item->barang->harga_awal)</h5>
               
-              <a href="{{ route('lelangin.show', $item->id)}}" class="btn btn-success btn-block"><b>Tawar</b></a>
+              <a href="{{ route('lelangin.create', $item->id)}}" class="btn btn-success btn-block"><b>Tawar</b></a>
             </div>
             <!-- /.card-body -->
          </div>

@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Halaman lelang</h1>
+<h1>Halaman Data Penawaran</h1>
 @endsection
 
 @section('content')
@@ -9,10 +9,7 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-header">
-    @if (auth()->user()->level == 'petugas')
-    <a class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
-    @else
-    @endif
+
     
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -29,8 +26,8 @@
             <tbody>
                 <tr>
                     <th>No</th>
-                    <th>Nama barang</th>
-                    <th>Harga awal</th>
+                    <th>Nama Penawar</th>
+                    <th>Nama Barang</th>
                     <th>Harga lelang</th>
                     <th>Tanggal lelang</th>
                     <th>Status</th>
@@ -46,16 +43,16 @@
                 </tr>
             </tbody>
         </thead>
-        @forelse ($lelangs as $item)
+        @forelse ($historyLelangs as $item)
         <tbody>
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->barang->nama_barang }}</td>
-            <td>@currency($item->barang->harga_awal)</td>
-            <td>@currency($item->harga_akhir)</td>
+            <td>{{ $item->user->name }}</td>
+            <td>{{ $item->nama_barang }}</td>
+            <td>@currency($item->harga)</td>
             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
             <td>
-              <span class="badge {{ $item->status == 'ditutup' ? 'bg-danger' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
+              <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
             </td>
             @if (auth()->user()->level == 'admin')
             <td>
@@ -77,7 +74,7 @@
               </i>
               View
           </a>
-          <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $item->barangs_id)}}">
+          <a class="btn btn-info btn-sm" href="">
               <i class="fas fa-pencil-alt">
               </i>
               Edit

@@ -9,6 +9,7 @@ use App\Http\Controllers\LelangController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasyarakatController;
+use App\Http\Controllers\HistoryLelangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +82,8 @@ Route::get('/menawar/{lelang}', [LelangController::class, 'show'])->name('lelang
 Route::get('/petugas/lelang/{lelang}', [LelangController::class, 'show'])->name('lelangpetugas.show')->middleware('auth','level:petugas');
 Route::get('/admin/lelang/{lelang}', [LelangController::class, 'show'])->name('lelangadmin.show')->middleware('auth','level:admin');
 Route::get('/admin/lelang/', [LelangController::class, 'index'])->name('lelangadmin.index')->middleware('auth','level:admin');
+
+//ROUTE HISTORY LELANG
+Route::get('/menawar/{lelang}', [HistoryLelangController::class, 'create'])->name('lelangin.create')->middleware('auth','level:masyarakat');
+Route::get('/data-penawaran', [HistoryLelangController::class, 'index'])->name('datapenawar.index')->middleware('auth','level:petugas');
+Route::post('/menawar/{lelang}', [HistoryLelangController::class, 'store'])->name('lelangin.store')->middleware('auth','level:masyarakat');

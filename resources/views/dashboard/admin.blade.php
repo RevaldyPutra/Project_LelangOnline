@@ -57,9 +57,9 @@
           <div class="info-box">
             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">Jumlah Penawar</span>
+              <span class="info-box-text">Jumlah Penawaran</span>
               <span class="info-box-number">
-                {{ $totalpenawar }}
+                {{ $totalpenawaran }}
               </span>
               <a href="/admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>

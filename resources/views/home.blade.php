@@ -218,8 +218,8 @@
                             <i class="fa fa-award text-primary"></i>
                         </div>
                         <div class="ps-4">
-                            <h5 class="text-white mb-0">Jumlah Penawar</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $totaluser }}</h1>
+                            <h5 class="text-white mb-0">Jumlah Penawaran</h5>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $totalpenawaran }}</h1>
                         </div>
                     </div>
                 </div>
@@ -290,7 +290,7 @@
                                 <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ \Carbon\Carbon::parse($value->created_at)->format('j F Y')}}</small>
                             </div>
                             <h4 class="mb-3">{{ $value->barang->nama_barang}}</h4>
-                            <h5 class="mb-3">{{ $value->barang->harga_awal}}</h5>
+                            <h5 class="mb-3">@currency($value->barang->harga_awal)</h5>
                             <p>{{ $value->barang->deskripsi_barang }}</p>
                             <a class="text-uppercase" href="/barang">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
