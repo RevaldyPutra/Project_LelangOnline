@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         //
         $data = $request->validate([
-            'name' => 'required|min:3|max:50',
+            'name' => 'required|unique:users,name|min:3|max:50',
             'username' => 'required|unique:users,username|max:15',
             'level' => 'required',
             'password' => 'required|min:4',
@@ -51,6 +51,7 @@ class UserController extends Controller
         [
             'name.required' => 'Nama tidak boleh kosong',
             'name.min' => 'Nama terlalu pendek',
+            'name.unique' => 'Nama sudah terdaftar',
             'username.required' => 'Username tidak boleh kosong',
             'level.required' => 'Level tidak boleh kosong',
             'username.unique' => 'Username sudah terdaftar',
@@ -71,7 +72,7 @@ class UserController extends Controller
             'passwordshow' => ($data['passwordshow']),
             'telepon' => ($data['telepon']),
         ]);
-        return redirect ('/admin/users')->with('success','Kamu telah berhasil meregistrasi akun');
+        return redirect ('/admin/users')->with('success','Data Akun Berhasil Dibuat');
         }
 
     /**
@@ -116,14 +117,13 @@ class UserController extends Controller
     public function update(Request $request,User $user)
     {
         //
-        $request->validate([
-            'name' => 'required|min:3|max:50',
-            'username' => 'required|unique:users,username|max:15',
+        $rules = $request->validate([
             'level' => 'required',
             'telepon' => 'required|max:15',
         ],
         [
             'name.required' => 'Nama tidak boleh kosong',
+            'name.unique' => 'Nama sudah terdaftar',
             'name.min' => 'Nama terlalu pendek',
             'username.required' => 'Username tidak boleh kosong',
             'level.required' => 'Level tidak boleh kosong',
@@ -134,6 +134,12 @@ class UserController extends Controller
         ]
     
     );
+        if($request->name != $user->name) {
+            $rules['name'] = 'required|unique:users,name|min:3|max:50';
+        }
+        elseif($request->username != $user->username) {
+            $rules['name'] = 'required|unique:users,username|max:15';
+        }
 
         $users = User::find($user->id);
         $users->name = $request->name;
@@ -141,7 +147,7 @@ class UserController extends Controller
         $users->level = $request->level;
         $users->telepon = $request->telepon;
         $users->update(); 
-        return redirect('/admin/users')->with('editsuccess','Kamu berhasil mengupdate akun');
+        return redirect('/admin/users')->with('editsuccess','Data Akun Berhasil Diedit');
     }
     public function updateprofile(Request $request,User $user)
     {
@@ -173,6 +179,6 @@ class UserController extends Controller
         //
         $users = User::find($user->id);
         $users->delete();
-        return redirect('admin/users')->with('deletesuccess','Kamu berhasil menghapus akun');
+        return redirect('admin/users')->with('deletesuccess','Data Akun Berhasil Dihapus');
     }
 }

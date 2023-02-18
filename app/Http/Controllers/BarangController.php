@@ -82,7 +82,7 @@ class BarangController extends Controller
         // ]);
 
         Barang::create($validateData);
-        return redirect()->route('barang.index')->with('success', 'Kamu telah berhasil menambah barang baru');
+        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahakan');
     }
 
     /**
@@ -144,7 +144,7 @@ class BarangController extends Controller
         // $barangs->update();
         Barang::where('id', $barang->id)
                ->update($validateData);
-        return redirect()->route('barang.index')->with('editsuccess', 'Barang Telah di edit');
+        return redirect()->route('barang.index')->with('editsuccess', 'Data Barang Berhasil Diedit');
         
     }
 
@@ -159,6 +159,6 @@ class BarangController extends Controller
         //
         $barangs = Barang::find($barang->id);
         $barangs->delete();
-        return redirect()->route('barang.index')->with('deletesuccess', 'Kamu berhasil menghapus barang');
+        return redirect()->route('barang.index')->with('deletesuccess', 'Data Barang Berhasil Dihapus');
     }
 }

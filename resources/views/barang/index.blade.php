@@ -20,24 +20,33 @@
   @if(session()->has('success'))
   <div class="form-group">
     <div class="row">
-      <div class="col-md-5">
-        <input type="text" class="form-control is-valid" value="{{ session('success') }}">
+      <div class="col-md-4">
+        <div class="alert alert-success" role="alert">
+          {{session('success')}}
+          <li class="fas fa-check-circle"></li>
+        </div>
       </div>
     </div>
   </div>
   @elseif(session()->has('editsuccess'))
-  <div class="form-group">
+  <<div class="form-group">
     <div class="row">
-      <div class="col-md-5">
-        <input type="text" class="form-control is-valid" value="{{ session('editsuccess') }}">
+      <div class="col-md-4">
+        <div class="alert alert-success" role="alert">
+          {{session('editsuccess')}}
+          <li class="fas fa-check-circle"></li>
+        </div>
       </div>
     </div>
   </div>
   @elseif(session()->has('deletesuccess'))
   <div class="form-group">
     <div class="row">
-      <div class="col-md-5">
-        <input type="text" class="form-control is-valid" value="{{ session('deletesuccess') }}">
+      <div class="col-md-4">
+        <div class="alert alert-success" role="alert">
+          {{session('deletesuccess')}}
+          <li class="fas fa-check-circle"></li>
+        </div>
       </div>
     </div>
   </div>
