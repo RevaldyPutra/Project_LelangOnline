@@ -7,8 +7,18 @@
 @section('content')
 
 <section class="content">
-    <div class="container-fluid">
-        
+  @if(!empty($lelangs))
+@if(Route::has('lelangin.store', $lelangs->id))
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-5">
+      <input type="text" class="form-control is-valid" value="Anda berhasil menawar barang ini">
+    </div>
+  </div>
+</div>
+@endif
+@endif
+    <div class="container-fluid">     
         @if(!empty($lelangs))
       <div class="row">
         <div class="col-md-5">

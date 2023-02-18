@@ -121,22 +121,31 @@ class BarangController extends Controller
     public function update(Request $request, Barang $barang)
     {
         //
-        $request->validate([
+        $rules = [
             'nama_barang' => 'required',
             'tanggal' => 'required',
             'harga_awal' => 'required',
             'image' => 'image|file',
             'deskripsi_barang' => 'required',
-        ]);
+        ];
+    
 
-        $barangs = Barang::find($barang->id);
-        $barangs->nama_barang = $request->nama_barang;
-        $barangs->tanggal = $request->tanggal;
-        $barangs->harga_awal = $request->harga_awal;
-        $barangs->image = $request->image;
-        $barangs->deskripsi_barang = $request->deskripsi_barang;
-        $barangs->update();
-        return redirect ('/barang');
+    $validateData = $request->validate($rules);
+    if ($request->file('image')) {
+        $validateData['image'] = $request->file('image')->store('post-images');
+    }
+
+        // $barangs = Barang::find($barang->id);
+        // $barangs->nama_barang = $request->nama_barang;
+        // $barangs->tanggal = $request->tanggal;
+        // $barangs->harga_awal = $request->harga_awal;
+        // $barangs->image = $request->image;
+        // $barangs->deskripsi_barang = $request->deskripsi_barang;
+        // $barangs->update();
+        Barang::where('id', $barang->id)
+               ->update($validateData);
+        return redirect()->route('barang.index');
+        
     }
 
     /**

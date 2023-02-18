@@ -32,8 +32,9 @@ class HistoryLelangController extends Controller
     {
         //
         $lelangs = Lelang::find($lelang->id);
-        $historyLelangs = HistoryLelang::all();
-        return view('masyarakat.penawaran', compact('lelangs', 'historyLelangs'));
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        $historyLelangsshow = HistoryLelang::all()->where('name', 'masyarakat');
+        return view('masyarakat.penawaran', compact('lelangs', 'historyLelangs','historyLelangsshow'));
     }
 
     /**
@@ -63,7 +64,7 @@ class HistoryLelangController extends Controller
         $historyLelang->status = 'pending';
         $historyLelang->save();
 
-        return redirect()->route('dashboard.masyarakat');
+        return redirect()->route('lelangin.create', $lelang->id);
     }
 
     /**
@@ -109,5 +110,11 @@ class HistoryLelangController extends Controller
     public function destroy(HistoryLelang $historyLelang)
     {
         //
+        // $historyLelangs = HistoryLelang::find($historyLelang->id);
+        $historyLelang->delete();
+        // if(empty($historyLelang)) {
+        //     return;
+        // }
+        return redirect()->route('datapenawar.index');
     }
 }

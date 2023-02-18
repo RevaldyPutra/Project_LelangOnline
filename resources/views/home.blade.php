@@ -292,7 +292,7 @@
                             <h4 class="mb-3">{{ $value->barang->nama_barang}}</h4>
                             <h5 class="mb-3">@currency($value->barang->harga_awal)</h5>
                             <p>{{ $value->barang->deskripsi_barang }}</p>
-                            <a class="text-uppercase" href="/barang">Read More <i class="bi bi-arrow-right"></i></a>
+                            <a class="text-uppercase" href="{{ route('lelangin.create', $value->id)}}">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -312,7 +312,7 @@
                             <h4 class="mb-3">{{ $value->barang->nama_barang}}</h4>
                             <h5 class="mb-3">{{ $value->barang->harga_awal}}</h5>
                             <p>{{ $value->barang->deskripsi_barang }}</p>
-                            <a class="text-uppercase" href="/barang">Read More <i class="bi bi-arrow-right"></i></a>
+                            <a class="text-uppercase" href="#">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

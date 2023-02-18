@@ -65,7 +65,7 @@
             @endif
             @if (auth()->user()->level == 'petugas')
             <td>
-            <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
+            <form action="{{ route('lelangin.destroy',$item) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
 

@@ -4,34 +4,51 @@
 <section class="content">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-md-5">
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="form-group">
+                    @if( $barangs->image )
+                    <img src="{{ asset('storage/' . $barangs->image)}}" alt="{{ $barangs->nama_barang }}" class="img-fluid mt-3">
+                    @else
+                    <img class="img-preview img-fluid col-sm-5 mb-3" alt="">
+                    @endif
+                  </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
           <!-- left column -->
-          <div class="col-md-12">
+          <div class="col-md-7">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Edit Barang</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('barang.update', [$barangs->id]) }}" method="POST">
+              <form action="{{route('barang.update', [$barangs->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
                     <label>Nama barang</label>
-                    <input type="text" name="nama_barang" value="{{ $barangs->nama_barang }}"class="form-control"  placeholder="Enter nama barnag">
+                    <input type="text" name="nama_barang" value="{{ $barangs->nama_barang }}"class="form-control" >
                   </div>
                   <div class="form-group">
-                    <label>Tanggal</label>
-                    <input type="date" name="tanggal" value="{{ $barangs->tanggal }}"class="form-control"  placeholder="Enter tanggal">
+                    <label>Waktu Ditambahkan</label>
+                    <input type="date" name="tanggal" value="{{ $barangs->tanggal }}"class="form-control" >
                   </div>
                   <div class="form-group">
                     <label>Harga awal</label>
-                    <input type="text" name="harga_awal" value="{{ $barangs->harga_awal }}"class="form-control"  placeholder="Enter harga awal">
+                    <input type="text" name="harga_awal" value="{{$barangs->harga_awal}}"class="form-control" >
                   </div>
                   <div class="form-group">
                     <label for="image" class="form-label">Gambar Barang</label>
-                    <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image">
+                    <img class="img-preview img-fluid col-sm-5 mb-3" alt="">
+                    <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
                     @error('image')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -40,44 +57,39 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Deskripsi barang</label>
-                    <input type="text-area" name="deskripsi_barang" value="{{ $barangs->deskripsi_barang }}"class="form-control">
+                    <textarea type="text-area" name="deskripsi_barang" class="form-control">{{ $barangs->deskripsi_barang }}</textarea>
                   </div>
+                  
                 <!-- /.card-body -->
-                <div style="float: right;">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
-                    Save
-                  </button>
-                  <div class="modal fade" id="modal-sm">
-                    <div class="modal-dialog modal-sm">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Edit Data</h4>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <p>Apa kamu yakin untuk menyimpan perubahan data ini?</p>
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-  
-                          <button type="submit" class="btn btn-primary">Simpan</button>
-                        
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                @if(auth()->user()->level == 'petugas')
-                <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
-                @elseif(auth()->user()->level == 'admin')
-                <a href="/admin/barang" class="btn btn-outline-info">Kembali</a>
-                @endif
+                  @if(auth()->user()->level == 'admin')
+                  <a href="/listlelang" class="btn btn-outline-info">Kembali ke lelang</a>
+                  <a href="/admin/barang" class="btn btn-outline-info">Kembali ke barang</a>
+                  @elseif(auth()->user()->level == 'masyarakat')
+                  <a href="/listlelang" class="btn btn-outline-info">Kembali</a>
+                    @elseif(auth()->user()->level == 'petugas')
+                    <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
+                    <button type="submit" style="float:right;"class="btn btn-primary">Save</button>
+                  @endif
               </form>
             </div>
             </div>
             </div>
             </div>
 </section>
+
+<script>
+  function previewImage() {
+    const image = document.querySelector('#image')
+    const imgPreview = document.querySelector('.img-preview')
+
+    imgPreview.style.display = 'block';
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function(oFREvent) {
+      imgPreview.src = oFREvent.target.result;
+    }
+  }
+</script>
 @endsection

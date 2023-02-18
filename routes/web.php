@@ -87,3 +87,4 @@ Route::get('/admin/lelang/', [LelangController::class, 'index'])->name('lelangad
 Route::get('/menawar/{lelang}', [HistoryLelangController::class, 'create'])->name('lelangin.create')->middleware('auth','level:masyarakat');
 Route::get('/data-penawaran', [HistoryLelangController::class, 'index'])->name('datapenawar.index')->middleware('auth','level:petugas');
 Route::post('/menawar/{lelang}', [HistoryLelangController::class, 'store'])->name('lelangin.store')->middleware('auth','level:masyarakat');
+Route::delete('/data-penawaran/{lelang}', [HistoryLelangController::class, 'destroy'])->name('lelangin.destroy')->middleware('auth','level:petugas');

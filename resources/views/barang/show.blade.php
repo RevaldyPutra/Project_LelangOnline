@@ -48,7 +48,7 @@
                   </div>
                   <div class="form-group">
                     <label>Harga awal</label>
-                    <input type="text" name="harga_awal" value="{{ $barangs->harga_awal }}"class="form-control"  disabled>
+                    <input type="text" name="harga_awal" value="@currency($barangs->harga_awal)"class="form-control"  disabled>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Deskripsi barang</label>
