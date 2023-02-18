@@ -17,7 +17,31 @@
   }
 </style>
 <section class="content">
-
+  @if(session()->has('success'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" value="{{ session('success') }}">
+      </div>
+    </div>
+  </div>
+  @elseif(session()->has('editsuccess'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" value="{{ session('editsuccess') }}">
+      </div>
+    </div>
+  </div>
+  @elseif(session()->has('deletesuccess'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" value="{{ session('deletesuccess') }}">
+      </div>
+    </div>
+  </div>
+  @endif
 <!-- Default box -->
 <div class="card">
   <div class="card-header">

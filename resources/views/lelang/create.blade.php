@@ -6,6 +6,15 @@
 
 @section('content')
 <section class="content">
+  @if(session()->has('success'))
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-5">
+      <input type="text" class="form-control is-valid" value="{{ session('success') }}">
+    </div>
+  </div>
+</div>
+@endif
     <div class="row match-height">
         <div class="col-12">
             <div class="card">

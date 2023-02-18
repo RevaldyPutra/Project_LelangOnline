@@ -71,7 +71,7 @@ class UserController extends Controller
             'passwordshow' => ($data['passwordshow']),
             'telepon' => ($data['telepon']),
         ]);
-        return redirect ('/admin/users');
+        return redirect ('/admin/users')->with('success','Kamu telah berhasil meregistrasi akun');
         }
 
     /**
@@ -141,7 +141,7 @@ class UserController extends Controller
         $users->level = $request->level;
         $users->telepon = $request->telepon;
         $users->update(); 
-        return redirect('/admin/users');
+        return redirect('/admin/users')->with('editsuccess','Kamu berhasil mengupdate akun');
     }
     public function updateprofile(Request $request,User $user)
     {
@@ -173,6 +173,6 @@ class UserController extends Controller
         //
         $users = User::find($user->id);
         $users->delete();
-        return redirect('admin/users');
+        return redirect('admin/users')->with('deletesuccess','Kamu berhasil menghapus akun');
     }
 }

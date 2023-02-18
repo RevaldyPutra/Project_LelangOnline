@@ -7,17 +7,31 @@
 @section('content')
 
 <section class="content">
-  @if(!empty($lelangs))
-@if(Route::has('lelangin.store', $lelangs->id))
-<div class="form-group">
-  <div class="row">
-    <div class="col-md-5">
-      <input type="text" class="form-control is-valid" value="Anda berhasil menawar barang ini">
+  @if(session()->has('success'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" value="{{ session('success') }}">
+      </div>
     </div>
   </div>
-</div>
-@endif
-@endif
+  @elseif(session()->has('editsuccess'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" value="{{ session('editsuccess') }}">
+      </div>
+    </div>
+  </div>
+  @elseif(session()->has('deletesuccess'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" value="{{ session('deletesuccess') }}">
+      </div>
+    </div>
+  </div>
+  @endif
     <div class="container-fluid">     
         @if(!empty($lelangs))
       <div class="row">

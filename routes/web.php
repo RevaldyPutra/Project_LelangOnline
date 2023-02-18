@@ -65,7 +65,12 @@ Route::get('profile', [UserController::class, 'editprofile'])->name('user.editpr
 Route::resource('user', UserController::class)->middleware('auth');
 
 // ROUTE BARANG
-Route::resource('barang', BarangController::class)->middleware('auth', 'level:petugas');
+// Route::resource('barang', BarangController::class)->middleware('auth', 'level:petugas');
+Route::put('petugas/barang/{barang}', [BarangController::class, 'update'])->name('barang.update')->middleware('auth', 'level:petugas');
+Route::get('petugas/barang/{barang}', [BarangController::class, 'show'])->name('barang.show')->middleware('auth', 'level:petugas');
+Route::delete('barang/{barang}', [BarangController::class, 'destroy'])->name('barang.destroy')->middleware('auth', 'level:petugas');
+Route::get('petugas/barang/{barang}/edit', [BarangController::class, 'edit'])->name('barang.edit')->middleware('auth', 'level:petugas');
+Route::post('barang/', [BarangController::class, 'store'])->name('barang.store')->middleware('auth', 'level:petugas');
 Route::get('petugas/barang', [BarangController::class, 'index'])->name('barang.index')->middleware('auth', 'level:petugas');
 Route::get('admin/barang', [BarangController::class, 'index'])->name('barang')->middleware('auth', 'level:admin');
 Route::get('barang/create', [BarangController::class, 'create'])->name('barang.create')->middleware('auth', 'level:admin,petugas');

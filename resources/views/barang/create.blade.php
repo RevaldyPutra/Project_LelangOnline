@@ -8,7 +8,6 @@
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-
                   <div class="form-group">
                     <label> </label>
                     <br>
