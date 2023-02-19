@@ -58,7 +58,7 @@
           <li class="nav-header">DATA BARANG</li>
           <li class="nav-item">
             <a href="/petugas/barang" class="nav-link">
-              <i class="nav-icon fas fa-box"></i>
+              <i class="nav-icon fas fa-cubes"></i>
               <p>
                 Barang
               </p>
@@ -82,12 +82,35 @@
               </p>
             </a>
           </li>
-
+          <li class="nav-header">GENERATE LAPORAN</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Laporan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Laporan Lelang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Laporan History</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           @elseif (auth()->user()->level == 'admin')
           <li class="nav-header">DATA BARANG</li>
           <li class="nav-item">
             <a href="/admin/barang" class="nav-link">
-              <i class="nav-icon fas fa-box"></i>
+              <i class="nav-icon fas fa-cubes"></i>
               <p>
                 Barang
               </p>
@@ -110,6 +133,30 @@
                 Data Users
               </p>
             </a>
+          </li>
+          <li class="nav-header">GENERATE LAPORAN</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Laporan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Laporan Lelang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Laporan History</p>
+                </a>
+              </li>
+            </ul>
           </li>
           @elseif (auth()->user()->level == 'masyarakat')
           <li class="nav-header">DASHBOARD</li>
