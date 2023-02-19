@@ -32,7 +32,7 @@ class HistoryLelangController extends Controller
     {
         //
         $lelangs = Lelang::find($lelang->id);
-        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get()->where('lelang_id',$lelang->id);
         $historyLelangsshow = HistoryLelang::all()->where('name', 'masyarakat');
         return view('masyarakat.penawaran', compact('lelangs', 'historyLelangs','historyLelangsshow'));
     }

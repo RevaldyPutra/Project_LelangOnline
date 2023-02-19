@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Lelang;
+use App\Models\Barang;
+use App\Models\HistoryLelang;
+use Illuminate\Support\Facades\Auth;
 
 class MasyarakatController extends Controller
 {
@@ -15,8 +19,11 @@ class MasyarakatController extends Controller
     public function index()
     {
         //
+        $historyLelangs = HistoryLelang::all()->where('users_id',Auth::user()->id);
+        $lelangs = Lelang::all();
+        $barangs = Barang::all();
         $users = User::all();
-        return view('masyarakat.index', compact('users'));
+        return view('masyarakat.index', compact('users','historyLelangs','lelangs','barangs'));
     }
 
     /**
