@@ -17,7 +17,10 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        return view('user.index', compact('users'));
+        $usersadmin = User::all()->where('level', 'admin');
+        $userspetugas = User::all()->where('level', 'petugas');
+        $usersmasyarakat = User::all()->where('level','masyarakat');
+        return view('user.index', compact('users','usersadmin','userspetugas','usersmasyarakat'));
     }
 
     /**

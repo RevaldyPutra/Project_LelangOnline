@@ -81,12 +81,16 @@ Route::get('profile', 'editprofile')->name('user.editprofile')->middleware('auth
     Route::controller(BarangController::class)->group(function() {
 // ROUTE BARANG
 Route::put('petugas/barang/{barang}', 'update')->name('barang.update')->middleware('auth', 'level:petugas');
+Route::put('admin/barang/{barang}', 'update')->name('barangmin.update')->middleware('auth', 'level:admin');
 Route::get('petugas/barang/{barang}', 'show')->name('barang.show')->middleware('auth', 'level:petugas');
-Route::delete('barang/{barang}', 'destroy')->name('barang.destroy')->middleware('auth', 'level:petugas');
+Route::get('admin/barang/{barang}', 'show')->name('barangmin.show')->middleware('auth', 'level:admin');
+Route::delete('barang/{barang}', 'destroy')->name('barang.destroy')->middleware('auth', 'level:petugas,admin');
 Route::get('petugas/barang/{barang}/edit', 'edit')->name('barang.edit')->middleware('auth', 'level:petugas');
-Route::post('barang/', 'store')->name('barang.store')->middleware('auth', 'level:petugas');
-Route::get('petugas/barang', 'index')->name('barang.index')->middleware('auth', 'level:petugas');
-Route::get('admin/barang', 'index')->name('barangmin.index')->middleware('auth', 'level:admin');
+Route::get('admin/barang/{barang}/edit', 'edit')->name('barangmin.edit')->middleware('auth', 'level:admin');
+Route::post('barang/', 'store')->name('barang.store')->middleware('auth', 'level:petugas,admin');
+Route::get('barang/', 'index')->name('barang.index')->middleware('auth', 'level:petugas,admin');
+Route::get('admin/barang/', 'index')->name('barangmin.index')->middleware('auth', 'level:admin');
+Route::get('petugas/barang', 'index')->name('baranggas.index')->middleware('auth', 'level:petugas]');
 Route::get('barang/create', 'create')->name('barang.create')->middleware('auth', 'level:admin,petugas');
     });
 

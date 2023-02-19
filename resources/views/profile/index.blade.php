@@ -79,6 +79,13 @@
                             <label>Waktu dibuat</label>
                             <input type="text" name="created_at" value="{{ Auth::user()->created_at }}"class="form-control" id="exampleInputEmail1"readonly>
                           </div>
+                          @if(Auth::user()->level == 'admin')
+                          <a href="{{route('dashboard.admin')}}" class="btn btn-outline-info">Kembali</a>
+                          @elseif(Auth::user()->level == 'petugas')
+                          <a href="{{route('dashboard.petugas')}}" class="btn btn-outline-info">Kembali</a>
+                          @elseif(Auth::user()->level == 'masyarakat')
+                          <a href="{{route('dashboard.masyarakat')}}" class="btn btn-outline-info">Kembali</a>
+                          @endif
                     </form>
                   </div>
                 <!-- /.tab-pane -->

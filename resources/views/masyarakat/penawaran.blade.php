@@ -19,7 +19,7 @@
     </div>
   </div>
   @elseif(session()->has('editsuccess'))
-  <<div class="form-group">
+  <div class="form-group">
     <div class="row">
       <div class="col-md-4">
         <div class="alert alert-success" role="alert">
@@ -86,9 +86,33 @@
                       </div>
                       <div class="form-group row">
                         <div class="">
-                          <button type="submit" class="btn btn-danger">Tawarkan</button>
+                          <button type="button" data-toggle="modal" data-target="#modal-sl" class="btn btn-danger">Tawarkan</button>
                         </div>
                      </div>
+                     <div class="modal fade" id="modal-sl">
+                      <div class="modal-dialog modal-sl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Tawar Harga</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Apa kamu yakin untuk menawar {{ $lelangs->barang->nama_barang}}</p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+    
+                            <button type="submit" class="btn btn-danger">Iya</button>
+                          
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
                     </form>
                   </div>
                 <div class="tab-pane active" id="details">
@@ -96,39 +120,39 @@
                     <div class="form-group">
                       <label for="inputName">Nama Barang</label>
                       <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputName" value="{{ $lelangs->barang->nama_barang}}"disabled>
+                        <input type="text" class="form-control" id="inputName" value="{{ $lelangs->barang->nama_barang}}"readonly>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputEmail">Harga Awal</label>
                       <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->barang->harga_awal)"disabled>
+                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->barang->harga_awal)"readonly>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputEmail">Harga akhir</label>
                       <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->harga_akhir)"disabled>
+                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->harga_akhir)"readonly>
                       </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputName2">Tanggal Lelang</label>
                            <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputName2" value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y')}}" disabled>
+                            <input type="text" class="form-control" id="inputName2" value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y')}}" readonly>
                            </div>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputEmail">Status</label>
                             <div class="col-sm-12">
-                             <input type="text" class="form-control" id="inputEmail" value="{{ $lelangs->status}}"disabled>
+                             <input type="text" class="form-control" id="inputEmail" value="{{ $lelangs->status}}"readonly>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                       <label for="inputExperience">Deskripsi Barang</label>
                       <div class="col-sm-12">
-                        <textarea class="form-control" id="inputExperience" disabled>{{ $lelangs->barang->deskripsi_barang}}</textarea>
+                        <textarea class="form-control" id="inputExperience" readonly>{{ $lelangs->barang->deskripsi_barang}}</textarea>
                       </div>
                     </div>
                     @if(auth()->user()->level == 'admin')
@@ -180,10 +204,10 @@
                 <tbody>
                     <tr>
                         <th>No</th>
-                        <th>Nama Penawar</th>
+                        <th>Pelelang</th>
                         <th>Nama Barang</th>
-                        <th>Harga lelang</th>
-                        <th>Tanggal lelang</th>
+                        <th>Harga Penawaran</th>
+                        <th>Tanggal Penawaran</th>
                         <th>Status</th>
                         @if(auth()->user()->level == 'petugas')
                         <th></th>

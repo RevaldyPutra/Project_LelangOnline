@@ -19,6 +19,11 @@
                     <img src="{{ asset('storage/' . $barangs->image)}}" alt="{{ $barangs->nama_barang }}" class="img-fluid mt-3">
                   </div>
                   @else
+                  <div class="form-group">
+                    <label> </label>
+                    <br>
+                    <img src="{{ asset('adminlte/dist/img/lelangonlinesample.jpg')}}" alt="{{ $barangs->nama_barang }}" class="img-fluid mt-3">
+                  </div>
 
                   @endif
               </div>
@@ -56,14 +61,11 @@
                   </div>
                   
                 <!-- /.card-body -->
-                  @if(auth()->user()->level == 'admin')
-                  <a href="/listlelang" class="btn btn-outline-info">Kembali ke lelang</a>
-                  <a href="/admin/barang" class="btn btn-outline-info">Kembali ke barang</a>
-                  @elseif(auth()->user()->level == 'masyarakat')
-                  <a href="/listlelang" class="btn btn-outline-info">Kembali</a>
-                    @elseif(auth()->user()->level == 'petugas')
-                    <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
-                  @endif
+                @if(Auth::user()->level == 'petugas')
+                <a href="{{route('barang.index')}}" class="btn btn-outline-info">Kembali</a>
+                @elseif(Auth::user()->level == 'admin')
+                <a href="{{route('barangmin.index')}}" class="btn btn-outline-info">Kembali</a>
+                @endif
               </form>
             </div>
             </div>

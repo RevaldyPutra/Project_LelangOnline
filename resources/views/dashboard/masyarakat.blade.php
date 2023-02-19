@@ -1,7 +1,10 @@
 @extends('master')
 
 @section('judul')
+@if(session()->has('success'))
+{{session('success')}}
 <h1>Selamat Datang {{ Auth::user()->name }}</h1>
+@endif
 @endsection
 
 @section('content')
@@ -31,4 +34,5 @@
     @endforeach 
 </div>
 </section>
+
 @endsection

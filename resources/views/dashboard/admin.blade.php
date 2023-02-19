@@ -69,5 +69,55 @@
         </div>
     </div>
     </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Data Penawaran Lelang</strong>
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body p-0">
+    <table class="table table-hover">
+          <thead>
+              <tbody>
+                  <tr>
+                      <th>No</th>
+                      <th>Pelelang</th>
+                      <th>Nama Barang</th>
+                      <th>Harga Penawaran</th>
+                      <th>Tanggal Penawaran</th>
+                      <th>Status</th>
+                      
+                  </tr>
+              </tbody>
+          </thead>
+          @forelse ($historyLelangs as $item)
+          <tbody>
+          <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $item->user->name }}</td>
+              <td>{{ $item->nama_barang }}</td>
+              <td>@currency($item->harga)</td>
+              <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
+              <td>
+                <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
+              </td>
+          </tr>
+          @empty
+          <tr>
+              <td>Data masih kosong</td>
+          </tr>
+          @endforelse
+          </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+    <!-- /.card-footer-->
+  </div>
 </section>
 @endsection

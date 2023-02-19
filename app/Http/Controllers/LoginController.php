@@ -39,13 +39,14 @@ class LoginController extends Controller
                 return redirect()->route('dashboard.petugas');
             }else if ($user->level == 'masyarakat')
             {
-                return redirect()->route('dashboard.masyarakat');
+                return redirect()->route('dashboard.masyarakat')->with('success','');
             }else {
                 return redirect()->route('login');
             }
         }
         return back()->withErrors([
-            'username' => 'The Provided credential do not match our records.',
+            'username' => 'Username Anda Salah',
+            'password' => 'Password Anda Salah',
         ])->onlyInput('username');
     }
     public function register()

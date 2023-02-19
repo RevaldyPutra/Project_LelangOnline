@@ -62,12 +62,9 @@
                   
                 <!-- /.card-body -->
                   @if(auth()->user()->level == 'admin')
-                  <a href="/listlelang" class="btn btn-outline-info">Kembali ke lelang</a>
-                  <a href="/admin/barang" class="btn btn-outline-info">Kembali ke barang</a>
-                  @elseif(auth()->user()->level == 'masyarakat')
-                  <a href="/listlelang" class="btn btn-outline-info">Kembali</a>
+                  <a href="{{route('barangmin.index')}}" class="btn btn-outline-info">Kembali</a>
                     @elseif(auth()->user()->level == 'petugas')
-                    <a href="/petugas/barang" class="btn btn-outline-info">Kembali</a>
+                    <a href="{{route('baranggas.index')}}" class="btn btn-outline-info">Kembali</a>
                     <button type="submit" style="float:right;"class="btn btn-primary">Save</button>
                   @endif
               </form>

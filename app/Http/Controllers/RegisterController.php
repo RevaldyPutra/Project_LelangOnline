@@ -45,6 +45,6 @@ class RegisterController extends Controller
         'passwordshow' => ($data['password']),
         'telepon' => ($data['telepon']),
     ]);
-    return redirect ('/login');
+    return redirect()->route('login')->with('success','Registrasi Berhasil!');
 }
 }

@@ -42,8 +42,19 @@
       <a href="#" class="h1"><b>Lelang</b>Online</a>
     </div>
     <div class="card-body">
+      @if(session()->has('success'))
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+              {{session('success')}}
+              <li class="fas fa-check-circle"></li>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
       <p class="login-box-msg">Login untuk melakukan lelang online</p>
-
       <form action="{{ route('login.proses') }}" method="POST">
         @csrf
         <div class="input-group mb-3">

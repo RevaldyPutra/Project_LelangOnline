@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Halaman Data Penawaran</h1>
+<h1>Halaman Data Penawaran Lelang</h1>
 @endsection
 
 @section('content')
@@ -28,7 +28,7 @@
                     <th>No</th>
                     <th>Nama Penawar</th>
                     <th>Nama Barang</th>
-                    <th>Harga lelang</th>
+                    <th>Harga Penawaran</th>
                     <th>Tanggal lelang</th>
                     <th>Status</th>
                     @if(auth()->user()->level == 'petugas')
@@ -69,23 +69,11 @@
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
 
-            <a class="btn btn-primary btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
-              <i class="fas fa-folder">
+            <a class="btn btn-success btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
+              <i class="fas fa-check">
               </i>
-              View
+              Pilih Jadi Pemenang
           </a>
-          <a class="btn btn-info btn-sm" href="">
-              <i class="fas fa-pencil-alt">
-              </i>
-              Edit
-          </a>
-            @csrf
-            @method('DELETE')   
-            <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-              <i class="fas fa-trash">
-              </i>
-              Delete
-            </button>
           </form>
         </td>
         @else

@@ -28,8 +28,9 @@
       </div>
     </div>
   </div>
+
   @elseif(session()->has('editsuccess'))
-  <<div class="form-group">
+  <div class="form-group">
     <div class="row">
       <div class="col-md-4">
         <div class="alert alert-success" role="alert">
@@ -39,6 +40,7 @@
       </div>
     </div>
   </div>
+
   @elseif(session()->has('deletesuccess'))
   <div class="form-group">
     <div class="row">
@@ -50,6 +52,7 @@
       </div>
     </div>
   </div>
+
   @endif
 <!-- Default box -->
 <div class="card">
@@ -110,14 +113,25 @@
               <i class="fas fa-pen"></i>
              Edit
             </a> --}}
+            @if(Auth::user()->level == 'petugas')
             <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $value->id)}}">
               <i class="fas fa-folder"></i>
               View
           </a>
           <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $value->id)}}">
-              <i class="fas fa-pencil-alt"></i>
-              Edit
+            <i class="fas fa-pencil-alt"></i>
+            Edit
           </a>
+          @elseif(Auth::user()->level == 'admin')
+          <a class="btn btn-primary btn-sm" href="{{ route('barangmin.show', $value->id)}}">
+            <i class="fas fa-folder"></i>
+            View
+          </a>
+          <a class="btn btn-info btn-sm" href="{{ route('barangmin.edit', $value->id)}}">
+            <i class="fas fa-pencil-alt"></i>
+            Edit
+          </a>
+          @endif
           @csrf
             @method('DELETE')   
             {{-- <button class="btn btn-danger"type="submit"value="Delete">
@@ -144,5 +158,4 @@
 <!-- /.card -->
 
 </section>
-@stack('scripts')
 @endsection

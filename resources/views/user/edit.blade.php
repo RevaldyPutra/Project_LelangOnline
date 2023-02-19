@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="level">Level</label>
                     <select class="form-control @error('level') is-invalid @enderror" value="{{ $users->level }}" old="{{$users->level}}"name="level">
-                      <option selected disabled>{{ $users->level}}</option>
+                      <option selected>{{ $users->level}}</option>
                         <option>admin</option>
                         <option>petugas</option>
                         <option>masyarakat</option>

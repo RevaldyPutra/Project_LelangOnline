@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Registrasi Akun Operator</h1>
+<h1>Registrasi Akun</h1>
 @endsection
 
 @section('content')

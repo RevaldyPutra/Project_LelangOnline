@@ -58,7 +58,7 @@
           <li class="nav-header">DATA BARANG</li>
           <li class="nav-item">
             <a href="/petugas/barang" class="nav-link">
-              <i class="nav-icon fas fa-briefcase"></i>
+              <i class="nav-icon fas fa-box"></i>
               <p>
                 Barang
               </p>
@@ -76,9 +76,9 @@
           <li class="nav-header">DATA PENAWARAN</li>
           <li class="nav-item">
             <a href="{{route('datapenawar.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tag"></i>
+              <i class="nav-icon fas fa-tags"></i>
               <p>
-                Data Penawaran
+                Data Penawaran Lelang
               </p>
             </a>
           </li>
@@ -87,7 +87,7 @@
           <li class="nav-header">DATA BARANG</li>
           <li class="nav-item">
             <a href="/admin/barang" class="nav-link">
-              <i class="nav-icon fas fa-briefcase"></i>
+              <i class="nav-icon fas fa-box"></i>
               <p>
                 Barang
               </p>
