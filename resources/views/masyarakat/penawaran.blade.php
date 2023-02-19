@@ -73,9 +73,13 @@
                 <div class="tab-pane" id="bid">
                     <form action="{{route('lelangin.store', $lelangs->id)}}" method="post" class="form-horizontal" data-parsley-validate>
                       @csrf
-                      <div class="form-group">
+                    <div class="form-group">
                         <label for="inputName">Tawarkan Harga </label>
-                        <div class="col-sm-12">
+                      <div class="col-sm-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><strong>Rp.</strong></span>
+                            </div>
                           <input type="text" name="harga_penawaran"class="form-control @error('harga_penawaran') is-invalid @enderror" placeholder="Masukan Harga harus lebih dari @currency($lelangs->harga_akhir)">
                           @error('harga_penawaran')
                           <div class="invalid-feedback">
@@ -83,6 +87,7 @@
                           </div>
                           @enderror
                         </div>
+                      </div>
                       </div>
                       <div class="form-group row">
                         <div class="">

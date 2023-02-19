@@ -54,13 +54,16 @@
                                   @enderror
                               </div>
                               <div class="col-md-6 col-12">
-                                  <div class="form-group mandatory">
-                                      <label for="harga_awal" class="form-label">{{ __('Harga Akhir') }}</label>
-                                      <input type="text" id="harga_akhir" class="form-control @error('harga_akhir') is-invalid @enderror" placeholder="Input Harga, Hanya Angka" name="harga_akhir" data-parsley-required="true" value="{{ old('harga_akhir') }}">
+                                <label>Harga awal</label>
+                                <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"><strong>Rp.</strong></span>
                                   </div>
+                                  <input type="text" id="harga_akhir" class="form-control @error('harga_akhir') is-invalid @enderror" placeholder="Input Harga, Hanya Angka" name="harga_akhir" data-parsley-required="true" value="{{ old('harga_akhir') }}">
                                   @error('harga_akhir')
-                                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                                  <div class="alert alert-danger" role="alert">{{ $message }}</div>
                                   @enderror
+                                </div>
                               </div>
                                                           
                             </div>

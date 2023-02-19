@@ -43,7 +43,12 @@
                   </div>
                   <div class="form-group">
                     <label>Harga awal</label>
-                    <input type="text" name="harga_awal" value="{{$barangs->harga_awal}}"class="form-control" >
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><strong>Rp.</strong></span>
+                      </div>
+                      <input type="text" name="harga_awal" value="{{$barangs->harga_awal}}"class="form-control" >
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="image" class="form-label">Gambar Barang</label>

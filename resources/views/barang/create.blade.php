@@ -52,12 +52,17 @@
                 </div>
                   <div class="form-group">
                     <label>Harga awal</label>
-                    <input type="text" name="harga_awal" value="{{old('harga_awal')}}"class="form-control @error('harga_awal') is-invalid @enderror"  placeholder="Enter harga awal">
-                    @error('harga_awal')
-                    <div class="invalid-feedback">
-                      {{ $message }}
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><strong>Rp.</strong></span>
+                      </div>
+                       <input type="text" name="harga_awal" value="{{old('harga_awal')}}"class="form-control @error('harga_awal') is-invalid @enderror"  placeholder="Enter harga awal">
+                        @error('harga_awal')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                     </div>
-                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="image" class="form-label">Gambar Barang</label>
