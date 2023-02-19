@@ -82,7 +82,7 @@ class BarangController extends Controller
         // ]);
 
         Barang::create($validateData);
-        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahakan');
+        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }
 
     /**

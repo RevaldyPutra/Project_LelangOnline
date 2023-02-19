@@ -187,8 +187,7 @@
     </div><!-- /.container-fluid -->
     <div class="card">
         <div class="card-header">
-    
-        
+          <strong>Data Pelelang {{ $lelangs->barang->nama_barang }}</strong>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>

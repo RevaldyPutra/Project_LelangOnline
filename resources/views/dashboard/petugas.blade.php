@@ -6,6 +6,11 @@
 
 @section('content')
 <section class="content">
+  @if(session()->has('success'))
+  <div class="alert alert-info col-md-5" role="alert">
+    {{session('success')}}Selamat datang <strong>{{Auth::user()->name}}</strong>
+  </div>
+  @endif
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">

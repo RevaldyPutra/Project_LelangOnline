@@ -15,19 +15,17 @@
             <h3>
              {{Auth::user()->level}} dilarang akses 
             </h3>
-            </strong>      
-          <form class="search-form">
-            
-
-              <div class="input-group-append">
-                @if(auth()->user()->level == 'admin')
-                  <a href="/dashboard/admin" name="submit" class="btn btn-danger"><i class="fas fa-search"></i>
-                  </a>
-                  @elseif(auth()->user()->level == 'petugas')
-                  <a href="/dashboard/petugas" name="submit" class="btn btn-danger"><i class="fas fa-search"></i>
-                    @endif
+            </strong>
+            <div class="input-group-append">
+            @if(Auth::user()->level == 'admin')      
+              <a href="{{route('dashboard.admin')}}" class="btn btn-danger">Kembali Ke Dashboard</a>
+              @elseif(Auth::user()->level == 'petugas')
+              <a href="{{route('dashboard.petugas')}}" class="btn btn-danger">Kembali Ke Dashboard</a>
+              @elseif(Auth::user()->level == 'masyarakat')
+              <a href="{{route('dashboard.masyarakat')}}" class="btn btn-danger">Kembali Ke Dashboard</a>
+            @endif
               </div>
-            </div>
+            
             <!-- /.input-group -->
           </form>
         </div>

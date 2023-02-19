@@ -32,7 +32,7 @@
                                 <select class="form-select form-control @error('barangs_id') is-invalid @enderror" id="barangs_id" name="barangs_id" data-parsley-required="true">
                                   <option value="" selected>Pilih Barang</option>
                                   @forelse ($barangs as $item)
-                                    <option value="{{ $item->id }}">{{ Str::of($item->nama_barang)->title() }} - {{ Str::of($item->harga_awal) }}</option>
+                                    <option value="{{ $item->id }}">{{ Str::of($item->nama_barang)->title() }} -  @currency($item->harga_awal)</option>
                                   @empty
                                     <option value="" disabled>Barang Semuanya Sudah Di Lelang</option>
                                   @endforelse

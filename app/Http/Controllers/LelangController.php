@@ -72,7 +72,7 @@ class LelangController extends Controller
         $lelang->status = 'dibuka';
         $lelang->save();
 
-        return redirect()->route('lelang.index')->with('success','Data lelang berhasil ditambahkan');
+        return redirect()->route('lelangpetugas.index')->with('success','Data lelang berhasil ditambahkan');
     }
 
     /**
