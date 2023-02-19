@@ -185,7 +185,7 @@
           </tr>
           @empty
           <tr>
-              <td>Data masih kosong</td>
+            <td colspan="5" style="text-align: center" class="text-danger"><strong>Belum ada penawaran</strong></td>
           </tr>
           @endforelse
           </tbody>
