@@ -90,7 +90,7 @@ Route::get('admin/barang/{barang}/edit', 'edit')->name('barangmin.edit')->middle
 Route::post('barang/', 'store')->name('barang.store')->middleware('auth', 'level:petugas,admin');
 Route::get('barang/', 'index')->name('barang.index')->middleware('auth', 'level:petugas,admin');
 Route::get('admin/barang/', 'index')->name('barangmin.index')->middleware('auth', 'level:admin');
-Route::get('petugas/barang', 'index')->name('baranggas.index')->middleware('auth', 'level:petugas]');
+Route::get('petugas/barang', 'index')->name('baranggas.index')->middleware('auth', 'level:petugas');
 Route::get('barang/create', 'create')->name('barang.create')->middleware('auth', 'level:admin,petugas');
     });
 
