@@ -48,7 +48,7 @@ class HistoryLelangController extends Controller
         //
         // ddd($request);
         $request->validate([
-            'harga_penawaran'   => 'required|numeric'
+            'harga_penawaran'   => 'required|numeric',
         ],
         [
             'harga_penawaran.required'  => "Harga penawaran harus diisi",

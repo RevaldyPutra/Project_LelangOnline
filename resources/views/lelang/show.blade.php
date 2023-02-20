@@ -66,30 +66,38 @@
                         <input type="text" class="form-control" id="inputName" value="{{ $lelangs->barang->nama_barang}}"disabled>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputEmail">Harga Awal</label>
-                      <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->barang->harga_awal)"disabled>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail">Harga Awal</label>
+                        <div class="col-sm-12">
+                          <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->barang->harga_awal)"disabled>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail">Harga akhir</label>
-                      <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->harga_akhir)"disabled>
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail">Harga akhir</label>
+                        <div class="col-sm-12">
+                          <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->harga_akhir)"disabled>
+                        </div>
                       </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-9">
                           <label for="inputName2">Tanggal Lelang</label>
                            <div class="col-sm-12">
                             <input type="text" class="form-control" id="inputName2" value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y')}}" disabled>
                            </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                           <label for="inputEmail">Status</label>
                             <div class="col-sm-12">
                              <input type="text" class="form-control" id="inputEmail" value="{{ $lelangs->status}}"disabled>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail">Pemenang Lelang</label>
+                        <div class="col-sm-12">
+                         <input type="text" class="form-control" id="inputEmail" value="{{ $lelangs->pemenang}}"disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -156,10 +164,6 @@
                       <th></th>
                       @else
                       @endif
-                      @if(auth()->user()->level == 'admin')
-                      <th></th>
-                      @else
-                      @endif
                       
                   </tr>
               </tbody>
@@ -175,6 +179,7 @@
               <td>
                 <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
               </td>
+              @if(Auth::user()->level == 'petugas')
               <td>
                 <a class="btn btn-success btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
                   <i class="fas fa-check">
@@ -182,6 +187,8 @@
                   Pilih Jadi Pemenang
               </a>
               </td>
+              @else
+              @endif
           </tr>
           @empty
           <tr>

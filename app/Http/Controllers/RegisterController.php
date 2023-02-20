@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'name' => 'required|min:3|max:50',
             'username' => 'required|unique:users,username|max:15',
             'password' => 'required|min:4',
-            'passwordshow' => 'required',
+            'passwordshow' => 'required|same:password',
             'telepon' => 'required|max:15',
         ],
         [
@@ -31,6 +31,7 @@ class RegisterController extends Controller
             'username.max' => 'Username terlalu panjang',
             'password.required' => 'Password tidak boleh kosong',
             'passwordshow.required' => 'Password tidak boleh kosong',
+            'passwordshow.same' => 'Password tidak sama',
             'password.min' => 'Password terlalu pendek',
             'telepon.max' => 'No telp terlalu panjang',
             'telepon.required' => 'No telp tidak boleh kosong',

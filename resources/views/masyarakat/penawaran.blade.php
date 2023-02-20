@@ -80,7 +80,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><strong>Rp.</strong></span>
                             </div>
-                          <input type="text" name="harga_penawaran"class="form-control @error('harga_penawaran') is-invalid @enderror" placeholder="Masukan Harga harus lebih dari @currency($lelangs->harga_akhir)">
+                          <input type="text" name="harga_penawaran"class="form-control @error('harga_penawaran') is-invalid @enderror" placeholder="Masukan Harga harus lebih dari @currency($lelangs->barang->harga_awal)">
                           @error('harga_penawaran')
                           <div class="invalid-feedback">
                             <b>{{ $message }}</b>

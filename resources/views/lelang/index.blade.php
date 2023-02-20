@@ -65,8 +65,8 @@
                     <th>No</th>
                     <th>Nama barang</th>
                     <th>Harga awal</th>
-                    <th>Harga lelang</th>
-                    <th>Tanggal lelang</th>
+                    <th>Harga Akhir</th>
+                    <th>Pemenang</th>
                     <th>Status</th>
                     @if(auth()->user()->level == 'petugas')
                     <th></th>
@@ -87,7 +87,7 @@
             <td>{{ $item->barang->nama_barang }}</td>
             <td>@currency($item->barang->harga_awal)</td>
             <td>@currency($item->harga_akhir)</td>
-            <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
+            <td>{{ $item->pemenang }}</td>
             <td>
               <span class="badge {{ $item->status == 'ditutup' ? 'bg-danger' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
             </td>
