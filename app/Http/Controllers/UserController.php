@@ -48,7 +48,7 @@ class UserController extends Controller
             'username' => 'required|unique:users,username|max:15',
             'level' => 'required',
             'password' => 'required|min:4',
-            'passwordshow' => 'required',
+            'passwordshow' => 'required|same:passworrd',
             'telepon' => 'required|max:15',
         ],  
         [
@@ -62,6 +62,7 @@ class UserController extends Controller
             'password.required' => 'Password tidak boleh kosong',
             'passwordshow.required' => 'Password tidak boleh kosong',
             'password.min' => 'Password terlalu pendek',
+            'passwordshow.same' => 'Password tidak sama',
             'telepon.max' => 'No telp terlalu panjang',
             'telepon.required' => 'No telp tidak boleh kosong',
         ]

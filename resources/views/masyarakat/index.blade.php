@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Data Masyarakat</h1>
+<h1>Data Penawaran {{Auth::user()->name}}</h1>
 @endsection
 
 @section('content')
@@ -101,5 +101,6 @@
   <!-- /.card-body -->
   <!-- /.card-footer-->
 </div>
+
 </section>
 @endsection

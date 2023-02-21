@@ -58,7 +58,7 @@ Route::get('/dashboard/masyarakat/listlelang', [ListController::class, 'index'])
 
 
 // ROUTE MASYARAKAT
-Route::get('data-penawaran-anda', [MasyarakatController::class, 'index'])->name('masyarakat.index')->middleware('auth', 'level:masyarakat');
+Route::get('data-penawaran-anda', [MasyarakatController::class, 'index'])->name('masyarakatlelang.index')->middleware('auth', 'level:masyarakat');
 Route::resource('masyarakat', MasyarakatController::class)->middleware('auth', 'level:admin');
 
     // Controller User
