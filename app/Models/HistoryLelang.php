@@ -13,9 +13,8 @@ class HistoryLelang extends Model
     use HasFactory;
     protected $table = 'history_lelangs';
     protected $fillable = [
-        'lelangs_id',
+        'lelang_id',
         'users_id',
-        'barangs_id',
         'nama_barang',
         'harga',
         'tanggal',
@@ -27,10 +26,6 @@ class HistoryLelang extends Model
     }
     public function lelang()
     {
-        return $this->hasOne('App\Models\Lelang', 'id');
-    }
-    public function barang()
-    {
-        return $this->hasOne('App\Models\Barang', 'id', 'barangs_id');
+        return $this->hasOne('App\Models\Lelang', 'id', 'lelang_id');
     }
 }

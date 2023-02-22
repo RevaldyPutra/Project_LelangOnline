@@ -48,7 +48,7 @@ class UserController extends Controller
             'username' => 'required|unique:users,username|max:15',
             'level' => 'required',
             'password' => 'required|min:4',
-            'passwordshow' => 'required|same:passworrd',
+            'passwordshow' => 'required|same:password',
             'telepon' => 'required|max:15',
         ],  
         [

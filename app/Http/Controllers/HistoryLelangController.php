@@ -57,7 +57,6 @@ class HistoryLelangController extends Controller
 
         $historyLelang = new Historylelang();
         $historyLelang->lelang_id = $lelang->id;
-        $historyLelang->nama_barang = $lelang->barang->nama_barang;
         $historyLelang->users_id = Auth::user()->id;
         $historyLelang->harga = $request->harga_penawaran;
         $historyLelang->status = 'pending';
