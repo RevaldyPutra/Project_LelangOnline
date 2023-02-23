@@ -47,7 +47,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->user->name }}</td>
-            <td>{{ $item->nama_barang }}</td>
+            <td><a href="{{route('lelangin.create', $item->lelang->id)}}">{{ $item->lelang->barang->nama_barang }}</a></td>
             <td>@currency($item->harga)</td>
             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
             <td>

@@ -68,7 +68,8 @@
                 <!-- /.card-body -->
                   @if(auth()->user()->level == 'admin')
                   <a href="{{route('barangmin.index')}}" class="btn btn-outline-info">Kembali</a>
-                    @elseif(auth()->user()->level == 'petugas')
+                  <button type="submit" style="float:right;"class="btn btn-primary">Save</button>
+                  @elseif(auth()->user()->level == 'petugas')
                     <a href="{{route('baranggas.index')}}" class="btn btn-outline-info">Kembali</a>
                     <button type="submit" style="float:right;"class="btn btn-primary">Save</button>
                   @endif

@@ -27,13 +27,7 @@
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                  <b>Followers</b> <a class="float-right">1,322</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Following</b> <a class="float-right">543</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Friends</b> <a class="float-right">13,287</a>
+                  <b>Penawaran</b> <a class="float-right">{{ $totalpenawaranuser }}</a>
                 </li>
               </ul>
             </div>
@@ -55,24 +49,19 @@
                 <!-- /.tab-pane -->
                 <div class="tab-pane active" id="details">
                     <form class="form-horizontal">
-                          <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control"readonly>
-                          </div>
-                          <div class="form-row">
-                          <div class="form-group col-md-4">
+                      <div class="form-row">
+                         <div class="form-group col-md-6">
                             <label>Username</label>
                             <input type="text" name="username" value="{{ Auth::user()->username }}" class="form-control"readonly>
                           </div>
-                          <div class="form-group col-md-4">
+                          <div class="form-group col-md-6">
                             <label>Telepon</label>
                             <input type="text" name="telepon" value="{{ Auth::user()->telepon }}"class="form-control"readonly>
                           </div>
-                          <div class="form-group col-md-4">
-                            <label>Level</label>
-                            <input type="text" name="level" value="{{ Auth::user()->level }}" class="form-control"readonly>
-                          </div>
-                        </div>
+                         </div>
+                          <div class="form-group ">
+                            <label>Nama</label>
+                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control"readonly></div>
                           <div class="form-group">
                             <label>Waktu dibuat</label>
                             <input type="text" name="created_at" value="{{ Auth::user()->created_at }}"class="form-control"readonly>

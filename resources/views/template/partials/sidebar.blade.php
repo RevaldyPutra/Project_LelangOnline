@@ -116,15 +116,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">DATA LELANG</li>
-          <li class="nav-item">
-            <a href="{{ route('lelangadmin.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tag"></i>
-              <p>
-                Lelang
-              </p>
-            </a>
-          </li>
           <li class="nav-header">DATA USERS</li>
           <li class="nav-item">
             <a href="/admin/users" class="nav-link">

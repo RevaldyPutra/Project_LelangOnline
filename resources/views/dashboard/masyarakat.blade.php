@@ -1,9 +1,9 @@
 @extends('master')
 
 @section('judul')
-@if(session()->has('success'))
+@if(session()->has('successlogin'))
 <div class="alert alert-info col-md-10" role="alert">
-  {{session('success')}}Selamat datang <strong>{{Auth::user()->name}}</strong>
+  {{session('successlogin')}}Selamat datang <strong>{{Auth::user()->name}}</strong>
 </div>
 @endif
 @endsection

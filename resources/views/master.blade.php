@@ -48,6 +48,8 @@
 
     <!-- Main content -->
     @include('template.partials.content')
+    @include('sweetalert::alert')
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

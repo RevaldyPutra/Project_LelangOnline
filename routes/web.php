@@ -69,7 +69,7 @@ Route::get('/admin/operator/create', 'create')->name('user.create')->middleware(
 Route::get('/admin/users', 'index')->name('user.index')->middleware('auth','level:admin');
 Route::get('/admin/users/{user}/edit', 'edit')->name('user.edit')->middleware('auth','level:admin');
 Route::get('/admin/users/{user}', 'show')->name('user.show')->middleware('auth','level:admin');
-Route::delete('/admin/users', 'destroy')->name('user.destroy')->middleware('auth','level:admin');
+Route::delete('/admin/users/{user}', 'destroy')->name('user.destroy')->middleware('auth','level:admin');
 Route::put('/admin/users/{user}', 'update')->name('user.update')->middleware('auth','level:admin');
 Route::get('profile', 'profile')->name('profile.index')->middleware('auth','level:admin,petugas,masyarakat');
 Route::post('profile/update', 'updateprofile')->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
@@ -80,7 +80,7 @@ Route::get('profile', 'editprofile')->name('user.editprofile')->middleware('auth
     // Controller Barang
     Route::controller(BarangController::class)->group(function() {
 // ROUTE BARANG
-Route::put('petugas/barang/{barang}', 'update')->name('barang.update')->middleware('auth', 'level:petugas');
+Route::put('barang/{barang}', 'update')->name('barang.update')->middleware('auth', 'level:petugas,admin');
 Route::put('admin/barang/{barang}', 'update')->name('barangmin.update')->middleware('auth', 'level:admin');
 Route::get('petugas/barang/{barang}', 'show')->name('barang.show')->middleware('auth', 'level:petugas');
 Route::get('admin/barang/{barang}', 'show')->name('barangmin.show')->middleware('auth', 'level:admin');
@@ -106,7 +106,6 @@ Route::get('/menawar/{lelang}', 'show')->name('lelangin.show')->middleware('auth
 Route::get('/petugas/lelang/{lelang}', 'show')->name('lelangpetugas.show')->middleware('auth','level:petugas');
 Route::put('/petugas/lelang/{lelang}', 'update')->name('lelang.update')->middleware('auth','level:petugas');
 Route::get('/admin/lelang/{lelang}', 'show')->name('lelangadmin.show')->middleware('auth','level:admin');
-Route::get('/admin/lelang/', 'index')->name('lelangadmin.index')->middleware('auth','level:admin');
 Route::delete('/petugas/lelang/', 'destroy')->name('lelang.destroy')->middleware('auth','level:petugas');
     });
 

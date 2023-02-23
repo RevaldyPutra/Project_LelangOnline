@@ -6,9 +6,9 @@
 
 @section('content')
 <section class="content">
-  @if(session()->has('success'))
+  @if(session()->has('successlogin'))
   <div class="alert alert-info col-md-5" role="alert">
-    {{session('success')}}Selamat datang <strong>{{Auth::user()->name}}</strong>
+    {{session('successlogin')}}Selamat datang <strong>{{Auth::user()->name}}</strong>
   </div>
   @endif
     <div class="container-fluid">
@@ -92,7 +92,7 @@
           <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $item->user->name }}</td>
-              <td>{{ $item->nama_barang }}</td>
+              <td>{{ $item->lelang->barang->nama_barang }}</td>
               <td>@currency($item->harga)</td>
               <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
               <td>

@@ -33,13 +33,13 @@ class LoginController extends Controller
             
             if ($user->level == 'admin')
             {
-                return redirect()->route('dashboard.admin')->with('success','');
+                return redirect()->route('dashboard.admin')->with('successlogin','');
             }else if ($user->level == 'petugas')
             {
-                return redirect()->route('dashboard.petugas')->with('success','');
+                return redirect()->route('dashboard.petugas')->with('successlogin','');
             }else if ($user->level == 'masyarakat')
             {
-                return redirect()->route('dashboard.masyarakat')->with('success','');
+                return redirect()->route('dashboard.masyarakat')->with('successlogin','');
             }else {
                 return redirect()->route('login');
             }

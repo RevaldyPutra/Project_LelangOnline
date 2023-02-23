@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Barang;
+use App\Models\HistoryLelang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -107,8 +110,10 @@ class UserController extends Controller
     public function editprofile(User $user)
     {
         //
+        $historyLelangs = HistoryLelang::all();
+        $historylelangs = DB::table('history_lelangs')->where('users_id',Auth::user()->id)->count();
         $users = User::find($user->id);
-        return view('profile.index', compact('users'));
+        return view('profile.index', compact('users'))->with(['totalpenawaranuser'=>$historylelangs]);
     }
 
     /**
@@ -151,7 +156,7 @@ class UserController extends Controller
         $users->level = $request->level;
         $users->telepon = $request->telepon;
         $users->update(); 
-        return redirect('/admin/users')->with('editsuccess','Data Akun Berhasil Diedit');
+        return redirect()->route('user.index')->with('editsuccess','Data Akun Berhasil Diedit');
     }
     public function updateprofile(Request $request,User $user)
     {
@@ -183,6 +188,6 @@ class UserController extends Controller
         //
         $users = User::find($user->id);
         $users->delete();
-        return redirect('admin/users')->with('deletesuccess','Data Akun Berhasil Dihapus');
+        return redirect()->route('user.index')->with('deletesuccess','Data Akun Berhasil Dihapus');
     }
 }
