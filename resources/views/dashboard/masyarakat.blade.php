@@ -30,7 +30,6 @@
             </div>
             <!-- /.card-body -->
          </div>
-    
     </div>
     @endforeach 
 </div>

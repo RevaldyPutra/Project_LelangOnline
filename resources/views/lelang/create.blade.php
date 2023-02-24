@@ -62,7 +62,7 @@
                                     </a>
                                 </div>
                               <div class="col-6 d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
+                                <button type="button" class="btn btn-primary me-1 mb-1" data-toggle="modal" data-target="#modal-sm">
                                   {{ __('Submit') }}
                                 </button>
                                 <div class="modal fade" id="modal-sm">

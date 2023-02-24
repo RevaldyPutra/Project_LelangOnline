@@ -107,7 +107,7 @@
                     </div>
                         @endif
                         @else
-                        <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Log in</a>
+                            <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Log in</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>

@@ -22,6 +22,12 @@ class LelangController extends Controller
         $lelangs = Lelang::all();
         return view('lelang.index', compact('lelangs'));
     }
+    public function cetaklelang()
+    {
+        //
+        $cetaklelangs = Lelang::all();
+        return view('lelang.cetaklelang', compact('cetaklelangs'));
+    }
 
     /**
      * Show the form for creating a new resource.

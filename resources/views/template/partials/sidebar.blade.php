@@ -125,6 +125,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">DATA PENAWARAN</li>
+          <li class="nav-item">
+            <a href="{{route('datapenawar.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+                Data Penawaran Lelang
+              </p>
+            </a>
+          </li>
           <li class="nav-header">GENERATE LAPORAN</li>
           <li class="nav-item">
             <a href="#" class="nav-link">

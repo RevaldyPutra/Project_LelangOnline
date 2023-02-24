@@ -8,6 +8,7 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HistoryLelangController extends Controller
 {
@@ -19,9 +20,28 @@ class HistoryLelangController extends Controller
     public function index()
     {
         //
-        $historyLelangs = HistoryLelang::all();
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
         return view('lelang.datapenawaran', compact('historyLelangs'));
     }
+    public function laporanlelang()
+    {
+        //
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        return view('lelang.datapenawaran', compact('historyLelangs'));
+    }
+    public function laporanhistory()
+    {
+        //
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        return view('lelang.datapenawaran', compact('historyLelangs'));
+    }
+    public function cetakhistory()
+    {
+        //
+        $cetakhistoryLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        return view('lelang.cetakhistory', compact('cetakhistoryLelangs'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -42,17 +62,16 @@ class HistoryLelangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Lelang $lelang, Barang $barang)
+    public function store(Request $request,HistoryLelang $historyLelang, Lelang $lelang, Barang $barang)
     {
         //
         // ddd($request);
-        $request->validate([
-            'harga_penawaran'   => 'required|numeric',
-        ],
-        [
+        $validatedData = $request->validate([
+            'harga_penawaran' => 'required|numeric',
+            ],
+            [
             'harga_penawaran.required'  => "Harga penawaran harus diisi",
             'harga_penawaran.numeric'  => "Harga penawaran harus berupa angka",
-            
         ]);
 
         $historyLelang = new Historylelang();
@@ -62,7 +81,7 @@ class HistoryLelangController extends Controller
         $historyLelang->status = 'pending';
         $historyLelang->save();
 
-        return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda berhasil menawar barang ini');
+        return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini');
     }
 
     /**
@@ -75,7 +94,7 @@ class HistoryLelangController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

@@ -43,8 +43,12 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-header">
-    @if (auth()->user()->level == 'petugas')
+      @if (auth()->user()->level == 'petugas')
     <a class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
+    <a class="btn btn-info mb-3" target="_blank" href="{{route('cetak.lelang')}}">
+      <li class="fas fa fa-print"></li>
+      Cetak Data
+    </a>
     @else
     @endif
     

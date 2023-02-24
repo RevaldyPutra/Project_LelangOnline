@@ -14,7 +14,7 @@ class DashboardController extends Controller
     //
     public function admin()
     {
-        $historyLelangs = HistoryLelang::all();
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
         $lelangs = Lelang::all();
         $barangs = DB::table('barangs')->count();
         $lelangs = DB::table('lelangs')->count();
@@ -26,7 +26,7 @@ class DashboardController extends Controller
     public function petugas(Lelang $lelang)
     {
         $lelangs = Lelang::all();
-        $historyLelangs = HistoryLelang::all();
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
         $barangs = DB::table('barangs')->count();
         $lelangs = DB::table('lelangs')->count();
         $historylelangs = DB::table('history_lelangs')->count();

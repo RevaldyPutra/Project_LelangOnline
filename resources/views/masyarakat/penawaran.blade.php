@@ -7,40 +7,6 @@
 @section('content')
 
 <section class="content">
-  @if(session()->has('success'))
-  <div class="form-group">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="alert alert-success" role="alert">
-          {{session('success')}}
-          <li class="fas fa-check-circle"></li>
-        </div>
-      </div>
-    </div>
-  </div>
-  @elseif(session()->has('editsuccess'))
-  <div class="form-group">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="alert alert-success" role="alert">
-          {{session('editsuccess')}}
-          <li class="fas fa-check-circle"></li>
-        </div>
-      </div>
-    </div>
-  </div>
-  @elseif(session()->has('deletesuccess'))
-  <div class="form-group">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="alert alert-success" role="alert">
-          {{session('deletesuccess')}}
-          <li class="fas fa-check-circle"></li>
-        </div>
-      </div>
-    </div>
-  </div>
-  @endif
     <div class="container-fluid">     
         @if(!empty($lelangs))
       <div class="row">
@@ -65,7 +31,7 @@
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" href="#details" data-toggle="tab">Details Barang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#bid" data-toggle="tab">Tawar</a></li>
+                    <li hidden class="nav-item"><a class="nav-link" href="#bid" data-toggle="tab">Tawar</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -160,6 +126,9 @@
                         <textarea class="form-control" id="inputExperience" readonly>{{ $lelangs->barang->deskripsi_barang}}</textarea>
                       </div>
                     </div>
+                    <button type="button" class="btn btn-danger col-sm-12 mb-3" data-toggle="modal" data-target="#exampleModal">
+                      Tawar
+                    </button>
                     @if(auth()->user()->level == 'admin')
                   <a href="{{route('lelangadmin.index')}}" class="btn btn-outline-info">Kembali</a>
                   @elseif(auth()->user()->level == 'masyarakat')
@@ -168,6 +137,43 @@
                     <a href="{{ route('lelangpetugas.index')}}" class="btn btn-outline-info">Kembali</a>
                   @endif
                   </form>
+                  <form  action="{{route('lelangin.store', $lelangs->id)}}" method="post">
+                    @csrf
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Tawar {{ $lelangs->barang->nama_barang}} </h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="input">Input Harga Penawaran</label>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><strong>Rp.</strong></span>
+                                </div>
+                              <input type="text" name="harga_penawaran"class="form-control @error('harga_penawaran') is-invalid @enderror" placeholder="Masukan Harga harus lebih dari @currency($lelangs->barang->harga_awal)">
+                              @error('harga_penawaran')
+                              <div class="invalid-feedback">
+                                <b>{{ $message }}</b>
+                              </div>
+                              @enderror
+                            </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          <button type="submit" class="btn btn-danger">Tawarkan</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
                 </div>
                 <!-- /.tab-pane -->
               </div>
@@ -175,6 +181,7 @@
             </div><!-- /.card-body -->
           </div>
           <!-- /.card -->
+          
         </div>
         {{-- <div class="col-md-12">
             <div class="card card-primary card-outline">

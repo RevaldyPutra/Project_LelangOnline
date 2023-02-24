@@ -9,7 +9,10 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-header">
-
+      <a href="{{route('cetak.history')}}" target="_blank"class="btn btn-info">
+        <li class="fas fa fa-print"></li>
+        Cetak Data
+      </a>
     
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -29,7 +32,7 @@
                     <th>Nama Penawar</th>
                     <th>Nama Barang</th>
                     <th>Harga Penawaran</th>
-                    <th>Tanggal lelang</th>
+                    <th>Tanggal Penawaran</th>
                     <th>Status</th>
                     @if(auth()->user()->level == 'petugas')
                     <th></th>
@@ -48,20 +51,18 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->user->name }}</td>
+            @if(Auth::user()->level == 'petugas')
             <td><a href="{{route('lelangpetugas.show', $item->lelang->id)}}">{{ $item->lelang->barang->nama_barang }}</a></td>
+            @elseif(Auth::user()->level == 'admin')
+            <td>{{ $item->lelang->barang->nama_barang }}</td>
+            @endif
             <td>@currency($item->harga)</td>
             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
             <td>
               <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
             </td>
             @if (auth()->user()->level == 'admin')
-            <td>
-              <a class="btn btn-primary btn-sm" href="{{ route('lelangadmin.show', $item->id)}}">
-                <i class="fas fa-folder">
-                </i>
-                View
-              </a>
-            </td>
+
             @endif
             @if (auth()->user()->level == 'petugas')
             <td>
