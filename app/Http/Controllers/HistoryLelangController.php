@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class HistoryLelangController extends Controller
 {
     /**
@@ -62,11 +63,14 @@ class HistoryLelangController extends Controller
                 'numeric',
                 function ($attribute, $value, $fail) use ($lelang) {
                     if ($value <= $lelang->barang->harga_awal) {
-                        $fail("Harga penawaran harus lebih besar dari harga awal yaitu " . $lelang->barang->harga_awal);
+                        $message = "Harga penawaran harus lebih besar dari harga awal yaitu " . "Rp " . number_format($lelang->barang->harga_awal, 0, ',', '.');
+                        Alert::error('Error', $message);
+                        return $fail($message);
                     }
                 },
             ],
-        ], [
+        ], 
+        [
             'harga_penawaran.required' => "Harga penawaran harus diisi",
             'harga_penawaran.numeric' => "Harga penawaran harus berupa angka",
         ]);

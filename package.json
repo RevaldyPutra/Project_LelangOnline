@@ -16,6 +16,7 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "animate.css": "^4.1.1"
+        "animate.css": "^4.1.1",
+        "sweetalert2": "^11.7.2"
     }
 }
