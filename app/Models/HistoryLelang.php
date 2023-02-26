@@ -14,6 +14,7 @@ class HistoryLelang extends Model
     protected $table = 'history_lelangs';
     protected $fillable = [
         'lelang_id',
+        'barang_id',
         'users_id',
         'nama_barang',
         'harga',
@@ -27,5 +28,9 @@ class HistoryLelang extends Model
     public function lelang()
     {
         return $this->hasOne('App\Models\Lelang', 'id', 'lelang_id');
+    }
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
     }
 }

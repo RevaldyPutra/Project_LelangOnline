@@ -57,15 +57,23 @@ class HistoryLelangController extends Controller
         //
         // ddd($request);
         $validatedData = $request->validate([
-            'harga_penawaran' => 'required|numeric',
+            'harga_penawaran' => [
+                'required',
+                'numeric',
+                function ($attribute, $value, $fail) use ($lelang) {
+                    if ($value <= $lelang->barang->harga_awal) {
+                        $fail("Harga penawaran harus lebih besar dari harga awal yaitu " . $lelang->barang->harga_awal);
+                    }
+                },
             ],
-            [
-            'harga_penawaran.required'  => "Harga penawaran harus diisi",
-            'harga_penawaran.numeric'  => "Harga penawaran harus berupa angka",
+        ], [
+            'harga_penawaran.required' => "Harga penawaran harus diisi",
+            'harga_penawaran.numeric' => "Harga penawaran harus berupa angka",
         ]);
 
         $historyLelang = new Historylelang();
         $historyLelang->lelang_id = $lelang->id;
+        $historyLelang->barang_id = $lelang->barang->id;
         $historyLelang->users_id = Auth::user()->id;
         $historyLelang->harga = $request->harga_penawaran;
         $historyLelang->status = 'pending';

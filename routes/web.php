@@ -52,7 +52,7 @@ Route::get('logoutdashboard', 'logoutdashboard')->name('logout.dashboard');
 // ROUTE DASHBOARD
 Route::get('/dashboard/admin', 'admin')->name('dashboard.admin')->middleware('auth','level:admin');
 Route::get('/dashboard/petugas', 'petugas')->name('dashboard.petugas')->middleware('auth','level:petugas,admin');
-Route::get('/dashboard/masyarakat', 'masyarakat')->name('dashboard.masyarakat')->middleware('auth','level:masyarakat');
+Route::get('/dashboard', 'masyarakat')->name('dashboard.masyarakat')->middleware('auth','level:masyarakat');
     });
 Route::view('errorr/403', 'error.403')->name('error.403');
 

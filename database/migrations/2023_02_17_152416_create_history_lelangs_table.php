@@ -17,6 +17,8 @@ class CreateHistoryLelangsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('lelang_id');
             $table->foreign('lelang_id')->references('id')->on('lelangs')->onDelete('cascade'); 
+            $table->unsignedBigInteger('barang_id');
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('harga');
