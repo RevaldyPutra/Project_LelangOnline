@@ -26,8 +26,4 @@ class Lelang extends Model
     {
         return $this->belongsTo(historylelang::class);
     }
-    public function historylelangs()
-    {
-        return $this->hasOne('App\Models\historylelang', 'id', 'historylelang_id');
-    }
 }

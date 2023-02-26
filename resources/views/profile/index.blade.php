@@ -107,7 +107,27 @@
                     </div>
                     <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Simpan</button>
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#konfirmasi-modal">Simpan</button>
+                          <div class="modal fade" id="konfirmasi-modal" tabindex="-1" role="dialog" aria-labelledby="konfirmasi-modal-label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="konfirmasi-modal-label">Konfirmasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah Anda yakin ingin menyimpan perubahan ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-danger">Simpan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         </div>
                     </div>
                   </form>
