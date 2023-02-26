@@ -21,7 +21,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Petugas</span>
               <span class="info-box-number">
-                {{ $totaluser }}
+                {{ $users->where('level','petugas')->count()}}
               </span>
               <a href="/admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
@@ -36,7 +36,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Barang</span>
               <span class="info-box-number">
-                {{ $totalbarang }}
+                {{ $barangs->count()}}
               </span>
               <a href="/admin/barang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -50,7 +50,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Lelang</span>
               <span class="info-box-number">
-                {{ $totallelang }}
+                {{ $lelangs->count()}}
               </span>
             </div>
             <!-- /.info-box-content -->
@@ -63,7 +63,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Penawaran</span>
               <span class="info-box-number">
-                {{ $totalpenawaran }}
+                {{ $historyLelangs->count()}}
               </span>
             </div>
             <!-- /.info-box-content -->

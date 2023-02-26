@@ -25,13 +25,11 @@ class BarangController extends Controller
     public function home()
     {
         //
-        $barangsss = DB::table('barangs')->count();
-        $lelangsss = DB::table('lelangs')->count();
-        $historylelangs = DB::table('history_lelangs')->count();
-        $penawar = DB::table('users')->where('level', 'masyarakat')->count();
         $barangs = Barang::all();
+        $users = User::all();
         $lelangs = Lelang::all();
-        return view('home', compact('barangs','lelangs'))->with(['totalpenawaran'=>$historylelangs,'totalbarang'=>$barangsss,'totallelang'=>$lelangsss,'totaluser'=>$penawar]);
+        $historylelangs = HistoryLelang::all();
+        return view('homepage', compact('barangs','lelangs','historylelangs','users'));
     }
 
     /**

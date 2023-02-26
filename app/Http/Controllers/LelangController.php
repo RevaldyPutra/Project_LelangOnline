@@ -20,7 +20,12 @@ class LelangController extends Controller
     {
         //
         $lelangs = Lelang::all();
-        return view('lelang.index', compact('lelangs'));
+        $barangs = Barang::select('id', 'nama_barang', 'harga_awal')
+                    ->whereNotIn('id', function($query)
+                    {
+                        $query->select('barangs_id')->from('lelangs');
+                    })->get();
+        return view('lelang.index', compact('lelangs','barangs'));
     }
     public function cetaklelang()
     {
@@ -126,8 +131,16 @@ class LelangController extends Controller
      */
     public function destroy(Lelang $lelang)
     {
-        //
+    $lelangs = Lelang::find($lelang->id);
+
+    if ($lelangs) {
+        $lelangs->delete();
+        return redirect()->route('lelangpetugas.index')->with('deletesuccess', 'Data Lelang Berhasil Dihapus');
+    } else {
+        return redirect()->route('lelangpetugas.index')->with('deletefailed', 'Data Lelang Gagal Dihapus');
     }
+    }
+
 
     /** METHODS LIST LELANG UNTUK LEVEL MASYARAKAT */ 
     public function listlelang(Lelang $lelang)

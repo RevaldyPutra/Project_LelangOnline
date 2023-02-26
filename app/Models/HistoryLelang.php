@@ -28,4 +28,8 @@ class HistoryLelang extends Model
     {
         return $this->hasOne('App\Models\Lelang', 'id', 'lelang_id');
     }
+    public function lelangs()
+    {
+        return $this->belongsTo(Lelang::class);
+    }
 }

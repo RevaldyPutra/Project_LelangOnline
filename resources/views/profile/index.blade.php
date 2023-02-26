@@ -27,7 +27,7 @@
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                  <b>Penawaran</b> <a class="float-right">{{ $totalpenawaranuser }}</a>
+                  <b>Penawaran</b> <a class="float-right">{{ $historyLelangs->where('users_id',Auth::user()->id)->count()}}</a>
                 </li>
               </ul>
             </div>
@@ -97,6 +97,12 @@
                         <label for="inputName" class="col-sm-2 col-form-label">Telepon</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" name="telepon" value="{{ Auth::user()->telepon }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" name="password">
                         </div>
                     </div>
                     <div class="form-group row">

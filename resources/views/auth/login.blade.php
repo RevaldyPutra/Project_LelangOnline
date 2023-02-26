@@ -71,10 +71,10 @@
         @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+          <input type="password" name="password" id="password"class="form-control @error('password') is-invalid @enderror" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span type="button" class="fa fa-eye toggle-password"></span>
             </div>
           </div>
           @error('password')
@@ -112,5 +112,17 @@
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+<script>
+  $('.toggle-password').on('click', function() {
+      $(this).toggleClass('btn-outline-secondary fas fa-eye-slash btn-outline-primary');
+      var passwordField = $('#password');
+      var passwordFieldType = passwordField.attr('type');
+      if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+      } else {
+          passwordField.attr('type', 'password');
+      }
+  });
+</script>
 </body>
 </html>

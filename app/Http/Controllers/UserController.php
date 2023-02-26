@@ -111,9 +111,8 @@ class UserController extends Controller
     {
         //
         $historyLelangs = HistoryLelang::all();
-        $historylelangs = DB::table('history_lelangs')->where('users_id',Auth::user()->id)->count();
-        $users = User::find($user->id);
-        return view('profile.index', compact('users'))->with(['totalpenawaranuser'=>$historylelangs]);
+        $user = auth()->user(); 
+        return view('profile.index', compact('user','historyLelangs'));
     }
 
     /**
@@ -161,20 +160,15 @@ class UserController extends Controller
     public function updateprofile(Request $request,User $user)
     {
         //
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required',
-            'level' => 'required',
-            'telepon' => 'required'
-        ]);
-
-        $users = User::find($user->id);
-        $users->name = $request->name;
-        $users->username = $request->username;
-        $users->level = $request->level;
-        $users->telepon = $request->telepon;
-        $users->update(); 
-        return redirect('/profile');
+    $user = auth()->user(); // Ambil data pengguna yang sedang login
+    $user->name = $request->input('name');
+    $user->telepon = $request->input('telepon');
+    $user->username = $request->input('username');
+    if ($request->has('password')) {
+        $user->password = bcrypt($request->input('password'));
+    }
+    $user->save();
+    return redirect()->route('user.editprofile')->with('success', 'Profil berhasil diupdate');
     }
 
     /**

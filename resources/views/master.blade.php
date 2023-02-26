@@ -6,6 +6,10 @@
   <title>Projek Lelang Online</title>
   <link rel="icon" type="images/png" href="{{ asset('adminlte/dist/img/lelangonline.png')}}" />
 
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/bootstrap.min.css')}}">
   <!-- SweetAlert2 -->
@@ -31,7 +35,7 @@
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition layout-fixed sidebar-mini sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->

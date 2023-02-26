@@ -13,6 +13,10 @@
         <li class="fas fa fa-print"></li>
         Cetak Data
       </a>
+      <a href="{{route('generatePdf')}}" target="_blank"class="btn btn-info">
+        <li class="fas fa fa-print"></li>
+        Download Data
+      </a>
     
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -67,10 +71,10 @@
             @if (auth()->user()->level == 'petugas')
             <td>
             <form action="{{ route('lelangin.destroy',$item) }}"method="POST">
-            {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
-            <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
+            {{-- <a class="btn btn-primary"href="{{ route('barang.show', $historyLelangs->id)}}">Detail</a>
+            <a class="btn btn-warning"href="{{ route('barang.edit', $historyLelangs->id)}}">Edit</a> --}}
 
-            <a class="btn btn-success btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
+            <a class="btn btn-success btn-sm" href="{{ route('lelangpetugas.show', $item->lelang->id)}}">
               <i class="fas fa-check">
               </i>
               Pilih Jadi Pemenang

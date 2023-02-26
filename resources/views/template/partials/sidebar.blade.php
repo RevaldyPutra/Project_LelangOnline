@@ -159,12 +159,12 @@
             </ul>
           </li>
           @elseif (auth()->user()->level == 'masyarakat')
-          <li class="nav-header">DASHBOARD</li>
+          <li class="nav-header">BARANG LELANG</li>
           <li class="nav-item">
-            <a href="/dashboard/masyarakat" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="{{route('masyarakat.listlelang')}}" class="nav-link">
+              <i class="nav-icon fas fa-tags"></i>
               <p>
-                Dashboard
+                List Lelang
               </p>
             </a>
           </li>

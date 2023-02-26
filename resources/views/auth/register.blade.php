@@ -65,10 +65,10 @@
         @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password"  class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="password">
+          <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+               <span type="button" class="fa fa-eye toggle-password"></span>
             </div>
           </div>
           @error('password')
@@ -78,10 +78,10 @@
         @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control @error('passwordshow') is-invalid @enderror" name="passwordshow" placeholder="Retype Password">
+          <input type="password" id="passwordshow" class="form-control @error('passwordshow') is-invalid @enderror" name="passwordshow" placeholder="Retype Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+               <span type="button" class="fa fa-eye toggle-passwordshow"></span>
             </div>
           </div>
           @error('passwordshow')
@@ -126,5 +126,27 @@
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js')}}"></script>
+<script>
+  $('.toggle-password').on('click', function() {
+      $(this).toggleClass('btn-outline-secondary fas fa-eye-slash btn-outline-primary');
+      var passwordField = $('#password');
+      var passwordFieldType = passwordField.attr('type');
+      if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+      } else {
+          passwordField.attr('type', 'password');
+      }
+  });
+  $('.toggle-passwordshow').on('click', function() {
+      $(this).toggleClass('btn-outline-secondary fas fa-eye-slash btn-outline-primary');
+      var passwordField = $('#passwordshow');
+      var passwordFieldType = passwordField.attr('type');
+      if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+      } else {
+          passwordField.attr('type', 'password');
+      }
+  });
+</script>
 </body>
 </html>

@@ -10,6 +10,8 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\HistoryLelangController;
+use App\Http\Controllers\ReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ use App\Http\Controllers\HistoryLelangController;
 
 // Route::get('/', function () {return view('home');
 // });
+
 Route::get('/', [BarangController::class, 'home'])->name('home');
 
     // Controller Register
@@ -58,6 +61,7 @@ Route::get('/dashboard/masyarakat/listlelang', [ListController::class, 'index'])
 
 
 // ROUTE MASYARAKAT
+Route::get('list-lelang', [MasyarakatController::class, 'listlelang'])->name('masyarakat.listlelang')->middleware('auth','level:masyarakat');
 Route::get('data-penawaran-anda', [MasyarakatController::class, 'index'])->name('masyarakatlelang.index')->middleware('auth', 'level:masyarakat');
 Route::resource('masyarakat', MasyarakatController::class)->middleware('auth', 'level:admin');
 
@@ -72,14 +76,14 @@ Route::get('/admin/users/{user}', 'show')->name('user.show')->middleware('auth',
 Route::delete('/admin/users/{user}', 'destroy')->name('user.destroy')->middleware('auth','level:admin');
 Route::put('/admin/users/{user}', 'update')->name('user.update')->middleware('auth','level:admin');
 Route::get('profile', 'profile')->name('profile.index')->middleware('auth','level:admin,petugas,masyarakat');
-Route::post('profile/update', 'updateprofile')->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
-Route::put('profile/update', 'updateprofile')->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
+Route::put('profile', 'updateprofile')->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
 Route::get('profile', 'editprofile')->name('user.editprofile')->middleware('auth','level:admin,petugas,masyarakat');
     });
 
     // Controller Barang
     Route::controller(BarangController::class)->group(function() {
 // ROUTE BARANG
+Route::get('/', 'home')->name('home');
 Route::put('barang/{barang}', 'update')->name('barang.update')->middleware('auth', 'level:petugas,admin');
 Route::put('admin/barang/{barang}', 'update')->name('barangmin.update')->middleware('auth', 'level:admin');
 Route::get('petugas/barang/{barang}', 'show')->name('barang.show')->middleware('auth', 'level:petugas');
@@ -114,8 +118,10 @@ Route::delete('/petugas/lelang/', 'destroy')->name('lelang.destroy')->middleware
     Route::controller(HistoryLelangController::class)->group(function() {
 //ROUTE HISTORY LELANG
 Route::get('/menawar/{lelang}', 'create')->name('lelangin.create')->middleware('auth','level:masyarakat');
-Route::get('cetak-history/', 'cetakhistory')->name('cetak.history')->middleware('auth','level:petugas,admin');
+Route::get('cetak-history', 'cetakhistory')->name('cetak.history')->middleware('auth','level:petugas,admin');
 Route::get('/data-penawaran', 'index')->name('datapenawar.index')->middleware('auth','level:petugas,admin');
 Route::post('/menawar/{lelang}', 'store')->name('lelangin.store')->middleware('auth','level:masyarakat');
 Route::delete('/data-penawaran/{lelang}', 'destroy')->name('lelangin.destroy')->middleware('auth','level:petugas');
     });
+
+    Route::get('generate-pdf', [ReportController::class, 'generatePdf'])->name('generatePdf');

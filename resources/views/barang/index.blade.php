@@ -138,9 +138,13 @@
               <i class="fas fa-trash"></i>
               Delete
             </button> --}}
-            <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+            {{-- <button class="btn btn-danger btn-sm" type="submit"value="Delete">
                 <i class="fas fa-trash"></i>
                 Delete
+              </button> --}}
+              <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                <i class="fas fa-trash"></i>
+                Hapus
               </button>
            </form>
             </td>
@@ -158,4 +162,6 @@
 <!-- /.card -->
 
 </section>
+
+
 @endsection

@@ -14,28 +14,25 @@ class DashboardController extends Controller
     //
     public function admin()
     {
-        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        $barangs = Barang::all();
+        $users = User::all();
         $lelangs = Lelang::all();
-        $barangs = DB::table('barangs')->count();
-        $lelangs = DB::table('lelangs')->count();
-        $historylelangs = DB::table('history_lelangs')->count();
-        $users = DB::table('users')->where('level', 'petugas')->count();
-        $penawars = DB::table('users')->where('level', 'masyarakat')->count();
-        return view('dashboard.admin', compact('historyLelangs','lelangs'))->with(['totalpenawaran'=>$historylelangs,'totalbarang'=>$barangs,'totallelang'=>$lelangs,'totaluser'=>$users,'totalpenawar'=>$penawars]);
+        $historylelangs = HistoryLelang::all();
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        return view('dashboard.admin', compact('historyLelangs','lelangs','barangs','users'));
     }
     public function petugas(Lelang $lelang)
     {
+        $barangs = Barang::all();
+        $users = User::all();
         $lelangs = Lelang::all();
+        $historylelangs = HistoryLelang::all();
         $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
-        $barangs = DB::table('barangs')->count();
-        $lelangs = DB::table('lelangs')->count();
-        $historylelangs = DB::table('history_lelangs')->count();
-        $users = DB::table('users')->count();
-        return view('dashboard.petugas', compact('lelangs','historyLelangs'))->with(['totalpenawaran'=>$historylelangs,'totalbarang'=>$barangs,'totallelang'=>$lelangs,'totaluser'=>$users]);
+        return view('dashboard.petugas', compact('historyLelangs','lelangs','barangs','users'));
     }
     public function masyarakat(Lelang $lelang)
     {
         $lelangs =  Lelang::all();
-        return view('dashboard.masyarakat', compact('lelangs'));
+        return view('dashboard.masyarakat', compact('lelangs',));
     }
 }

@@ -51,7 +51,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="#header-carousel" class="nav-item nav-link active">Home</a>
                 </div>
                 @auth
                 @if(auth()->user()->level == 'admin')
@@ -64,6 +64,12 @@
                     <a href="/dashboard/petugas" class="nav-item nav-link">Dashboard</a>
                 </div>
                 @elseif(auth()->user()->level == 'masyarakat')
+                <div class="navbar-nav py-0">
+                    <a href="#about" class="nav-item nav-link">About</a>
+                </div>
+                <div class="navbar-nav py-0">
+                    <a href="#listbarang" class="nav-item nav-link">Barang</a>
+                </div>
                 <div class="navbar-nav py-0">
                     <a href="/dashboard/masyarakat" class="nav-item nav-link">Dashboard</a>
                 </div>
@@ -197,7 +203,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Jumlah Barang</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $totalbarang }}</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $barangs->count()}}</h1>
                         </div>
                     </div>
                 </div>
@@ -208,7 +214,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-primary mb-0">Jumlah Lelang</h5>
-                            <h1 class="mb-0" data-toggle="counter-up">{{ $totallelang }}</h1>
+                            <h1 class="mb-0" data-toggle="counter-up">{{ $lelangs->count()}}</h1>
                         </div>
                     </div>
                 </div>
@@ -219,7 +225,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Jumlah Penawaran</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $totalpenawaran }}</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{ $historylelangs->count()}}</h1>
                         </div>
                     </div>
                 </div>
@@ -237,7 +243,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div id="about"class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7">
@@ -268,7 +274,7 @@
     </div>
     <!-- About End -->
      <!-- Blog Start -->
-     <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
+     <div id="listbarang"class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">LelangOnline</h5>

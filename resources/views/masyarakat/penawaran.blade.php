@@ -5,15 +5,18 @@
 @endsection
 
 @section('content')
-
 <section class="content">
-    <div class="container-fluid">     
+    <div class="container-fluid">  
+      @error('harga_penawaran')
+      <b class="form-control is-invalid mb-3">Erorr! {{ $message }}</b>
+      @enderror
         @if(!empty($lelangs))
       <div class="row">
         <div class="col-md-5">
           <!-- Profile Image -->
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
+              <span class="badge {{ $lelangs->status == 'ditutup' ? 'bg-danger' : 'bg-success' }}">{{ Str::title($lelangs->status) }}</span>
               <div class="text-center">
                @if($lelangs->barang->image)
                 <img class="img-fluid mt-3" src="{{ asset('storage/' . $lelangs->barang->image)}}" alt="User profile picture">
@@ -28,8 +31,8 @@
         <!-- /.col -->
         <div class="col-md-7">
           <div class="card">
-            <div class="card-header p-2">
-                <ul class="nav nav-pills">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item"><a class="nav-link active" href="#details" data-toggle="tab">Details Barang</a></li>
                     <li hidden class="nav-item"><a class="nav-link" href="#bid" data-toggle="tab">Tawar</a></li>
                 </ul>
@@ -129,13 +132,7 @@
                     <button type="button" class="btn btn-danger col-sm-12 mb-3" data-toggle="modal" data-target="#exampleModal">
                       Tawar
                     </button>
-                    @if(auth()->user()->level == 'admin')
-                  <a href="{{route('lelangadmin.index')}}" class="btn btn-outline-info">Kembali</a>
-                  @elseif(auth()->user()->level == 'masyarakat')
-                  <a href="{{route('dashboard.masyarakat')}}" class="btn btn-outline-info">Kembali</a>
-                    @elseif(auth()->user()->level == 'petugas')
-                    <a href="{{ route('lelangpetugas.index')}}" class="btn btn-outline-info">Kembali</a>
-                  @endif
+                    <a href="{{ route('masyarakat.listlelang')}}" class="btn btn-outline-info">Kembali</a>
                   </form>
                   <form  action="{{route('lelangin.store', $lelangs->id)}}" method="post">
                     @csrf
@@ -156,7 +153,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><strong>Rp.</strong></span>
                                 </div>
-                              <input type="text" name="harga_penawaran"class="form-control @error('harga_penawaran') is-invalid @enderror" placeholder="Masukan Harga harus lebih dari @currency($lelangs->barang->harga_awal)">
+                              <input type="text" name="harga_penawaran" class="form-control @error('harga_penawaran') is-invalid @enderror" placeholder="Masukan Harga harus lebih dari @currency($lelangs->barang->harga_awal)">
                               @error('harga_penawaran')
                               <div class="invalid-feedback">
                                 <b>{{ $message }}</b>

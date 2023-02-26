@@ -39,12 +39,70 @@
       </div>
     </div>
   </div>
+  @elseif(session()->has('deletefailed'))
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="alert alert-danger" role="alert">
+          {{session('deletefailed')}}
+          <li class="fas fa-cross-circle"></li>
+        </div>
+      </div>
+    </div>
+  </div>
   @endif
   <!-- Default box -->
   <div class="card">
     <div class="card-header">
       @if (auth()->user()->level == 'petugas')
-    <a class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
+      <a type="button"  class="btn btn-primary mb-3" data-toggle="modal" data-target="#modal-lelang">
+        Tambah Lelang
+      </a>
+      
+      <!-- Modal Tambah Lelang -->
+<div class="modal fade" id="modal-lelang" tabindex="-1" role="dialog" aria-labelledby="modal-lelang-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-lelang-label">Tambah Lelang</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="form" method="POST" action="{{ route('lelang.store') }}" data-parsley-validate>
+        @csrf
+        <div class="modal-body">
+          <div class="form-group mandatory">
+            <label for="barangs_id" class="form-label">{{ __('Nama Barang') }}</label>
+            <select class="form-select form-control @error('barangs_id') is-invalid @enderror" id="barangs_id" name="barangs_id" data-parsley-required="true">
+              <option value="" selected>Pilih Barang</option>
+              @forelse ($barangs as $item)
+                <option value="{{ $item->id }}">{{ Str::of($item->nama_barang)->title() }} -  @currency($item->harga_awal)</option>
+              @empty
+                <option value="" disabled>Barang Semuanya Sudah Di Lelang</option>
+              @endforelse
+            </select>
+            @error('barangs_id')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+          </div>
+          <div class="form-group mandatory">
+            <label for="tanggal_lelang" class="form-label">{{ __('Tanggal Lelang') }}</label>
+            <input type="date" id="tanggal_lelang" class="form-control @error('tanggal_lelang') is-invalid @enderror" name="tanggal_lelang" data-parsley-required="true" value="{{ old('tanggal_lelang') }}">
+            @error('tanggal_lelang')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Batal') }}</button>
+          <button type="submit" class="btn btn-primary">{{ __('Tambah Lelang') }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+    <a hidden class="btn btn-primary mb-3"href="/petugas/lelang/create">Tambah lelang</a>
     <a class="btn btn-info mb-3" target="_blank" href="{{route('cetak.lelang')}}">
       <li class="fas fa fa-print"></li>
       Cetak Data
@@ -106,7 +164,7 @@
             @endif
             @if (auth()->user()->level == 'petugas')
             <td>
-            <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
+            <form action="{{ route('lelang.destroy', [$item->id]) }}"method="POST">
             {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
             <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
 

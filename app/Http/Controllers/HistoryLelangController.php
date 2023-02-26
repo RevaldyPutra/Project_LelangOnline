@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HistoryLelang;
 use App\Models\Lelang;
 use App\Models\Barang;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -21,18 +22,7 @@ class HistoryLelangController extends Controller
     {
         //
         $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
-        return view('lelang.datapenawaran', compact('historyLelangs'));
-    }
-    public function laporanlelang()
-    {
-        //
-        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
-        return view('lelang.datapenawaran', compact('historyLelangs'));
-    }
-    public function laporanhistory()
-    {
-        //
-        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        
         return view('lelang.datapenawaran', compact('historyLelangs'));
     }
     public function cetakhistory()
