@@ -86,6 +86,27 @@ class HistoryLelangController extends Controller
         return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini')->with('ucapan','');
     }
 
+    public function setPemenang($id)
+    {
+    // Mengambil data history lelang berdasarkan id
+    $historyLelang = HistoryLelang::findOrFail($id);
+
+    // Mengubah status pada history lelang menjadi 'pemenang'
+    $historyLelang->status = 'pemenang';
+    $historyLelang->save();
+
+    // Mengambil data lelang berdasarkan history lelang
+    $lelang = $historyLelang->lelang;
+
+    // Mengubah status pada lelang menjadi 'ditutup'
+    $lelang->status = 'ditutup';
+    $lelang->pemenang = $historyLelang->user->name;
+    $lelang->harga_akhir = $historyLelang->harga;
+    $lelang->save();
+    return redirect()->back()->with('success', 'Pemenang berhasil dipilih!');
+    }
+
+
     /**
      * Display the specified resource.
      *

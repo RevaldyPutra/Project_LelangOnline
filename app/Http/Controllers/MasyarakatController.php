@@ -27,7 +27,7 @@ class MasyarakatController extends Controller
     }
 
     public function listlelang() {
-        $lelangs =  Lelang::all();
+        $lelangs =  Lelang::orderBy('created_at', 'desc')->get();
         return view('masyarakat.listlelang', compact('lelangs',));
     }
     /**

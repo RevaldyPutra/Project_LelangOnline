@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Halaman Show Barang</h1>
+
 @endsection
 
 @section('content')
@@ -58,6 +58,16 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">Deskripsi barang</label>
                     <textarea type="text-area" name="deskripsi_barang" class="form-control" disabled>{{ $barangs->deskripsi_barang }}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Ditambahkan Oleh</label>
+                    <div class="input-group">
+                      <input type="text" name="harga_awal" value="{{ $barangs->user->name }}" class="form-control" disabled>
+                      <span class="input-group-text bg-light">
+                        <span class="badge {{ $barangs->user->level == 'petugas' ? 'bg-secondary' : 'bg-primary' }}">{{ Str::title($barangs->user->level) }}</span>
+                      </span>
+                    </div>
+                    
                   </div>
                   
                 <!-- /.card-body -->

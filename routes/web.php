@@ -122,6 +122,8 @@ Route::get('cetak-history', 'cetakhistory')->name('cetak.history')->middleware('
 Route::get('/data-penawaran', 'index')->name('datapenawar.index')->middleware('auth','level:petugas,admin');
 Route::post('/menawar/{lelang}', 'store')->name('lelangin.store')->middleware('auth','level:masyarakat');
 Route::delete('/data-penawaran/{lelang}', 'destroy')->name('lelangin.destroy')->middleware('auth','level:petugas');
+Route::put('/lelangpetugas/{id}/pemenang', 'setPemenang')->name('lelangpetugas.setpemenang');
+
     });
 
     Route::get('generate-pdf', [ReportController::class, 'generatePdf'])->name('generatePdf');

@@ -1,7 +1,14 @@
 @extends('master')
 
 @section('judul')
-
+@if($lelangs->status == 'ditutup')
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Selamat kepada <strong>{{ $lelangs->pemenang }}</strong></h5>
+    <p class="card-text"> Telah memenangkan lelang untuk barang <strong>{{ $lelangs->barang->nama_barang }}</strong> dengan harga <strong>Rp{{ number_format($lelangs->harga_akhir) }}</strong></p>
+  </div>
+</div>
+@endif
 @endsection
 
 @section('content')
@@ -153,11 +160,15 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      @if($lelangs->status == 'dibuka')
                       <div class="col-sm-12">
                         <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
                           <i class="fas fa-gavel mr-2"></i> Tawar
                         </button>
                       </div>
+                      @else 
+
+                      @endif
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-12">
@@ -311,6 +322,48 @@
       <!-- /.card-body -->
       <!-- /.card-footer-->
     </div>
+    @if($lelangs->status == 'ditutup')
+    <div class="container">
+      <h3>Komentar</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="media border p-3">
+            <img src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+            <div class="media-body">
+              <h4>John Doe <small><i>Posted on February 19, 2023</i></small></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+            </div>
+          </div>
+          <br>
+          <div class="media border p-3">
+            <img src="https://www.w3schools.com/bootstrap4/img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+            <div class="media-body">
+              <h4>Jane Doe <small><i>Posted on February 18, 2023</i></small></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+            <div class="form-group">
+              <label for="nama">Nama:</label>
+              <input type="text" class="form-control" id="nama" placeholder="Masukkan nama" name="nama">
+            </div>
+            <div class="form-group">
+              <label for="komentar">Komentar:</label>
+              <textarea class="form-control" rows="5" id="komentar" placeholder="Masukkan komentar" name="komentar"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    @else
+    @endif
+    
     @if(session()->has('ucapan'))
     <div class="container my-5">
       <div class="row">

@@ -138,8 +138,6 @@
     </div><!-- /.container-fluid -->
     <div class="card">
       <div class="card-header">
-  
-      
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>
@@ -181,11 +179,30 @@
               </td>
               @if(Auth::user()->level == 'petugas')
               <td>
-                <a class="btn btn-success btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
-                  <i class="fas fa-check">
-                  </i>
-                  Pilih Jadi Pemenang
-              </a>
+                  <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
+                    <i class="fas fa-check"></i> Pilih Jadi Pemenang
+                  </button>
+                  <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-success">Ya, Pilih</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </td>
               @else
               @endif

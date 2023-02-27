@@ -19,7 +19,7 @@ class LelangController extends Controller
     public function index()
     {
         //
-        $lelangs = Lelang::all();
+        $lelangs = Lelang::orderBy('created_at','desc')->get();
         $barangs = Barang::select('id', 'nama_barang', 'harga_awal')
                     ->whereNotIn('id', function($query)
                     {

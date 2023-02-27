@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\HistoryLelang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
 {
@@ -72,6 +73,7 @@ class BarangController extends Controller
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('post-images');
         }
+        $validateData['users_id'] = Auth::id();
         // Barang::create([
         //     'nama_barang' => $request->nama_barang,
         //     'tanggal' => $request->tanggal,

@@ -1,6 +1,11 @@
 @extends('master')
 
 @section('judul')
+@foreach($lelangs as $item)
+@if($item->pemenang == Auth::user()->name)
+<h1>Kamu memenangkan lelang</h1>
+@endif
+@endforeach
 <style>
   .animate__animated {
     animation-duration: 1s;
@@ -90,8 +95,14 @@
         <div class="card-body">
           <h4 class="card-title">{{ $item->barang->nama_barang}}</h4>
           <p class="card-text">{{ $item->barang->deskripsi_barang}}</p>
+          @if($item->status == 'dibuka')
           <p class="card-text">Harga Awal: @currency($item->barang->harga_awal)</p>
           <a href="{{ route('lelangin.create', $item->id)}}" class="btn btn-primary animate__animated animate__delay-3s animate__bounceIn">TAWAR SEKARANG</a>
+          @else
+          <p class="card-text">Harga Akhir: @currency($item->harga_akhir)</p>
+          <p class="card-text">Pemenang: {{ $item->pemenang }}</p>
+          <a href="{{ route('lelangin.create', $item->id)}}" class="btn btn-info animate__animated animate__delay-3s animate__bounceIn">LIHAT DETAIL</a>
+          @endif
         </div>
       </div>
     </div>
