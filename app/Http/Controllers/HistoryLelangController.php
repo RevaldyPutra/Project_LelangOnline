@@ -83,7 +83,7 @@ class HistoryLelangController extends Controller
         $historyLelang->status = 'pending';
         $historyLelang->save();
 
-        return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini');
+        return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini')->with('ucapan','');
     }
 
     /**

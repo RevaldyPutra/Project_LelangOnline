@@ -5,6 +5,31 @@
 @endsection
 
 @section('content')
+<style>
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+</style>
 <section class="content">
     <div class="container-fluid">  
       @error('harga_penawaran')
@@ -91,49 +116,57 @@
                   </div>
                 <div class="tab-pane active" id="details">
                   <form class="form-horizontal">
-                    <div class="form-group">
-                      <label for="inputName">Nama Barang</label>
-                      <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputName" value="{{ $lelangs->barang->nama_barang}}"readonly>
+                    <div class="form-group row">
+                      <label for="inputName" class="col-sm-3 col-form-label">Nama Barang</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputName" value="{{ $lelangs->barang->nama_barang }}" readonly>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputEmail">Harga Awal</label>
-                      <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->barang->harga_awal)"readonly>
+                    <div class="form-group row">
+                      <label for="inputEmail" class="col-sm-3 col-form-label">Harga Awal</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->barang->harga_awal)" readonly>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputEmail">Harga akhir</label>
-                      <div class="col-sm-12">
-                        <input type="text" class="form-control" id="inputEmail" value="@currency($lelangs->harga_akhir)"readonly>
+                    <div class="form-group row">
+                      <label for="inputHargaAkhir" class="col-sm-3 col-form-label">Harga Akhir</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputHargaAkhir" value="@currency($lelangs->harga_akhir)" readonly>
                       </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputName2">Tanggal Lelang</label>
-                           <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputName2" value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y')}}" readonly>
-                           </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputEmail">Status</label>
-                            <div class="col-sm-12">
-                             <input type="text" class="form-control" id="inputEmail" value="{{ $lelangs->status}}"readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputExperience">Deskripsi Barang</label>
-                      <div class="col-sm-12">
-                        <textarea class="form-control" id="inputExperience" readonly>{{ $lelangs->barang->deskripsi_barang}}</textarea>
+                    <div class="form-group row">
+                      <label for="inputTanggal" class="col-sm-3 col-form-label">Tanggal Lelang</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputTanggal" value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y')}}" readonly>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger col-sm-12 mb-3" data-toggle="modal" data-target="#exampleModal">
-                      Tawar
-                    </button>
-                    <a href="{{ route('masyarakat.listlelang')}}" class="btn btn-outline-info">Kembali</a>
-                  </form>
+                    <div class="form-group row">
+                      <label for="inputStatus" class="col-sm-3 col-form-label">Status</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputStatus" value="{{ $lelangs->status }}" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputDeskripsi" class="col-sm-3 col-form-label">Deskripsi Barang</label>
+                      <div class="col-sm-9">
+                        <textarea class="form-control" id="inputDeskripsi" rows="3" readonly>{{ $lelangs->barang->deskripsi_barang }}</textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+                          <i class="fas fa-gavel mr-2"></i> Tawar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <a href="{{ route('masyarakat.listlelang') }}" class="btn btn-outline-info btn-lg btn-block">Kembali</a>
+                      </div>
+                    </div>
+                    
+                  </form>                  
+
                   <form  action="{{route('lelangin.store', $lelangs->id)}}" method="post">
                     @csrf
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -207,31 +240,27 @@
         </div>
       </div>
       <div class="card-body p-4">
-      <table class="table table-bordered table-hover">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
             <thead>
-                <tbody>
-                    <tr>
-                        <th>No</th>
-                        <th>Pelelang</th>
-                        <th>Nama Barang</th>
-                        <th>Harga Penawaran</th>
-                        <th>Tanggal Penawaran</th>
-                        <th>Status</th>
-                        @if(auth()->user()->level == 'petugas')
-                        <th></th>
-                        @else
-                        @endif
-                        @if(auth()->user()->level == 'admin')
-                        <th></th>
-                        @else
-                        @endif
-                        
-                    </tr>
-                </tbody>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Pelelang</th>
+                <th scope="col">Nama Barang</th>
+                <th scope="col">Harga Penawaran</th>
+                <th scope="col">Tanggal Penawaran</th>
+                <th scope="col">Status</th>
+                @if(auth()->user()->level == 'petugas')
+                <th scope="col"></th>
+                @endif
+                @if(auth()->user()->level == 'admin')
+                <th scope="col"></th>
+                @endif
+              </tr>
             </thead>
-            @forelse ($historyLelangs as $item)
             <tbody>
-            <tr>
+              @forelse ($historyLelangs as $item)
+              <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->user->name }}</td>
                 <td>{{ $item->lelang->barang->nama_barang }}</td>
@@ -243,50 +272,61 @@
                 @if (auth()->user()->level == 'admin')
                 <td>
                   <a class="btn btn-primary btn-sm" href="{{ route('lelangadmin.show', $item->id)}}">
-                    <i class="fas fa-folder">
-                    </i>
+                    <i class="fas fa-folder"></i>
                     View
                   </a>
                 </td>
                 @endif
                 @if (auth()->user()->level == 'petugas')
                 <td>
-                <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
-                {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
-                <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
-    
-                <a class="btn btn-primary btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
-                  <i class="fas fa-folder">
-                  </i>
-                  View
-              </a>
-              <a class="btn btn-info btn-sm" href="">
-                  <i class="fas fa-pencil-alt">
-                  </i>
-                  Edit
-              </a>
-                @csrf
-                @method('DELETE')   
-                <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-                  <i class="fas fa-trash">
-                  </i>
-                  Delete
-                </button>
-              </form>
-            </td>
-            @else
-            @endif
-            </tr>
-            @empty
-            <tr>
-              <td colspan="5" style="text-align: center" class="text-danger"><strong>Data masih kosong</strong></td>
-            </tr>
-            @endforelse
+                  <form action="{{ route('barang.destroy', [$item->id]) }}" method="POST">
+                    <a class="btn btn-primary btn-sm" href="{{ route('lelangpetugas.show', $item->id)}}">
+                      <i class="fas fa-folder"></i>
+                      View
+                    </a>
+                    <a class="btn btn-info btn-sm" href="">
+                      <i class="fas fa-pencil-alt"></i>
+                      Edit
+                    </a>
+                    @csrf
+                    @method('DELETE')   
+                    <button class="btn btn-danger btn-sm" type="submit" value="Delete">
+                      <i class="fas fa-trash"></i>
+                      Delete
+                    </button>
+                  </form>
+                </td>
+                @endif
+              </tr>
+              @empty
+              <tr>
+                <td colspan="6" style="text-align: center" class="text-danger"><strong>Data masih kosong</strong></td>
+              </tr>
+              @endforelse
             </tbody>
-        </table>
+          </table>
+        </div>
+        
       </div>
       <!-- /.card-body -->
       <!-- /.card-footer-->
     </div>
+    @if(session()->has('ucapan'))
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h1 class="text-center mb-4"> {{session('ucapan')}} Terima Kasih Telah Menawar</h1>
+              <p class="text-justify">Kami sangat mengapresiasi kesediaan Anda untuk menawar barang lelang di situs kami. Setiap penawaran yang Anda berikan membantu kami untuk memberikan pelayanan yang lebih baik kepada semua pengguna situs.</p>
+              <p class="text-justify">Kami selalu berusaha untuk memberikan pengalaman yang terbaik dalam membeli atau menjual barang lelang di situs kami. Jangan ragu untuk terus mengunjungi situs kami untuk mencari barang lelang yang menarik dan menawarkan penawaran yang terbaik.</p>
+              <p class="text-center mt-5"><a href="{{ route('masyarakat.listlelang') }}" class="btn btn-primary">Kembali ke Halaman Lelang</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endif
+    
   </section>
 @endsection

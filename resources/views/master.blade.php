@@ -33,6 +33,22 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      table-layout: auto;
+    }
+
+    th,
+    td {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
   </style>
 </head>
 <body class="hold-transition layout-fixed sidebar-mini sidebar-collapse">
