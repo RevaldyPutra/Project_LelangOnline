@@ -82,8 +82,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">GENERATE LAPORAN</li>
-          <li class="nav-item">
+          <li hidden class="nav-header">GENERATE LAPORAN</li>
+          <li hidden class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -134,8 +134,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">GENERATE LAPORAN</li>
-          <li class="nav-item">
+          <li hidden class="nav-header">GENERATE LAPORAN</li>
+          <li hidden class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>

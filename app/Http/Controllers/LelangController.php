@@ -5,6 +5,7 @@ use App\Models\Lelang;
 use App\Models\Barang;
 use App\Models\HistoryLelang;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,9 +95,10 @@ class LelangController extends Controller
     public function show(Lelang $lelang)
     {
         //
+        $comments = Comment::orderBy('created_at', 'desc')->get()->where('lelang_id',$lelang->id);
         $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get()->where('lelang_id',$lelang->id);
         $lelangs = Lelang::find($lelang->id);
-        return view('lelang.show', compact('lelangs','historyLelangs'));
+        return view('lelang.show', compact('lelangs','historyLelangs','comments'));
 
     }
 

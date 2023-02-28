@@ -218,5 +218,61 @@
     <!-- /.card-body -->
     <!-- /.card-footer-->
   </div>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <form method="POST" action="{{ route('lelangin.storecomments', $lelangs->id) }}">
+                @csrf
+                <div class="form-group">
+                  <label for="komentar">Tulis Komentar</label>
+                  <textarea class="form-control" rows="5" id="komentar" placeholder="Masukkan komentar" name="komentar"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Kirim</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              @forelse($comments as $komen)
+              <div class="media mb-3">
+                @if($komen->user->level == 'admin')
+
+                <img src="{{asset('adminlte/dist/img/user-gear.png')}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                @else
+                <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+
+                @endif
+
+                <div class="media-body">
+                  @if($komen->user->level == 'admin')
+                  <h5 class="mt-0 text-success">{{ $komen->nama }} <small><i>{{ $komen->created_at->diffForHumans() }}
+                  </i></small></h5>
+                  @elseif($komen->user->level == 'petugas')
+                  <span class="badge {{ $komen->user->level == 'petugas' ? 'bg-primary' : 'bg-secondary' }}">{{ Str::title($komen->user->level) }}</span>
+                  <h5 class="mt-0">{{ $komen->nama }} <small><i>{{ $komen->created_at->diffForHumans() }}
+                  </i></small></h5>
+                  @else
+                  <h5 class="mt-0">{{ $komen->nama }} <small><i>{{ $komen->created_at->diffForHumans() }}
+                  </i></small></h5>
+                  @endif
+                  <p>{{ $komen->komentar }}</p>      
+                </div>
+              </div>
+              @empty
+              <p>Tidak ada komentar.</p>
+              @endforelse
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>  
   </section>
 @endsection

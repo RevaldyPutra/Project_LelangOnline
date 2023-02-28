@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Barang;
 use App\Models\User;
 use App\Models\HistoryLelang;
+use App\Models\Comment;
 
 class Lelang extends Model
 {
@@ -30,5 +31,9 @@ class Lelang extends Model
     public function historylelang()
     {
         return $this->belongsTo(historylelang::class);
+    }
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
     }
 }

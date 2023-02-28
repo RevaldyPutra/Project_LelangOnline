@@ -6,6 +6,7 @@ use App\Models\HistoryLelang;
 use App\Models\Lelang;
 use App\Models\Barang;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -42,11 +43,30 @@ class HistoryLelangController extends Controller
     public function create(HistoryLelang $historyLelang, Lelang $lelang)
     {
         //
+        $comments = Comment::orderBy('created_at', 'desc')->get()->where('lelang_id',$lelang->id);
         $lelangs = Lelang::find($lelang->id);
         $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get()->where('lelang_id',$lelang->id);
-        return view('masyarakat.penawaran', compact('lelangs', 'historyLelangs'));
+        return view('masyarakat.penawaran', compact('lelangs', 'historyLelangs','comments'));
     }
 
+    public function storecomments(Lelang $lelang,Request $request)
+    {
+        //
+        $request->validate([
+            'komentar' => 'required',
+        ]);
+
+        $komentar = new Comment;
+        $komentar->nama = Auth::user()->name;
+        $komentar->komentar = $request->komentar;
+        $komentar->lelang_id = $lelang->id;
+        $komentar->users_id = Auth::user()->id;
+        $komentar->save();
+
+
+
+        return redirect()->back()->with('success', 'Komentar berhasil ditambahkan.');
+    }
     /**
      * Store a newly created resource in storage.
      *

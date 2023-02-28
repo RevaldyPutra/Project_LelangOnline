@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\HistoryLelang;
+use App\Models\Comment;
 
 class User extends Authenticatable
 {
@@ -56,5 +57,9 @@ class User extends Authenticatable
     public function barang()
     {
         return $this->belongsTo(Barang::class);
+    }
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
     }
 }
