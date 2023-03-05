@@ -287,7 +287,7 @@
                 <h1 class="mb-0">List Barang</h1>
             </div>
             <div class="row g-5">
-                @foreach($lelangs as $value)
+                @foreach($lelang as $value)
                 @if($value->status == 'dibuka')
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
@@ -307,9 +307,24 @@
                             <a class="text-uppercase" href="{{ route('lelangin.create', $value->id)}}">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
-                </div>
-                @else
-                @endif
+                </div>    
+                @else  
+                <div class="card bg-light">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h2 class="card-title text-center">Tidak ada barang yang dilelang saat ini</h2>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p class="text-muted text-center">Mohon maaf, saat ini tidak ada barang yang sedang dilelang. Silakan kembali lagi nanti.</p>
+                          <p class="text-center mt-3">Namun jangan khawatir, kami akan terus memperbarui daftar barang yang akan dilelang. Silakan pantau terus website kami untuk mendapatkan informasi terbaru.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                @endif          
                 @endforeach
                 </div>
             </div>
