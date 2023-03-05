@@ -101,6 +101,23 @@ class LelangController extends Controller
         return view('lelang.show', compact('lelangs','historyLelangs','comments'));
 
     }
+    public function cetakpenawaran(Lelang $lelang, $status = null)
+    {
+    $comments = Comment::orderBy('created_at', 'desc')->get()->where('lelang_id',$lelang->id);
+    $lelangs = Lelang::find($lelang->id);
+    
+    if($status == 'pemenang'){
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->where('lelang_id',$lelang->id)->where('status', 'pemenang')->get();
+    } elseif($status == 'pending') {
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->where('lelang_id',$lelang->id)->where('status', 'pending')->get();
+    } elseif($status == 'gugur') {
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->where('lelang_id',$lelang->id)->where('status', 'gugur')->get();
+    } else {
+        $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->where('lelang_id',$lelang->id)->get();
+    }
+    
+    return view('lelang.cetakdatapenawaran', compact('lelangs','historyLelangs','comments'));
+    }
 
     /**
      * Show the form for editing the specified resource.

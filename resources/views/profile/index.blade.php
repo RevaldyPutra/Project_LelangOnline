@@ -15,9 +15,9 @@
             <div class="card-body box-profile">
               <div class="text-center">
                 @if(auth()->user()->level == 'admin')
-                    <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="profile-user-img img-fluid img-circle" alt="User profile picture">
-                    @else
-                    <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="profile-user-img img-fluid img-circle" alt="User profile picture">
+                <img src="{{ asset('adminlte/dist/img/user-gear.png') }}" alt="User profile picture" class="profile-user-img img-fluid img-circle">
+                @else
+                <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" alt="User profile picture" class="profile-user-img img-fluid img-circle">
                 @endif
               </div>
 
@@ -78,9 +78,13 @@
                 <!-- /.tab-pane -->
 
                 <div class="tab-pane" id="settings">
-                    <form class="{{route('user.updateprofile')}}" method="POST">
+                    <form class="{{route('user.updateprofile')}}" method="POST"  enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
+                        {{-- <div class="form-group">
+                            <label for="photo">Foto Profil</label>
+                            <input id="photo" type="file" class="form-control-file" name="photo">
+                        </div> --}}
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">

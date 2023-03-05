@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>LelangOnline - Aplikasi perlelangan online</title>
+    <title>ReyBidz - Aplikasi perlelangan online</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -44,7 +44,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fas fa-gavel me-2"></i>LelangOnline</h1>
+                <h1 class="m-0"><i class="fa fas fa-gavel me-2"></i>ReyBidz</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -133,10 +133,10 @@
                             @if (Route::has('login'))
                             @auth
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{Auth::user()->name}}</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang di ReyBidz</h1>
                             @else
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">LelanginAja</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">ReyBidz</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang di ReyBidz</h1>
                             @endauth
                             @endif
                             <a href="{{route('login')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Mulai Lelang Sekarang</a>
@@ -147,8 +147,8 @@
                     <img class="w-100" style="max-height:610px;" src="{{ asset('startup/img/beach.jpg')}}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">LelanginAja</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Selamat Datang Di Aplikasi LelangOnline</h1>
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">ReyBidz</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Platform Lelang Online Terpercaya</h1>
                            
                             <a href="#" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
@@ -249,9 +249,15 @@
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
                         <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
-                        <h1 class="mb-0">Lelang Online aplikasi lelang untuk mempermudah perlelangan</h1>
+                        <h1 class="mb-0">ReyBidz aplikasi lelang untuk mempermudah perlelangan</h1>
                     </div>
-                    <p class="mb-4">Melalui aplikasi lelang online ini, proses lelang dapat dilakukan dengan mudah dan efisien, mulai dari proses distribusi informasi yang transparan kepada pelanggan, proses pendaftaran, penawaran, transaksi, hingga pembayaran. Kemudahan-kemudahan tersebut tentu saja menawarkan kenyamanan bagi pelanggan. Pada akhirnya rasio penjualan meningkat. Hal tersebut tentu saja menguntungkan bagi pihak penjual.</p>
+                    <p>Selamat datang di ReyBidz - platform lelang online yang memungkinkan Anda untuk membeli dan menjual barang secara mudah dan aman. Kami menyediakan berbagai kategori produk yang berkualitas dan bergaransi, dari elektronik hingga fashion, otomotif, dan banyak lagi.</p>
+
+                        <p>Kami berkomitmen untuk memberikan pengalaman lelang yang transparan, efisien, dan menguntungkan bagi semua pengguna kami. Dengan fitur-fitur canggih seperti sistem penawaran otomatis dan notifikasi real-time, Anda dapat dengan mudah memantau lelang yang sedang berlangsung dan memenangkan barang yang Anda inginkan.</p>
+                        
+                        <p>Kami juga memiliki tim dukungan pelanggan yang siap membantu Anda setiap saat, menjawab pertanyaan dan memberikan solusi untuk masalah apa pun yang Anda hadapi. Kami percaya bahwa kepuasan pelanggan adalah kunci kesuksesan kami, dan itulah mengapa kami selalu berusaha untuk memberikan pelayanan terbaik kepada setiap pengguna kami.</p>
+                        
+                        <p class="mb-4">Bergabunglah dengan ReyBidz hari ini dan temukan pengalaman lelang online yang tidak akan Anda temukan di tempat lain!</p>
                     <div class="row g-0 mb-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>User Friendly</h5>
@@ -277,7 +283,7 @@
      <div id="listbarang"class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">LelangOnline</h5>
+                <h5 class="fw-bold text-primary text-uppercase">ReyBidz</h5>
                 <h1 class="mb-0">List Barang</h1>
             </div>
             <div class="row g-5">
@@ -302,26 +308,7 @@
                         </div>
                     </div>
                 </div>
-                @elseif($value->status == 'ditutup')
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            @if($value->barang->image)
-                                <img src="{{ asset('storage/' . $value->barang->image)}}" alt="{{ $value->barang->nama_barang }}" class="img-fluid">
-                            @endif
-                            <a class="position-absolute top-0 start-0 bg-warning text-white rounded-end mt-5 py-2 px-4" href="">Di Tutup</a>    
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex mb-3">
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ \Carbon\Carbon::parse($value->created_at)->format('j F Y')}}</small>
-                            </div>
-                            <h4 class="mb-3">{{ $value->barang->nama_barang}}</h4>
-                            <h5 class="mb-3"> @currency($value->harga_akhir)</h5>
-                            <p>{{ $value->barang->deskripsi_barang }}</p>
-                            <a class="text-uppercase" href="{{ route('lelangin.create', $value->id)}}">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @else
                 @endif
                 @endforeach
                 </div>
@@ -338,7 +325,7 @@
                 <div class="col-lg-4 col-md-6 footer-about">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
-                            <h1 class="m-0 text-white"><i class="fa fas fa-gavel me-2"></i>LelangOnline</h1>
+                            <h1 class="m-0 text-white"><i class="fa fas fa-gavel me-2"></i>ReyBidz</h1>
                         </a>
                         <p class="mt-3 mb-4">Mudah, aman dan terpercaya</p>
                         
@@ -378,7 +365,7 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="">LelangOnline</a>. All Rights Reserved. 
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="">ReyBidz</a>. All Rights Reserved. 
 						
 						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 						Created By <a class="text-white border-bottom" href="https://github.com/RevaldyPutra">Revaldy Putra P.B</a></p>

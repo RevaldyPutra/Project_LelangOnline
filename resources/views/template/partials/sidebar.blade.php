@@ -8,7 +8,7 @@
         <a href="{{route('dashboard.petugas')}}" class="brand-link">
       @endif
       <img src="{{ asset('adminlte/dist/img/lelangonline.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
-      <span class="brand-text font-weight-light">Lelang Online</span>
+      <span class="brand-text font-weight-light">ReyBidz</span>
       
     </a>
 

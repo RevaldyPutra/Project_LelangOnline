@@ -106,7 +106,7 @@ class HistoryLelangController extends Controller
         return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini')->with('ucapan','');
     }
 
-    public function setPemenang($id)
+    public function setPemenang(Lelang $lelang, $id)
     {
     // Mengambil data history lelang berdasarkan id
     $historyLelang = HistoryLelang::findOrFail($id);
@@ -123,8 +123,11 @@ class HistoryLelangController extends Controller
     $lelang->pemenang = $historyLelang->user->name;
     $lelang->harga_akhir = $historyLelang->harga;
     $lelang->save();
+
     return redirect()->back()->with('success', 'Pemenang berhasil dipilih!');
     }
+
+
 
 
     /**

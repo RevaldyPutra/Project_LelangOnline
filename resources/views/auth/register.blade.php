@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lelang Online - Registrasi</title>
+  <title>ReyBidz - Registrasi</title>
 
   <link rel="icon" type="images/png" href="{{ asset('adminlte/dist/img/lelangonline.png')}}" />
   <!-- Google Font: Source Sans Pro -->
@@ -31,10 +31,11 @@
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
         <img src="{{ asset('adminlte/dist/img/lelangonline.png')}}" alt="AdminLTE Logo" width="100" height="90">
-      <a href="/register" class="h1"><b>Lelang</b>Online</a>
+        <br>
+      <a href="/register" class="h1"><b>Rey</b>Bidz</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Register Akun Lelang Online</p>
+      <p class="login-box-msg">Register Akun ReyBidz</p>
 
       <form action="{{ route('register-store') }}" method="post">
         @csrf
@@ -112,8 +113,7 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <a href="{{route('login')}}" class="text-center">Sudah Punya Akun?</a>
+      <p class="mt-3">Sudah punya akun? <a href="{{route('login')}}" class="text-center">Sign in</a></p>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

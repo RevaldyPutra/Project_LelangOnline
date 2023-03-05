@@ -157,6 +157,8 @@ class UserController extends Controller
         $users->update(); 
         return redirect()->route('user.index')->with('editsuccess','Data Akun Berhasil Diedit');
     }
+
+    
     public function updateprofile(Request $request,User $user)
     {
         //
@@ -164,6 +166,15 @@ class UserController extends Controller
     $user->name = $request->input('name');
     $user->telepon = $request->input('telepon');
     $user->username = $request->input('username');
+
+        // Mengunggah file foto profil baru
+    if ($request->hasFile('photo')) {
+        $file = $request->file('photo');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $path = $file->storeAs('post-images', $filename);
+        $user->photo = $filename;
+    }
+
     if ($request->has('password')) {
         $user->password = bcrypt($request->input('password'));
     }

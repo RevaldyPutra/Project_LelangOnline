@@ -3,7 +3,9 @@
 @section('judul')
 @foreach($lelangs as $item)
 @if($item->pemenang == Auth::user()->name)
-<h1>Kamu memenangkan lelang</h1>
+    <div class="alert alert-success">
+        <strong>Selamat!</strong> Kamu memenangkan lelang untuk barang <a href="{{ route('lelangin.create', $item->id )}}">{{ $item->barang->nama_barang }}</a>
+    </div>
 @endif
 @endforeach
 <style>
@@ -57,21 +59,6 @@
     }
   }
   </style>
-@if(session()->has('successlogin'))
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title animate__animated animate__bounceIn">{{session('successlogin')}}Selamat datang, {{ Auth::user()->name }}!</h5>
-          <p class="card-text animate__animated animate__fadeInUp">Anda sudah login ke situs LelangOnline. Mari mulai petualangan menawar barang-barang unik dan berkualitas!</p>
-          <a href="#baranglelang" class="btn btn-success animate__animated animate__fadeInUp animate__delay-1s">Lihat Barang Lelang</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-@endif
 @endsection
 
 

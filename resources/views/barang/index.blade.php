@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Data Barangs</h1>
+<h1>Data Barang</h1>
 @endsection
 
 @section('content')
@@ -134,18 +134,31 @@
           @endif
           @csrf
             @method('DELETE')   
-            {{-- <button class="btn btn-danger"type="submit"value="Delete">
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
               <i class="fas fa-trash"></i>
-              Delete
-            </button> --}}
-            {{-- <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-                <i class="fas fa-trash"></i>
-                Delete
-              </button> --}}
-              <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
-                <i class="fas fa-trash"></i>
-                Hapus
-              </button>
+              Hapus
+          </button>
+          <!-- Modal Konfirmasi Hapus Data -->
+            <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="hapusModalLabel">Konfirmasi Hapus Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Apakah Anda yakin ingin menghapus data ini?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                      <input type="hidden" name="id_barang" value="<%= data_barang.id %>">
+                      <button type="submit" class="btn btn-danger">Hapus</button>
+                  </div>
+                </div>
+              </div>
+            </div>
            </form>
             </td>
         </tr>

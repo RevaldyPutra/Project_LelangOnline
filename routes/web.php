@@ -111,6 +111,7 @@ Route::get('/petugas/lelang/{lelang}', 'show')->name('lelangpetugas.show')->midd
 Route::put('/petugas/lelang/{lelang}', 'update')->name('lelang.update')->middleware('auth','level:petugas');
 Route::get('/admin/lelang/{lelang}', 'show')->name('lelangadmin.show')->middleware('auth','level:admin');
 Route::get('/cetak-lelang', 'cetaklelang')->name('cetak.lelang')->middleware('auth','level:admin,petugas');
+Route::get('/cetak-penawaran/{lelang}', 'cetakpenawaran')->name('cetak.penawaran')->middleware('auth','level:admin,petugas');
 Route::delete('/petugas/lelang/', 'destroy')->name('lelang.destroy')->middleware('auth','level:petugas');
     });
 

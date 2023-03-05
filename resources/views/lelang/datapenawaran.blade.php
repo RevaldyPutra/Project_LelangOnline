@@ -63,23 +63,37 @@
             <td>@currency($item->harga)</td>
             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
             <td>
-              <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
+              <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span>
             </td>
             @if (auth()->user()->level == 'admin')
 
             @endif
             @if (auth()->user()->level == 'petugas')
             <td>
-            <form action="{{ route('lelangin.destroy',$item) }}"method="POST">
-            {{-- <a class="btn btn-primary"href="{{ route('barang.show', $historyLelangs->id)}}">Detail</a>
-            <a class="btn btn-warning"href="{{ route('barang.edit', $historyLelangs->id)}}">Edit</a> --}}
-
-            <a class="btn btn-success btn-sm" href="{{ route('lelangpetugas.show', $item->lelang->id)}}">
-              <i class="fas fa-check">
-              </i>
-              Pilih Jadi Pemenang
-          </a>
-          </form>
+            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
+              <i class="fas fa-check"></i> Pilih Jadi Pemenang
+            </button>
+            <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
+                      @csrf
+                      @method('PUT')
+                      <button type="submit" class="btn btn-success">Ya, Pilih</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
         </td>
         @else
         @endif

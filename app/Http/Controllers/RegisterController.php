@@ -18,10 +18,10 @@ class RegisterController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|min:3|max:50',
-            'username' => 'required|unique:users,username|max:15',
+            'username' => 'required|unique:users,username|max:15|min:3',
             'password' => 'required|min:4',
             'passwordshow' => 'required|same:password',
-            'telepon' => 'required|max:15',
+            'telepon' => 'required|max:15|min:5',
         ],
         [
             'name.required' => 'Nama tidak boleh kosong',
@@ -29,11 +29,13 @@ class RegisterController extends Controller
             'username.required' => 'Username tidak boleh kosong',
             'username.unique' => 'Username sudah terdaftar',
             'username.max' => 'Username terlalu panjang',
+            'username.min' => 'Username terlalu pendek',
             'password.required' => 'Password tidak boleh kosong',
             'passwordshow.required' => 'Password tidak boleh kosong',
             'passwordshow.same' => 'Password tidak sama',
             'password.min' => 'Password terlalu pendek',
             'telepon.max' => 'No telp terlalu panjang',
+            'telepon.min' => 'No telp terlalu pendek',
             'telepon.required' => 'No telp tidak boleh kosong',
         ]
     );
@@ -49,3 +51,7 @@ class RegisterController extends Controller
     return redirect()->route('login')->with('success','Registrasi Berhasil!');
 }
 }
+
+
+
+?>

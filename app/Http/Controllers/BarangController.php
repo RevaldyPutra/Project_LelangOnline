@@ -28,8 +28,8 @@ class BarangController extends Controller
         //
         $barangs = Barang::all();
         $users = User::all();
-        $lelangs = Lelang::all();
-        $historylelangs = HistoryLelang::all();
+        $lelangs = Lelang::where('status','dibuka');
+        $historylelangs = HistoryLelang::where('status','dibuka');
         return view('homepage', compact('barangs','lelangs','historylelangs','users'));
     }
 

@@ -81,8 +81,13 @@
               </tr>
               @empty
               <tr>
-                  <td colspan="5" style="text-align: center" class="text-danger"><strong>Data masih kosong</strong></td>
+                <td colspan="5" style="text-align: center; background-color: #f5f5f5;">
+                  <span style="font-weight: bold; font-size: 1.2em; color: #a7a7a7;">
+                    <i class="far fa-frown"></i> Maaf, tidak ada data yang ditemukan.
+                  </span>
+                </td>
               </tr>
+              
               @endforelse
           </tbody>
       </table>

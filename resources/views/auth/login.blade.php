@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lelang Online - Login</title>
+  <title>ReyBidz - Login</title>
 
   <link rel="icon" type="images/png" href="{{ asset('adminlte/dist/img/lelangonline.png')}}" />
   <!-- Google Font: Source Sans Pro -->
@@ -39,7 +39,8 @@
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
     <img src="{{ asset('adminlte/dist/img/lelangonline.png')}}" alt="AdminLTE Logo" width="100" height="90">
-      <a href="#" class="h1"><b>Lelang</b>Online</a>
+    <br>
+      <a href="#" class="h1"><b>Rey</b>Bidz</a>
     </div>
     <div class="card-body">
       @if(session()->has('success'))
@@ -96,8 +97,8 @@
         </div>
       </form>
       <!-- /.social-auth-links -->
-      <p class="mb-0">
-        <a href="{{ route('login.register')}}" class="text-center">Belum Punya Akun?</a>
+      <p class="mt-3">Belum punya akun? 
+        <a href="{{ route('login.register')}}" class="text-center">Register</a>
       </p>
     </div>
     <!-- /.card-body -->

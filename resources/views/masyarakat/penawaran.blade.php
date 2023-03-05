@@ -311,8 +311,17 @@
               </tr>
               @empty
               <tr>
-                <td colspan="6" style="text-align: center" class="text-danger"><strong>Data masih kosong</strong></td>
+                <td colspan="6" style="text-align: center; background-color: #f5f5f5; padding: 2em;">
+                  <span style="font-weight: bold; font-size: 1.5em; color: #a7a7a7;">
+                    <i class="far fa-frown"></i> Maaf, tidak ada data penawaran untuk barang ini.
+                  </span>
+                  <br>
+                  <span style="font-size: 1.2em; color: #a7a7a7;">
+                    Silahkan menawar barang sekarang.
+                  </span>
+                </td>
               </tr>
+                         
               @endforelse
             </tbody>
           </table>
@@ -322,7 +331,6 @@
       <!-- /.card-body -->
       <!-- /.card-footer-->
     </div>
-    @if($lelangs->status == 'ditutup')
     <div class="container">
       <div class="row mt-5">
         <div class="col-md-12">
@@ -385,53 +393,6 @@
       </div>
       <br>
     </div>  
-    @else
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              @forelse($comments as $komen)
-              <div class="media mb-3">
-                @if($komen->user->level == 'admin')
-
-                <img src="{{asset('adminlte/dist/img/user-gear.png')}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                @else
-                <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-
-                @endif
-
-                <div class="media-body">
-                  @if($komen->user->level == 'admin')
-                  <h5 class="mt-0 text-success">{{ $komen->nama }} <small><i>Posted on {{ $komen->created_at->format('d F Y \p\a\d\a\ H:i') }}
-                  </i></small></h5>
-                  @elseif($komen->user->level == 'petugas')
-                  <span class="badge {{ $komen->user->level == 'petugas' ? 'bg-primary' : 'bg-secondary' }}">{{ Str::title($komen->user->level) }}</span>
-                  <h5 class="mt-0">{{ $komen->nama }} <small><i>
-                    <div class="time">
-                      {{ $komen->created_at->diffForHumans() }}
-                  </div>                  
-                  </i></small></h5>
-                  @else
-                  <h5 class="mt-0">{{ $komen->nama }} <small><i>
-                    <div class="time">
-                    {{ $komen->created_at->diffForHumans() }}
-                    </div>
-                  </i></small></h5>
-                  @endif
-                  <p>{{ $komen->komentar }}</p>      
-                </div>
-              </div>
-              @empty
-              <p>Tidak ada komentar.</p>
-              @endforelse
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-    </div>  
-    @endif
     
     @if(session()->has('ucapan'))
     <div class="container my-5">

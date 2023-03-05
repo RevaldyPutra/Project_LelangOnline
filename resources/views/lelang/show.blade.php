@@ -107,12 +107,12 @@
                       </div>
                     </div>
                     @if(auth()->user()->level == 'admin')
-                  <a href="{{route('lelangadmin.index')}}" class="btn btn-outline-info">Kembali</a>
-                  @elseif(auth()->user()->level == 'masyarakat')
-                  <a href="{{route('dashboard.masyarakat')}}" class="btn btn-outline-info">Kembali</a>
-                    @elseif(auth()->user()->level == 'petugas')
-                    <a href="{{ route('lelangpetugas.index')}}" class="btn btn-outline-info">Kembali</a>
-                  @endif
+                      <a href="{{route('lelangadmin.index')}}" class="btn btn-outline-info">Kembali</a>
+                        @elseif(auth()->user()->level == 'masyarakat')
+                          <a href="{{route('dashboard.masyarakat')}}" class="btn btn-outline-info">Kembali</a>
+                        @elseif(auth()->user()->level == 'petugas')
+                          <a href="{{ route('lelangpetugas.index')}}" class="btn btn-outline-info">Kembali</a>
+                    @endif
                   </form>
                 </div>
                 <!-- /.tab-pane -->
@@ -138,6 +138,10 @@
     </div><!-- /.container-fluid -->
     <div class="card">
       <div class="card-header">
+        <a href="{{route('cetak.penawaran', $lelangs->id)}}" target="_blank" class="btn btn-info mb-3">
+      <li class="fas fa fa-print"></li>
+          Cetak Data
+        </a>
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>

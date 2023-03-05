@@ -18,7 +18,7 @@
             <th>Tanggal Penawaran</th>
             <th>Status</th>
         </tr>
-        @foreach ($cetakhistoryLelangs as $item)
+        @foreach ($historyLelangs as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->user->name }}</td>
