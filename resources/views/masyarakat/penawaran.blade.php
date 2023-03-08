@@ -364,7 +364,6 @@
                 @endif
 
                 <div class="media-body">
-                  <button class="btn btn-danger">Delete</button>
                   @if($komen->user->level == 'admin')
                   <h5 class="mt-0 text-success">{{ $komen->nama }} <small><i>Posted on {{ $komen->created_at->format('d F Y \p\a\d\a\ H:i') }}
                   </i></small></h5>
