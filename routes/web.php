@@ -59,7 +59,6 @@ Route::view('errorr/403', 'error.403')->name('error.403');
 // ROUTE LIST LELANG
 Route::get('/dashboard/masyarakat/listlelang', [ListController::class, 'index'])->name('listlelang.index')->middleware('auth','level:masyarakat');
 
-
 // ROUTE MASYARAKAT
 Route::get('list-lelang', [MasyarakatController::class, 'listlelang'])->name('masyarakat.listlelang')->middleware('auth','level:masyarakat');
 Route::get('data-penawaran-anda', [MasyarakatController::class, 'index'])->name('masyarakatlelang.index')->middleware('auth', 'level:masyarakat');
@@ -125,7 +124,15 @@ Route::post('/menawar/{lelang}', 'store')->name('lelangin.store')->middleware('a
 Route::post('/komentar/{lelang}', 'storecomments')->name('lelangin.storecomments')->middleware('auth','level:masyarakat,petugas,admin');
 Route::delete('/data-penawaran/{lelang}', 'destroy')->name('lelangin.destroy')->middleware('auth','level:petugas');
 Route::put('/lelangpetugas/{id}/pemenang', 'setPemenang')->name('lelangpetugas.setpemenang');
-
     });
 
-    Route::get('generate-pdf', [ReportController::class, 'generatePdf'])->name('generatePdf');
+    Route::controller(ReportController::class)->group(function() {
+        Route::get('generate-pdfall', 'generatePdf')->name('generatePdf');
+        Route::get('generate-pdfpemenang', 'generatePdfpemenang')->name('generatePdf.pemenang');
+        Route::get('generate-pdfpending', 'generatePdfpending')->name('generatePdf.pending');
+        Route::get('generate-pdfgugur', 'generatePdfgugur')->name('generatePdf.gugur');
+        Route::get('cetak-history-all', 'cetakhistoryall')->name('cetakhistoryall')->middleware('auth','level:petugas,admin');
+        Route::get('cetak-history-pemenang', 'cetakhistorypemenang')->name('cetakhistorypemenang')->middleware('auth','level:petugas,admin');
+        Route::get('cetak-history-pending', 'cetakhistorypending')->name('cetakhistorypending')->middleware('auth','level:petugas,admin');
+        Route::get('cetak-history-gugur', 'cetakhistorygugur')->name('cetakhistorygugur')->middleware('auth','level:petugas,admin');
+    });

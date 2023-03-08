@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style type="text/css">
+      @media print {
+         .no-print {
+            display: none;
+         }
+      }
+      </style>
     <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/bootstrap.min.css')}}">
   <!-- Toastr -->
@@ -17,6 +24,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LAPORAN HISTORY LELANG</title>
 </head>
+<div class="no-print">
+  <a href="{{route('generatePdf.pemenang')}}" class="btn btn-primary">Generate Pdf</a>
+  <button class="btn btn-info" onclick="window.print()">Cetak</button>
+</div>
 <body>
     <div class="form-group">
         <p align="center">LAPORAN HISTORY LELANG</p>
@@ -33,7 +44,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($historyLelangs as $item)
+                @foreach ($cetakhistoryLelangsPemenang as $item)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->user->name }}</td>
@@ -48,8 +59,5 @@
           </div>
           
     </div>
-    <script type="text/javascript">
-        window.print();
-    </script>
 </body>
 </html>

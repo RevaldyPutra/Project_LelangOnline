@@ -16,7 +16,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LAPORAN HISTORY LELANG</title>
+    <style type="text/css">
+      @media print {
+         .no-print {
+            display: none;
+         }
+      }
+      </style>
 </head>
+<div class="no-print">
+  <a href="{{route('generatePdf')}}" class="btn btn-primary">Generate Pdf</a>
+  <button class="btn btn-info" onclick="window.print()">Cetak</button>
+</div>
 <body>
     <div class="form-group">
         <p align="center">LAPORAN HISTORY LELANG</p>
@@ -33,7 +44,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($historyLelangs as $item)
+                @foreach ($cetakhistoryLelangs as $item)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->user->name }}</td>
@@ -48,8 +59,5 @@
           </div>
           
     </div>
-    <script type="text/javascript">
-        window.print();
-    </script>
 </body>
 </html>

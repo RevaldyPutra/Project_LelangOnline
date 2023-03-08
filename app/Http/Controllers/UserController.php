@@ -91,8 +91,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
+        $historyLelangs = HistoryLelang::all();
         $users = User::find($user->id);
-        return view('user.show', compact('users'));
+        return view('user.show', compact('users','historyLelangs'));
     }
     
     /**

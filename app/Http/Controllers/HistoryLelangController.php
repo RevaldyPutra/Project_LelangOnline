@@ -24,14 +24,21 @@ class HistoryLelangController extends Controller
     {
         //
         $historyLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
+        $historyLelangsPemenang = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','pemenang');
+        $historyLelangsPending = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','pending');
+        $historyLelangsGugur = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','gugur');
+        $lelangs = Lelang::all();
         
-        return view('lelang.datapenawaran', compact('historyLelangs'));
+        return view('lelang.datapenawaran', compact('historyLelangs','historyLelangsPemenang','historyLelangsPending','historyLelangsGugur','lelangs'));
     }
     public function cetakhistory()
     {
         //
         $cetakhistoryLelangs = HistoryLelang::orderBy('harga', 'desc')->get();
-        return view('lelang.cetakhistory', compact('cetakhistoryLelangs'));
+        $cetakhistoryLelangsPemenang = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','pemenang');
+        $cetakhistoryLelangsPending = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','pending');
+        $cetakhistoryLelangsGugur = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','gugur');
+        return view('lelang.cetakhistory', compact('cetakhistoryLelangs','cetakhistoryLelangsPemenang','cetakhistoryLelangsPending','cetakhistoryLelangsGugur'));
     }
     
 
@@ -126,8 +133,6 @@ class HistoryLelangController extends Controller
 
     return redirect()->back()->with('success', 'Pemenang berhasil dipilih!');
     }
-
-
 
 
     /**

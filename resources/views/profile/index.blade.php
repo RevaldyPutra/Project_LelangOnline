@@ -64,7 +64,7 @@
                             <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control"readonly></div>
                           <div class="form-group">
                             <label>Waktu dibuat</label>
-                            <input type="text" name="created_at" value="{{ Auth::user()->created_at }}"class="form-control"readonly>
+                            <input type="text" name="created_at" value="{{ Auth::user()->created_at->format('j F Y') }}" class="form-control" readonly>
                           </div>
                           @if(Auth::user()->level == 'admin')
                           <a href="{{route('dashboard.admin')}}" class="btn btn-outline-info">Kembali</a>
@@ -107,6 +107,12 @@
                         <label for="inputName" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
                           <input type="password" class="form-control" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Confirm Password</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" name="passwordshow">
                         </div>
                     </div>
                     <div class="form-group row">
