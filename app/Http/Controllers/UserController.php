@@ -163,6 +163,33 @@ class UserController extends Controller
     public function updateprofile(Request $request,User $user)
     {
         //
+        $request->validate([
+            'password' => 'nullable|string|min:4',
+            'passwordshow' => 'nullable|string|same:password',
+            'telepon' => 'required|max:15|min:5',
+        ],
+        [
+            'name.required' => 'Nama tidak boleh kosong',
+            'name.min' => 'Nama terlalu pendek',
+            'username.required' => 'Username tidak boleh kosong',
+            'username.unique' => 'Username sudah terdaftar',
+            'username.max' => 'Username terlalu panjang',
+            'username.min' => 'Username terlalu pendek',
+            'password.required' => 'Password tidak boleh kosong',
+            'passwordshow.required' => 'Password tidak boleh kosong',
+            'passwordshow.same' => 'Password tidak sama',
+            'password.min' => 'Password terlalu pendek',
+            'telepon.max' => 'No telp terlalu panjang',
+            'telepon.min' => 'No telp terlalu pendek',
+            'telepon.required' => 'No telp tidak boleh kosong',
+        ]
+    );
+    if($request->name != $user->name) {
+        $rules['name'] = 'required|unique:users,name|min:3|max:50';
+    }
+    elseif($request->username != $user->username) {
+        $rules['name'] = 'required|unique:users,username|max:15';
+    }
     $user = auth()->user(); // Ambil data pengguna yang sedang login
     $user->name = $request->input('name');
     $user->telepon = $request->input('telepon');
@@ -178,6 +205,8 @@ class UserController extends Controller
 
     if ($request->has('password')) {
         $user->password = bcrypt($request->input('password'));
+    }elseif ($request->has('passwordshow')) {
+        $user->passwordshow = $request->input('passwordshow');
     }
     $user->save();
     return redirect()->route('user.editprofile')->with('success', 'Profil berhasil diupdate');

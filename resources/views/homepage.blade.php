@@ -287,7 +287,7 @@
                 <h1 class="mb-0">List Barang</h1>
             </div>
             <div class="row g-5">
-                @foreach($lelang as $value)
+                @forelse($lelang as $value)
                 @if($value->status == 'dibuka')
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
@@ -307,8 +307,9 @@
                             <a class="text-uppercase" href="{{ route('lelangin.create', $value->id)}}">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
-                </div>    
-                @else  
+                </div>
+                @endif    
+                @empty
                 <div class="card bg-light">
                     <div class="card-body">
                       <div class="row">
@@ -323,9 +324,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>                  
-                @endif          
-                @endforeach
+                  </div>                         
+                @endforelse
                 </div>
             </div>
         </div>

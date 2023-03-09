@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style type="text/css">
+    @media print {
+       .no-print {
+          display: none;
+       }
+    }
+    </style>
     <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/bootstrap.min.css')}}">
   <!-- Toastr -->
@@ -16,13 +23,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LAPORAN HISTORY LELANG</title>
-    <style type="text/css">
-      @media print {
-         .no-print {
-            display: none;
-         }
-      }
-      </style>
 </head>
 <div class="no-print">
   <a href="{{route('generatePdf')}}" class="btn btn-primary">Generate Pdf</a>

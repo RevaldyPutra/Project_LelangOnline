@@ -21,6 +21,8 @@ class LelangController extends Controller
     {
         //
         $lelangs = Lelang::orderBy('created_at','desc')->get();
+        $lelangsDibuka = Lelang::orderBy('created_at','desc')->get()->where('status','dibuka');
+        $lelangsDitutup = Lelang::orderBy('created_at','desc')->get()->where('status','ditutup');
         $barangs = Barang::select('id', 'nama_barang', 'harga_awal')
                     ->whereNotIn('id', function($query)
                     {

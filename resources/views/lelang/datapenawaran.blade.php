@@ -49,14 +49,6 @@
                             <th>Harga Penawaran</th>
                             <th>Tanggal Penawaran</th>
                             <th>Status</th>
-                            @if(auth()->user()->level == 'petugas')
-                            <th></th>
-                            @else
-                            @endif
-                            @if(auth()->user()->level == 'admin')
-                            <th></th>
-                            @else
-                            @endif
                             
                         </tr>
                     </tbody>
@@ -80,36 +72,7 @@
         
                     @endif
                     @if (auth()->user()->level == 'petugas')
-                    <td>
-                    @if($item->status == 'pemenang')
-                    @elseif($item->status == 'gugur')
-                    @else
-                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
-                      <i class="fas fa-check"></i> Pilih Jadi Pemenang
-                    </button>
-                    @endif
-                    <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
-                              @csrf
-                              @method('PUT')
-                              <button type="submit" class="btn btn-success">Ya, Pilih</button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </td>
+                    
                 @else
                 @endif
                 </tr>
@@ -157,15 +120,6 @@
                             <th>Harga Penawaran</th>
                             <th>Tanggal Penawaran</th>
                             <th>Status</th>
-                            @if(auth()->user()->level == 'petugas')
-                            <th></th>
-                            @else
-                            @endif
-                            @if(auth()->user()->level == 'admin')
-                            <th></th>
-                            @else
-                            @endif
-                            
                         </tr>
                     </tbody>
                 </thead>
@@ -184,42 +138,6 @@
                     <td>
                       <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span>
                     </td>
-                    @if (auth()->user()->level == 'admin')
-        
-                    @endif
-                    @if (auth()->user()->level == 'petugas')
-                    <td>
-                      @if($item->status == 'pemenang')
-                      @elseif($item->status == 'gugur')
-                      @else
-                      <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
-                        <i class="fas fa-check"></i> Pilih Jadi Pemenang
-                      </button>
-                      @endif
-                    <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
-                              @csrf
-                              @method('PUT')
-                              <button type="submit" class="btn btn-success">Ya, Pilih</button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </td>
-                @else
-                @endif
                 </tr>
                 @empty
                 <tr>
@@ -265,15 +183,6 @@
                             <th>Harga Penawaran</th>
                             <th>Tanggal Penawaran</th>
                             <th>Status</th>
-                            @if(auth()->user()->level == 'petugas')
-                            <th></th>
-                            @else
-                            @endif
-                            @if(auth()->user()->level == 'admin')
-                            <th></th>
-                            @else
-                            @endif
-                            
                         </tr>
                     </tbody>
                 </thead>
@@ -292,42 +201,6 @@
                     <td>
                       <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span>
                     </td>
-                    @if (auth()->user()->level == 'admin')
-        
-                    @endif
-                    @if (auth()->user()->level == 'petugas')
-                    <td>
-                      @if($item->status == 'pemenang')
-                      @elseif($item->status == 'gugur')
-                      @else
-                      <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
-                        <i class="fas fa-check"></i> Pilih Jadi Pemenang
-                      </button>
-                      @endif
-                    <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
-                              @csrf
-                              @method('PUT')
-                              <button type="submit" class="btn btn-success">Ya, Pilih</button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </td>
-                @else
-                @endif
                 </tr>
                 @empty
                 <tr>
@@ -374,15 +247,6 @@
                             <th>Harga Penawaran</th>
                             <th>Tanggal Penawaran</th>
                             <th>Status</th>
-                            @if(auth()->user()->level == 'petugas')
-                            <th></th>
-                            @else
-                            @endif
-                            @if(auth()->user()->level == 'admin')
-                            <th></th>
-                            @else
-                            @endif
-                            
                         </tr>
                     </tbody>
                 </thead>
@@ -401,42 +265,6 @@
                     <td>
                       <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span>
                     </td>
-                    @if (auth()->user()->level == 'admin')
-        
-                    @endif
-                    @if (auth()->user()->level == 'petugas')
-                    <td>
-                      @if($item->status == 'pemenang')
-                      @elseif($item->status == 'gugur')
-                      @else
-                      <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
-                        <i class="fas fa-check"></i> Pilih Jadi Pemenang
-                      </button>
-                      @endif
-                    <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
-                              @csrf
-                              @method('PUT')
-                              <button type="submit" class="btn btn-success">Ya, Pilih</button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </td>
-                @else
-                @endif
                 </tr>
                 @empty
                 <tr>

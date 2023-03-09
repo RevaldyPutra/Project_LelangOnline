@@ -135,4 +135,7 @@ Route::put('/lelangpetugas/{id}/pemenang', 'setPemenang')->name('lelangpetugas.s
         Route::get('cetak-history-pemenang', 'cetakhistorypemenang')->name('cetakhistorypemenang')->middleware('auth','level:petugas,admin');
         Route::get('cetak-history-pending', 'cetakhistorypending')->name('cetakhistorypending')->middleware('auth','level:petugas,admin');
         Route::get('cetak-history-gugur', 'cetakhistorygugur')->name('cetakhistorygugur')->middleware('auth','level:petugas,admin');
+        Route::get('/cetak-lelang', 'cetaklelang')->name('cetak.lelang')->middleware('auth','level:admin,petugas');
+        Route::get('/cetak-lelang-dibuka', 'cetaklelangdibuka')->name('cetak.lelangdibuka')->middleware('auth','level:admin,petugas');
+        Route::get('/cetak-lelang-ditutup', 'cetaklelangditutup')->name('cetak.lelangditutup')->middleware('auth','level:admin,petugas');
     });

@@ -178,10 +178,11 @@
               <td>{{ $item->lelang->barang->nama_barang }}</td>
               <td>@currency($item->harga)</td>
               <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
-              <td>
-                <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
-              </td>
+              <td><span class="badge text-white {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span></td>
               @if(Auth::user()->level == 'petugas')
+              @if($item->status == 'pemenang')
+              @elseif($item->status == 'gugur')
+              @else
               <td>
                   <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
                     <i class="fas fa-check"></i> Pilih Jadi Pemenang
@@ -208,6 +209,7 @@
                     </div>
                   </div>
               </td>
+              @endif
               @else
               @endif
           </tr>

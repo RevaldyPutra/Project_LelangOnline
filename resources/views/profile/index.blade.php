@@ -88,31 +88,56 @@
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
+                          <input type="text" class="form-control @error('name') is-invalid @enderror" class="form-control" name="name" value="{{ Auth::user()->name }}">
+                          @error('name')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" name="username" value="{{ Auth::user()->username }}">
+                          <input type="text" class="form-control @error('username') is-invalid @enderror" class="form-control" name="username" value="{{ Auth::user()->username }}">
+                          @error('username')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Telepon</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" name="telepon" value="{{ Auth::user()->telepon }}">
+                          <input type="text"  class="form-control @error('telepon') is-invalid @enderror" class="form-control" name="telepon" value="{{ Auth::user()->telepon }}">
+                          @error('telepon')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" name="password">
+                          <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                          @error('password')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Confirm Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" name="passwordshow">
+                          <input type="password" class="form-control  @error('passwordshow') is-invalid @enderror" name="passwordshow">
+                          @error('passwordshow')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-group row">

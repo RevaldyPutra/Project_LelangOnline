@@ -277,9 +277,7 @@
                 <td>{{ $item->lelang->barang->nama_barang }}</td>
                 <td>@currency($item->harga)</td>
                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
-                <td>
-                  <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
-                </td>
+                <td><span class="badge text-white {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span></td>
                 @if (auth()->user()->level == 'admin')
                 <td>
                   <a class="btn btn-primary btn-sm" href="{{ route('lelangadmin.show', $item->id)}}">

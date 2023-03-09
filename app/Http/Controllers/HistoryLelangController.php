@@ -122,6 +122,11 @@ class HistoryLelangController extends Controller
     $historyLelang->status = 'pemenang';
     $historyLelang->save();
 
+    HistoryLelang::where('lelang_id', $historyLelang->lelang_id)
+    ->where('status', 'pending')
+    ->where('id', '<>', $historyLelang->id)
+    ->update(['status' => 'gugur']);
+
     // Mengambil data lelang berdasarkan history lelang
     $lelang = $historyLelang->lelang;
 

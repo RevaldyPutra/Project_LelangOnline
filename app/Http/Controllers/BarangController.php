@@ -73,6 +73,8 @@ class BarangController extends Controller
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('post-images');
+        }else {
+            $validateData['image'] = 'post-images/lelangonlinesample.jpg';
         }
         $validateData['users_id'] = Auth::id();
         // Barang::create([

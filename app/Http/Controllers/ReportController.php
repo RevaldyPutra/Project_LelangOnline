@@ -80,4 +80,23 @@ class ReportController extends Controller
         $cetakhistoryLelangsGugur = HistoryLelang::orderBy('harga', 'desc')->get()->where('status','gugur');
         return view('GENERATE-LAPORAN.cetakhistoryGugur', compact('cetakhistoryLelangsGugur'));
     }
+
+    public function cetaklelang()
+    {
+        //
+        $cetaklelangs = Lelang::all();
+        return view('GENERATE-LAPORAN.cetaklelang', compact('cetaklelangs'));
+    }
+    public function cetaklelangdibuka()
+    {
+        //
+        $cetaklelangsDibuka = Lelang::all()->where('status','dibuka');
+        return view('lelang.cetaklelangDibuka', compact('cetaklelangsDibuka'));
+    }
+    public function cetaklelangditutup()
+    {
+        //
+        $cetaklelangsDitutup = Lelang::all()->where('status','ditutup');
+        return view('lelang.cetaklelangDitutup', compact('cetaklelangsDitutup'));
+    }
 }
