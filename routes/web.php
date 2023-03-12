@@ -121,6 +121,7 @@ Route::get('/menawar/{lelang}', 'create')->name('lelangin.create')->middleware('
 Route::get('cetak-history', 'cetakhistory')->name('cetak.history')->middleware('auth','level:petugas,admin');
 Route::get('/data-penawaran', 'index')->name('datapenawar.index')->middleware('auth','level:petugas,admin');
 Route::post('/menawar/{lelang}', 'store')->name('lelangin.store')->middleware('auth','level:masyarakat');
+Route::post('/lelang/{lelang}/setPemenang/{id}', 'setPemenang')->name('setPemenang')->middleware('auth','level:petugas');
 Route::post('/komentar/{lelang}', 'storecomments')->name('lelangin.storecomments')->middleware('auth','level:masyarakat,petugas,admin');
 Route::delete('/data-penawaran/{lelang}', 'destroy')->name('lelangin.destroy')->middleware('auth','level:petugas');
 Route::put('/lelangpetugas/{id}/pemenang', 'setPemenang')->name('lelangpetugas.setpemenang');

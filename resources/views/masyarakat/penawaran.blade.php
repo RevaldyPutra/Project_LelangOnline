@@ -1,6 +1,28 @@
 @extends('master')
 
 @section('judul')
+@if($lelangs->pemenang == Auth::user()->name)
+@else
+{{-- <div class="modal fade" id="gugurModal" tabindex="-1" role="dialog" aria-labelledby="gugurModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gugurModalLabel">Gugur dalam Lelang</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Maaf, Anda tidak memenuhi persyaratan untuk memenangkan lelang ini atau telah tergugur pada tahap lelang sebelumnya. Silakan coba lagi pada kesempatan berikutnya. Kami juga menyarankan agar Anda mempelajari kembali syarat dan ketentuan lelang ini untuk lebih memahami bagaimana Anda dapat memenangkan lelang di masa depan.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+@endif
 @if($lelangs->status == 'ditutup')
 <div class="card">
   <div class="card-body">
@@ -410,4 +432,12 @@
     @endif
     
   </section>
+  <!-- JavaScript untuk memicu modal otomatis saat halaman dimuat -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#gugurModal').modal('show');
+  });
+</script>
 @endsection
