@@ -18,7 +18,13 @@ class RegisterController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|min:3|max:50',
-            'username' => 'required|unique:users,username|max:15|min:3',
+            'username' => [
+                'required',
+                'unique:users,username',
+                'max:15',
+                'min:3',
+                'regex:/^[a-zA-Z0-9_]+$/', // Tambahkan aturan regex di sini
+            ],
             'password' => 'required|min:4',
             'passwordshow' => 'required|same:password',
             'telepon' => 'required|max:15|min:5',
@@ -30,6 +36,7 @@ class RegisterController extends Controller
             'username.unique' => 'Username sudah terdaftar',
             'username.max' => 'Username terlalu panjang',
             'username.min' => 'Username terlalu pendek',
+            'username.regex' => 'Username hanya boleh berisi huruf angka dan garis bawah',
             'password.required' => 'Password tidak boleh kosong',
             'passwordshow.required' => 'Password tidak boleh kosong',
             'passwordshow.same' => 'Password tidak sama',

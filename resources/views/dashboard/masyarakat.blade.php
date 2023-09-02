@@ -100,7 +100,7 @@
       <div class="modal-body">
         <p>Selamat! Anda telah berhasil memenangkan lelang untuk barang dengan nama <strong>{{ $item->barang->nama_barang }}</strong>.</p>
         <p>Kami mohon agar segera menghubungi petugas lelang untuk mendapatkan informasi lebih lanjut mengenai prosedur pengambilan barang yang telah Anda menangkan.</p>
-        <p>Silahkan menghubungi petugas lelang {{$item->barang->user->name}} melalui nomor berikut: {{$item->barang->user->telepon}}</p>
+        <p>Silahkan menghubungi petugas lelang {{$item->barang->user->name}} melalui nomor berikut: <strong>{{$item->barang->user->telepon}}</strong> a/n : {{$item->barang->user->name}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

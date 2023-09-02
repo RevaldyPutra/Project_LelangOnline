@@ -17,12 +17,12 @@
       <li class="nav-item">
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <span class="d-none d-md-inline">{{Auth::user()->username}}</span>
             @if(auth()->user()->level == 'admin')
             <img src="{{asset('adminlte/dist/img/user-gear.png')}}" class="user-image img-circle elevation-2">
             @else
             <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2">
             @endif
-            <span class="d-none d-md-inline">{{Auth::user()->username}}</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
@@ -62,21 +62,6 @@
             </div>
           </form>
         </div>
-      </li>
-
-      <!-- Messages Dropdown Menu -->
-      
-      <!-- Notifications Dropdown Menu -->
-      
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
       </li>
     </ul>
   </nav>
